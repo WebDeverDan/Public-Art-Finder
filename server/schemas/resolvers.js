@@ -1,15 +1,32 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Thought } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Thought, Art, UserType } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("thoughts");
+      return User.find().populate('thoughts');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("thoughts");
+      return User.findOne({ username }).populate('thoughts');
     },
+    user: async (parent, { UserType: artist }) => {
+      return User.findOne({ UserType: artist } ).populate('thoughts');
+    },
+
+
+
+    // add art query (will need to adjust this one based on )
+    art: async(parent, { username}) => {
+      return Art.findOne({ username }).populate('arts');
+    },
+    // add arts query
+    arts: async(parent, { location, title, artist }) => {
+      return Art.find({}).populate('arts');
+    },
+
+
+
     thoughts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
@@ -19,9 +36,9 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("thoughts");
+        return User.findOne({ _id: context.user._id }).populate('thoughts');
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 
@@ -35,19 +52,21 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
+
+    // initial comment
     addThought: async (parent, { thoughtText }, context) => {
       if (context.user) {
         const thought = await Thought.create({
@@ -62,8 +81,35 @@ const resolvers = {
 
         return thought;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
+
+    // addArt mutation
+    addArt: async(parent, { title, artist, location, description, image, createdAt, thoughts }, context) => {
+      if (context.user) {
+        const art = Art.create({
+          title,
+          artist,
+          location,
+          description,
+          image,
+          createdAt,
+          thoughts,
+          addedBy: context.user.username,
+        });
+
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { addedArt: art._id } }
+      );
+        return art;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+      },
+    
+
+
+    // for users to comment on the art
     addComment: async (parent, { thoughtId, commentText }, context) => {
       if (context.user) {
         return Thought.findOneAndUpdate(
@@ -79,8 +125,10 @@ const resolvers = {
           }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
+
+     // removes initial upload comment
     removeThought: async (parent, { thoughtId }, context) => {
       if (context.user) {
         const thought = await Thought.findOneAndDelete({
@@ -95,8 +143,10 @@ const resolvers = {
 
         return thought;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
+
+    // remove user comment
     removeComment: async (parent, { thoughtId, commentId }, context) => {
       if (context.user) {
         return Thought.findOneAndUpdate(
@@ -112,7 +162,7 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
