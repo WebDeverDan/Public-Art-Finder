@@ -20,7 +20,8 @@ const userSchema = new Schema({
     minlength: 5,
   },
   usertype: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "UserType",
     required: true,
   },
   comments: [
