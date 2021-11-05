@@ -10,8 +10,7 @@ const artSchema = new Schema({
     trim: true,
   },
   artist: {
-    type: String,
-    trim: true,
+    type: Boolean,
   },
   location: {
     type: String,
