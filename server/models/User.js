@@ -19,15 +19,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  usertype: {
-    type: Schema.Types.ObjectId,
-    ref: "UserType",
+  artist: {
+    type: Boolean,
     required: true,
   },
-  thoughts: [
+  comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Thought",
+      ref: "Comment",
     },
   ],
 });

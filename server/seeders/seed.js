@@ -1,5 +1,5 @@
 const db = require("../config/connection");
-const { User, Comment } = require("../models");
+const { User, Comment, Art } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const commentSeeds = require("./commentSeeds.json");
 const artSeeds = require("./artSeeds.json");
@@ -8,6 +8,7 @@ db.once("open", async () => {
   try {
     await Comment.deleteMany({});
     await User.deleteMany({});
+    await Art.deleteMany({});
 
     await User.create(userSeeds);
 
@@ -21,6 +22,10 @@ db.once("open", async () => {
           },
         }
       );
+    }
+    for (let i = 0; i < artSeeds.length; i++) {
+      const { _id, title, artist, location, description, image } =
+        await Art.create(artSeeds[i]);
     }
   } catch (err) {
     console.error(err);

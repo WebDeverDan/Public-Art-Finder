@@ -3,13 +3,12 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
-    email: String
-    password: String
-    usertype: Boolean!
+    username: String!
+    email: String!
+    password: String!
+    artist: Boolean!
     comments: [Comment]!
   }
-
   type Comment {
     _id: ID
     commentText: String
@@ -17,7 +16,7 @@ const typeDefs = gql`
     createdAt: String
   }
 
-  input Comment {
+  input CommentData {
     commentText: String
     commentAuthor: String
     createdAt: String
@@ -33,7 +32,6 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
-
   type Art {
     _id: ID
     artist: [Artist]!
@@ -41,19 +39,18 @@ const typeDefs = gql`
     description: String
     location: String
     createdAt: String
-    comments: [Comments]!
-    user: username
+    comment: [Comment]!
+    addedBy: User
   }
-
   input ArtData {
-    artist: [Artist]!
+    artist: String!
     image: String!
     description: String
     location: String
     createdAt: String
-    comments: [Comments]!
+    comment: String!
+    addedBy: String!
   }
-
   type Query {
     users: [User]
     user(username: String!): User
@@ -61,13 +58,12 @@ const typeDefs = gql`
     comment(commentId: ID!): Comment
     me: User
     art(artId: ID!): Art
-    art(artist: String, location: String): Art
+    arts(artId: ID!): Art
   }
-
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addComment(artId: ID!, commentText: String!): Comment
+    addComment(artId: ID!, comment: CommentData): Comment
     removeComment(artId: ID!, commentId: ID!): Comment
     addArt(art: ArtData): Art
     removeArt(artId: ID!, commentId: ID!): Art
