@@ -17,6 +17,12 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  input Comment {
+    commentText: String
+    commentAuthor: String
+    createdAt: String
+  }
+
   type Artist {
     fistName: String!
     lastName: String!
@@ -36,6 +42,16 @@ const typeDefs = gql`
     location: String
     createdAt: String
     comments: [Comments]!
+    user: username
+  }
+
+  input ArtData {
+    artist: [Artist]!
+    image: String!
+    description: String
+    location: String
+    createdAt: String
+    comments: [Comments]!
   }
 
   type Query {
@@ -45,6 +61,7 @@ const typeDefs = gql`
     comment(commentId: ID!): Comment
     me: User
     art(artId: ID!): Art
+    art(artist: String, location: String): Art
   }
 
   type Mutation {
@@ -52,6 +69,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addComment(artId: ID!, commentText: String!): Comment
     removeComment(artId: ID!, commentId: ID!): Comment
+    addArt(art: ArtData): Art
+    removeArt(artId: ID!, commentId: ID!): Art
   }
 `;
 
