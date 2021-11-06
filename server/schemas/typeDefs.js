@@ -7,14 +7,6 @@ const typeDefs = gql`
     email: String
     password: String
     usertype: Boolean!
-    thoughts: [Thought]!
-  }
-
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
     comments: [Comment]!
   }
 
@@ -43,7 +35,7 @@ const typeDefs = gql`
     description: String
     location: String
     createdAt: String
-    thoughts: [Thoughts]!
+    comments: [Comments]!
   }
 
   type Query {
