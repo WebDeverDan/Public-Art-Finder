@@ -13,8 +13,8 @@ const resolvers = {
       return User.findOne({ username }).populate("comments");
     },
     // this is for the individual's thoughts if they are an artist
-    user: async (parent, { UserType: artist }) => {
-      return User.findOne({ UserType: artist }).populate("comments");
+    user: async (parent, { artist }) => {
+      return User.findOne({ artist }).populate("comments");
     },
 
     // add art query based on username's uploaded art

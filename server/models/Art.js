@@ -10,7 +10,8 @@ const artSchema = new Schema({
     trim: true,
   },
   artist: {
-    type: Boolean,
+    type: Schema.Types.ObjectId,
+    ref: "Artist",
   },
   location: {
     type: String,
