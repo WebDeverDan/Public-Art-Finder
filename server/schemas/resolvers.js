@@ -105,7 +105,25 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
       },
-    
+
+      removeArt: async (parent, { artId }, context) => {
+        if (context.user) {
+          return Art.findOneAndUpdate(
+            { _id: artId },
+            // {
+            //   $pull: {
+            //     comments: {
+            //       _id: artId,
+            //       commentAuthor: context.user.username,
+            //     },
+            //   },
+            // },
+            { new: true }
+          );
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
+    },
 
 
     // for users to comment on the art
