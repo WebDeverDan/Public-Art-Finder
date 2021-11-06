@@ -1,42 +1,41 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought, Art, UserType } = require('../models');
+const { User, Comment, Art, UserType } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    // this is just for the user's multiple 
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('comments');
     },
+    // this is for the individual's thoughts
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('comments');
     },
+    // this is for the individual's thoughts if they are an artist
     user: async (parent, { UserType: artist }) => {
-      return User.findOne({ UserType: artist } ).populate('thoughts');
+      return User.findOne({ UserType: artist } ).populate('comments');
     },
 
-
-
-    // add art query (will need to adjust this one based on )
+    // add art query based on username's uploaded art
     art: async(parent, { username}) => {
       return Art.findOne({ username }).populate('arts');
     },
-    // add arts query
+    // add art query for multiple arts
     arts: async(parent, { location, title, artist }) => {
       return Art.find({}).populate('arts');
     },
 
-
-
-    thoughts: async (parent, { username }) => {
+    comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Comment.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    comment: async (parent, { commentId }) => {
+      return Comment.findOne({ _id: commentId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('comments');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -67,25 +66,25 @@ const resolvers = {
     },
 
     // initial comment
-    addThought: async (parent, { thoughtText }, context) => {
-      if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
-        });
+    // addThought: async (parent, { thoughtText }, context) => {
+    //   if (context.user) {
+    //     const thought = await Thought.create({
+    //       thoughtText,
+    //       thoughtAuthor: context.user.username,
+    //     });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
-        );
+    //     await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $addToSet: { thoughts: thought._id } }
+    //     );
 
-        return thought;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    //     return thought;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
 
     // addArt mutation
-    addArt: async(parent, { title, artist, location, description, image, createdAt, thoughts }, context) => {
+    addArt: async(parent, { title, artist, location, description, image, createdAt, comments }, context) => {
       if (context.user) {
         const art = Art.create({
           title,
@@ -94,7 +93,7 @@ const resolvers = {
           description,
           image,
           createdAt,
-          thoughts,
+          comments,
           addedBy: context.user.username,
         });
 
@@ -110,10 +109,10 @@ const resolvers = {
 
 
     // for users to comment on the art
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addComment: async (parent, { artId, commentText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Art.findOneAndUpdate(
+          { _id: artId },
           {
             $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },
@@ -129,28 +128,28 @@ const resolvers = {
     },
 
      // removes initial upload comment
-    removeThought: async (parent, { thoughtId }, context) => {
-      if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
-        });
+    // removeThought: async (parent, { thoughtId }, context) => {
+    //   if (context.user) {
+    //     const thought = await Thought.findOneAndDelete({
+    //       _id: thoughtId,
+    //       thoughtAuthor: context.user.username,
+    //     });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
-        );
+    //     await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { thoughts: thought._id } }
+    //     );
 
-        return thought;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    //     return thought;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
 
     // remove user comment
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeComment: async (parent, { artId, commentId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Art.findOneAndUpdate(
+          { _id: artId },
           {
             $pull: {
               comments: {
