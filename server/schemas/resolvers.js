@@ -20,7 +20,7 @@ const resolvers = {
     art: async(parent, { username}) => {
       return Art.findOne({ username }).populate('arts');
     },
-    // add arts query
+    // add art query
     arts: async(parent, { location, title, artist }) => {
       return Art.find({}).populate('arts');
     },
