@@ -29,10 +29,10 @@ const artSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  thoughts: [
+  comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Thought",
+      ref: "Comment",
     },
   ],
 });
