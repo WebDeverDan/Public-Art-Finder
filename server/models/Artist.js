@@ -17,12 +17,6 @@ const artistSchema = new Schema({
     maxlength: 30,
     trim: true,
   },
-  arts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Art",
-    },
-  ],
 });
 
 const Artist = mongoose.model("Artist", artistSchema);
