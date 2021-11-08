@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    artist: Boolean!
+    isArtist: Boolean!
     comments: [Comment]!
   }
   type Comment {
@@ -25,7 +25,6 @@ const typeDefs = gql`
   type Artist {
     fistName: String!
     lastName: String!
-    art: [Art]!
   }
 
   type Auth {
@@ -61,7 +60,12 @@ const typeDefs = gql`
     arts(artId: ID!): Art
   }
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      isArtist: Boolean!
+    ): Auth
     login(email: String!, password: String!): Auth
     addComment(artId: ID!, comment: CommentData): Comment
     removeComment(artId: ID!, commentId: ID!): Comment

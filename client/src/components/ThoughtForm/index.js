@@ -7,7 +7,7 @@ import { QUERY_COMMENTS, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
-const ThoughtForm = () => {
+const CommentForm = () => {
   const [commentText, setCommentText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -79,9 +79,9 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
-                placeholder="Here's a new thought..."
-                value={thoughtText}
+                name="commentText"
+                placeholder="Here's a new comment..."
+                value={commentText}
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
@@ -90,7 +90,7 @@ const ThoughtForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Thought
+                Add SingleComment
               </button>
             </div>
             {error && (
@@ -102,7 +102,7 @@ const ThoughtForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{" "}
+          You need to be logged in to share your comments. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
@@ -110,4 +110,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default CommentForm;
