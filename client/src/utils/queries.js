@@ -6,16 +6,28 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-      }
+      usertype
+      arts{}
+      comments {}
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
+// got up until line 14
+export const QUERY_USERS = gql`
+  query users($username: String!) {
+    users(username: $username) {
+      _id
+      username
+      email
+      usertype
+      arts{}
+      comments {}
+    }
+  }
+`;
+
+export const QUERY_COMMENTS = gql`
   query getThoughts {
     thoughts {
       _id
@@ -26,7 +38,7 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
+export const QUERY_SINGLE_COMMENT = gql`
   query getSingleThought($thoughtId: ID!) {
     thought(thoughtId: $thoughtId) {
       _id
