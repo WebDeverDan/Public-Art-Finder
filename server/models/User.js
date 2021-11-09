@@ -19,7 +19,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  artist: {
+  isArtist: {
     type: Boolean,
     required: true,
   },

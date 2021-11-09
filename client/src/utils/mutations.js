@@ -1,12 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $email: String!, $password: String!, $isArtist: Boolean!
+  ) {
+    addUser(username: $username, email: $email, password: $password, isArtist: $isArtist
+    ) {
       token
       user {
-        _id
         username
+        email
+        password
+        isArtist
       }
     }
   }
@@ -17,13 +21,13 @@ export const LOGIN_USER = gql`
     login(email: $email, password: $password) {
       token
       user {
-        _id
         username
+        password
       }
     }
   }
 `;
-
+// up until here good
 export const ADD_COMMENT = gql`
   mutation addComment($artId: ID!, $commentText: String!) {
     addComment(artId: $artId, commentText: $commentText) {
@@ -35,39 +39,38 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-export const REMOVE_COMMENT = gql `
-mutation removeComment($artId: ID!, $commentId: ID!){
-  removeComment(artId: $artId, commentId: $commentId){
-    art{
-      id
-    }
-    comment{
-      id
-    }
-  }
-}
-`
-
-export const ADD_ART = gql`
-  mutation addArt($art: ArtData) {
-    addArt(art: $art) {
-      art{
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($artId: ID!, $commentId: ID!) {
+    removeComment(artId: $artId, commentId: $commentId) {
+      art {
+        id
+      }
+      comment {
         id
       }
     }
   }
 `;
 
-export const REMOVE_ART = gql `
-mutation removeArt($artId: ID!, $commentId: ID!){
-  removeArt(artId: $artId, commentId: $commentId){
-    art{
-      id
-    }
-    comment{
-      id
+export const ADD_ART = gql`
+  mutation addArt($art: ArtData) {
+    addArt(art: $art) {
+      art {
+        id
+      }
     }
   }
-}
-`
+`;
 
+export const REMOVE_ART = gql`
+  mutation removeArt($artId: ID!, $commentId: ID!) {
+    removeArt(artId: $artId, commentId: $commentId) {
+      art {
+        id
+      }
+      comment {
+        id
+      }
+    }
+  }
+`;
