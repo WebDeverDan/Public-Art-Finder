@@ -42,8 +42,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password, artist }) => {
-      const user = await User.create({ username, email, password, artist });
+    addUser: async (parent, { username, email, password, isArtist }) => {
+      const user = await User.create({ username, email, password, isArtist }); 
       const token = signToken(user);
       return { token, user };
     },
@@ -86,7 +86,7 @@ const resolvers = {
     // addArt mutation
     addArt: async (
       parent,
-      { title, artist, location, description, image, createdAt, comments },
+      { title, artist, location, description, image, createdAt, comment },
       context
     ) => {
       if (context.user) {
@@ -97,7 +97,7 @@ const resolvers = {
           description,
           image,
           createdAt,
-          comments,
+          comment,
           addedBy: context.user.username,
         });
 
