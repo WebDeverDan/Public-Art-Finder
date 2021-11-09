@@ -1,10 +1,10 @@
-const db = require("../config/connection");
-const { User, Comment, Art } = require("../models");
-const userSeeds = require("./userSeeds.json");
-const commentSeeds = require("./commentSeeds.json");
-const artSeeds = require("./artSeeds.json");
+const db = require('../config/connection');
+const { User, Comment, Art, Artist } = require('../models');
+const userSeeds = require('./userSeeds.json');
+const commentSeeds = require('./commentSeeds.json');
+const artSeeds = require('./artSeeds.json');
 
-db.once("open", async () => {
+db.once('open', async () => {
   try {
     await Comment.deleteMany({});
     await User.deleteMany({});
@@ -24,14 +24,13 @@ db.once("open", async () => {
       );
     }
     for (let i = 0; i < artSeeds.length; i++) {
-      const { _id, title, artist, location, description, image } =
-        await Art.create(artSeeds[i]);
+      const { Art } = await Art.create(artSeeds[i]);
     }
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 
-  console.log("all done!");
+  console.log('all done!');
   process.exit(0);
 });
