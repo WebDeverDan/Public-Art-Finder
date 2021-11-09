@@ -1,10 +1,12 @@
 const { Schema, model } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
+
+
 const artSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
     minlength: 1,
     maxlength: 280,
     trim: true,
@@ -34,8 +36,17 @@ const artSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Comment",
-    },
+  }
   ],
+  addedBy: {
+    type: String,
+    required: false,
+  }
+  // addedBy: 
+  // {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
 });
 
 const Art = model("Art", artSchema);

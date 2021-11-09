@@ -35,24 +35,24 @@ const typeDefs = gql`
   type Art {
     _id: ID
     title: String
-    artist: [Artist]!
-    image: String!
+    artist: [Artist]
+    image: String
     description: String
     location: String
     createdAt: String
-    comment: [Comment]!
-    addedBy: username
+    comment: [Comment]
+    addedBy: String
   }
 
   input ArtData {
     title: String
-    artist: ArtistData!
-    image: String!
+    artist: ArtistData
+    image: String
     description: String
     location: String
     createdAt: String
-    comment: CommentData!
-    addedBy: String!
+    comment: CommentData
+    addedBy: String
   }
 
   input ArtistData {
