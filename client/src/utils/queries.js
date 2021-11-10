@@ -17,8 +17,8 @@ export const QUERY_USER = gql`
 
 // got up until line 14
 export const QUERY_USERS = gql`
-  query users($username: String!) {
-    users(username: $username) {
+  query users($_id: ID!) {
+    users(_id: $_id) {
       _id
       username
       email
