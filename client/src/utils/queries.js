@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -40,7 +40,7 @@ export const QUERY_COMMENTS = gql`
   }
 `;
 
-export const QUERY_SINGLE_COMMENT = gql`
+export const QUERY_COMMENT = gql`
   query getSingleComment($commentId: ID!) {
     comment(commentId: $commentId) {
       _id
@@ -65,4 +65,26 @@ export const QUERY_ME = gql`
       }
     }
   }
+`;
+
+export const QUERY_ART = gql`
+query art($title: String!) {
+  art(title: $title) {
+    _id
+    title
+    artist
+    image
+    description
+    location
+    createdAt
+    comment:{
+      commentText
+      commentAuthor
+    }
+    addedBy
+  }
+}
+`;
+export const QUERY_ARTS = gql`
+query arts(Art: $art)
 `;

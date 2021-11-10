@@ -1,7 +1,5 @@
-const { Schema, model } = require("mongoose");
-const dateFormat = require("../utils/dateFormat");
-
-
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const artSchema = new Schema({
   title: {
@@ -11,10 +9,24 @@ const artSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  artist: {
-    type: Schema.Types.ObjectId,
-    ref: "Artist",
-  },
+  artist: [
+    {
+      firstName: {
+        type: String,
+        required: false,
+        minlength: 1,
+        maxlength: 30,
+        trim: true,
+      },
+      lastName: {
+        type: String,
+        required: false,
+        minlength: 1,
+        maxlength: 30,
+        trim: true,
+      },
+    },
+  ],
   location: {
     type: String,
     minlength: 1,
@@ -35,20 +47,20 @@ const artSchema = new Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Comment",
-  }
+      ref: 'User',
+    },
   ],
   addedBy: {
     type: String,
     required: false,
-  }
-  // addedBy: 
+  },
+  // addedBy:
   // {
   //   type: Schema.Types.ObjectId,
   //   ref: "User",
   // },
 });
 
-const Art = model("Art", artSchema);
+const Art = model('Art', artSchema);
 
 module.exports = Art;

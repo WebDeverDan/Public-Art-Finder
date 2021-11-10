@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
@@ -24,8 +24,8 @@ const typeDefs = gql`
   }
 
   type Artist {
-    fistName: String!
-    lastName: String!
+    firstName: String
+    lastName: String
   }
 
   type Auth {
@@ -40,7 +40,7 @@ const typeDefs = gql`
     description: String
     location: String
     createdAt: String
-    comment: [Comment]
+    comments: [Comment]
     addedBy: String
   }
 
@@ -56,8 +56,8 @@ const typeDefs = gql`
   }
 
   input ArtistData {
-    firstName: String!
-    lastName: String!
+    firstName: String
+    lastName: String
   }
 
   type Query {
@@ -66,13 +66,18 @@ const typeDefs = gql`
     comments(username: String): [Comment]
     comment(commentId: ID!): Comment
     me: User
-    art(artId: ID!): Art
-    arts(artId: ID!): Art
+    art(title: String): Art
+    arts: [Art]
   }
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, isArtist: Boolean!): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      isArtist: Boolean!
+    ): Auth
     login(email: String!, password: String!): Auth
-    addComment(artId: ID!, comment: CommentData): Comment
+    addComment(artId: ID!, commentText: String!, commentAuthor: String): Comment
     removeComment(artId: ID!, commentId: ID!): Comment
     addArt(art: ArtData): Art
     removeArt(artId: ID!, commentId: ID!): Art

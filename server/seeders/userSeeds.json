@@ -3,61 +3,61 @@
     "username": "Brian Kernighan",
     "email": "bkernighan@techfriends.dev",
     "password": "password01",
-    "artist": "true"
+    "isArtist": "true"
   },
   {
     "username": "Max Kanat-Alexander",
     "email": "mkanatalexander@techfriends.dev",
     "password": "password02",
-    "artist": "false"
+    "isArtist": "false"
   },
 
   {
     "username": "Why The Lucky Stiff",
     "email": "wtls@techfriends.dev",
     "password": "password03",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "Kent Beck",
     "email": "kbeck@techfriends.dev",
     "password": "password04",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "Edward V. Berard",
     "email": "evberard@techfriends.dev",
     "password": "password05",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "Alan Kay",
     "email": "akay@techfriends.dev",
     "password": "password06",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "C.A.R. Hoare",
     "email": "choare@techfriends.dev",
     "password": "password07",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "David Thomas",
     "email": "dthomas@techfriends.dev",
     "password": "password08",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "Donald Knuth",
     "email": "dknuth@techfriends.dev",
     "password": "password09",
-    "artist": "false"
+    "isArtist": "false"
   },
   {
     "username": "Lernantino",
     "email": "lernantino@techfriends.dev",
     "password": "password10",
-     "artist": "false"
+     "isArtist": "false"
   }
 ]
