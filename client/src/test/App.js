@@ -14,7 +14,7 @@ import Artist from './pages/Artist';
 import FavoriteArt from './pages/FavoriteArt';
 import FavoriteArtist from './pages/FavoriteArtist';
 import Footer from './components/Footer';
-import Header from './Components/Header';
+import Header from './components/Header';
 import Home from './pages/Home';
 import LoginSignup from './pages/LoginSignup';
 import Profile from './pages/Profile';

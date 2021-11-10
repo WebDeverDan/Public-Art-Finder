@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/client';
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
 
+import Map from '../test/components/Map';
+
 import { QUERY_THOUGHTS } from '../utils/queries';
 
 const Home = () => {
@@ -28,6 +30,7 @@ const Home = () => {
               title="Some Feed for Thought(s)..."
             />
           )}
+          <Map />
         </div>
       </div>
     </main>
