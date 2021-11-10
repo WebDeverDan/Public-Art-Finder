@@ -68,8 +68,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_ART = gql`
-query art($artId: ID!) {
-  art(Art: $artId) {
+query art($title: String!) {
+  art(title: $title) {
     _id
     title
     artist
@@ -84,4 +84,7 @@ query art($artId: ID!) {
     addedBy
   }
 }
+`;
+export const QUERY_ARTS = gql`
+query arts(Art: $art)
 `;
