@@ -55,8 +55,12 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material/';
-import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { Shadows } from "@material-ui/core/styles/shadows"
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from '@material-ui/core/styles';
+import { Shadows } from '@material-ui/core/styles/shadows';
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -73,7 +77,6 @@ import FormGroup from '@mui/material/FormGroup';
 import Menu from '@mui/material/Menu';
 import SearchAppBar from './searchbar';
 import { InfoOutlined } from '@mui/icons-material';
-
 
 const logout = (event, label) => {
   // event.preventDefault();
@@ -109,26 +112,27 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'black',
   },
   mobileNav: {
-    justifyContent: "space-between",
-    fontSize: "36px",
+    justifyContent: 'space-between',
+    fontSize: '36px',
   },
   toolbar: {
-    justifyContent: "space-between",
-    fontSize: "36px",
-    marginLeft: "35%",
-    marginRight: "25%",
+    justifyContent: 'space-between',
+    fontSize: '36px',
+    marginLeft: '35%',
+    marginRight: '25%',
     flexDirection: 'row',
   },
 }));
 
 export default function Header() {
-  const { header, mobileNav, menuButton, toolbar, drawerContainer } = useStyles();
+  const { header, mobileNav, menuButton, toolbar, drawerContainer } =
+    useStyles();
 
   let headersData;
 
   const [state, setState] = useState({
     mobileView: false,
-    drawerOpen: false
+    drawerOpen: false,
   });
 
   const { mobileView, drawerOpen } = state;
@@ -136,7 +140,9 @@ export default function Header() {
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  Auth.loggedIn() ? (headersData = loggedInData) : (headersData = loggedOutData);
+  Auth.loggedIn()
+    ? (headersData = loggedInData)
+    : (headersData = loggedOutData);
   // Auth.loggedIn() ? (headersData = loggedOutData) : (headersData = loggedInData);
 
   useEffect(() => {
@@ -151,18 +157,16 @@ export default function Header() {
 
     return () => {
       window.removeEventListener('resize', () => setResponsiveness());
-    }
+    };
   }, []);
 
   const displayDesktop = () => {
     console.log();
     return (
       <Toolbar className={toolbar}>
-        
         <div>{getMenuButtons()}</div>
         <div>{mobileView ? null : <SearchAppBar />}</div>
         <div>{AccountAppBar()}</div>
-        
       </Toolbar>
     );
   };
@@ -175,39 +179,33 @@ export default function Header() {
 
     return (
       <div>
-      <Toolbar className={mobileNav}>
-        <IconButton
-          {...{
-            edge: 'start',
-            color: 'inherit',
-            'aria-label': 'menu',
-            'aria-haspopup': 'true',
-            onClick: handleDrawerOpen,
-          }}
-        >
-          <MenuIcon fontSize="36px" />
-        </IconButton>
-        <Drawer
-          {...{
-            anchor: 'top',
-            open: drawerOpen,
-            onClick: handleDrawerClose,
-          }}
-        >
-          <div className={drawerContainer}>
-            {getDrawerChoices()}
-          </div>
-        </Drawer>
-        {AccountAppBar()}
-      </Toolbar>
-      <div marginTop="56px">
-      {mobileView ? <SearchAppBar /> : null}
+        <Toolbar className={mobileNav}>
+          <IconButton
+            {...{
+              edge: 'start',
+              color: 'inherit',
+              'aria-label': 'menu',
+              'aria-haspopup': 'true',
+              onClick: handleDrawerOpen,
+            }}
+          >
+            <MenuIcon fontSize="36px" />
+          </IconButton>
+          <Drawer
+            {...{
+              anchor: 'top',
+              open: drawerOpen,
+              onClick: handleDrawerClose,
+            }}
+          >
+            <div className={drawerContainer}>{getDrawerChoices()}</div>
+          </Drawer>
+          {AccountAppBar()}
+        </Toolbar>
+        <div marginTop="56px">{mobileView ? <SearchAppBar /> : null}</div>
       </div>
-      </div>
-
     );
   };
-
 
   const getDrawerChoices = () => {
     return headersData.map(({ label, href, onClick, menuIcon }) => {
@@ -221,15 +219,17 @@ export default function Header() {
               style: { textDecoration: 'none' },
               key: label,
               className: menuIcon,
-              onClick: (event) => { logout(event, label) },
+              onClick: (event) => {
+                logout(event, label);
+              },
             }}
           >
             <MenuItem>{label}</MenuItem>
           </Link>
         </RouterLink>
-      )
-    })
-  }
+      );
+    });
+  };
 
   const getMenuButtons = () => {
     return headersData.map(({ label, href, onClick }) => {
@@ -242,7 +242,9 @@ export default function Header() {
             to: href,
             component: RouterLink,
             className: menuButton,
-            onClick: (event) => { logout(event, label) },
+            onClick: (event) => {
+              logout(event, label);
+            },
           }}
         >
           {label}
@@ -252,7 +254,6 @@ export default function Header() {
   };
 
   const AccountAppBar = () => {
-
     const handleChange = (event) => {
       setAuth(event.target.checked);
     };
@@ -275,7 +276,7 @@ export default function Header() {
           onClick={handleMenu}
           color="inherit"
         >
-          {(Auth.loggedIn() ? <AccountCircle fontSize="36px" /> : null)}
+          {Auth.loggedIn() ? <AccountCircle fontSize="36px" /> : null}
         </IconButton>
         <Menu
           id="menu-appbar"
@@ -295,13 +296,17 @@ export default function Header() {
           <MenuItem onClick={handleClose}>Profile</MenuItem>
           <MenuItem
             {...{
-              onClick: (event) => { logout(event, 'Logout') },
+              onClick: (event) => {
+                logout(event, 'Logout');
+              },
             }}
-          >Logout</MenuItem>
+          >
+            Logout
+          </MenuItem>
         </Menu>
       </div>
     );
-  }
+  };
 
   return (
     <header>
@@ -310,6 +315,4 @@ export default function Header() {
       </AppBar>
     </header>
   );
-};
-
-
+}

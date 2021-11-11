@@ -47,7 +47,7 @@ const artSchema = new Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Comment',
     },
   ],
   addedBy: {

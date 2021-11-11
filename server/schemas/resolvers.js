@@ -1,49 +1,57 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Comment, Art, UserType } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Comment, Art, UserType } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     // this is just for the user's multiple
     users: async () => {
-      return User.find().populate("comments");
+      return User.find().populate('comments');
     },
     // this is for the individual's thoughts
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("comments");
+      return User.findOne({ username }).populate({
+        path: 'comments',
+        populate: [{ path: 'user', select: 'username' }],
+      });
     },
     // this is for the individual's thoughts if they are an artist
     user: async (parent, { artist }) => {
-      return User.findOne({ artist }).populate("comments");
+      return User.findOne({ artist }).populate('comments');
     },
 
     // add art query based on username's uploaded art
     art: async (parent, { username }) => {
-      return Art.findOne({ username }).populate("arts");
+      return Art.findOne({ username }).populate('comments');
     },
     // add art query for multiple arts
     arts: async (parent, { location, title, artist }) => {
-      return Art.find({}).populate("arts");
+      return Art.find({}).populate('arts');
     },
 
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Comment.find(params).sort({ createdAt: -1 });
+      return Comment.find(params)
+        .sort({ createdAt: -1 })
+        .populate('user')
+        .select('username');
     },
     comment: async (parent, { commentId }) => {
-      return Comment.findOne({ _id: commentId });
+      return Comment.findOne({ _id: commentId })
+        .populate('user')
+        .select('username');
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("comments");
+        return User.findOne({ _id: context.user._id }).populate('comments');
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 
   Mutation: {
     addUser: async (parent, { username, email, password, isArtist }) => {
-      const user = await User.create({ username, email, password, isArtist }); 
+      const user = await User.create({ username, email, password, isArtist });
       const token = signToken(user);
       return { token, user };
     },
@@ -51,13 +59,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -107,7 +115,7 @@ const resolvers = {
         );
         return art;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     removeArt: async (parent, { artId }, context) => {
@@ -125,17 +133,22 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     // for users to comment on the art
-    addComment: async (parent, { artId, commentText }, context) => {
+    addComment: async (parent, { artId, comment }, context) => {
+      console.log(comment);
       if (context.user) {
-        return Art.findOneAndUpdate(
+        const commentDoc = await Comment.create({
+          ...comment,
+          user: context.user._id,
+        });
+        await Art.findOneAndUpdate(
           { _id: artId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              comments: commentDoc._id,
             },
           },
           {
@@ -143,8 +156,9 @@ const resolvers = {
             runValidators: true,
           }
         );
+        return commentDoc;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     // removes initial upload comment
@@ -181,7 +195,7 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

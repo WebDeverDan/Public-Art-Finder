@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     isArtist: Boolean!
+    art: Art
     comments: [Comment]!
   }
 
@@ -15,12 +16,12 @@ const typeDefs = gql`
     commentText: String
     commentAuthor: String
     createdAt: String
+    user: User
   }
 
   input CommentData {
     commentText: String
     commentAuthor: String
-    createdAt: String
   }
 
   type Artist {
@@ -32,10 +33,11 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+
   type Art {
     _id: ID
     title: String
-    artist: [Artist]
+    artist: Artist
     image: String
     description: String
     location: String
@@ -66,7 +68,7 @@ const typeDefs = gql`
     comments(username: String): [Comment]
     comment(commentId: ID!): Comment
     me: User
-    art(title: String): Art
+    art(location: String): Art
     arts: [Art]
   }
   type Mutation {
@@ -77,7 +79,7 @@ const typeDefs = gql`
       isArtist: Boolean!
     ): Auth
     login(email: String!, password: String!): Auth
-    addComment(artId: ID!, commentText: String!, commentAuthor: String): Comment
+    addComment(artID: ID, comment: CommentData): Comment
     removeComment(artId: ID!, commentId: ID!): Comment
     addArt(art: ArtData): Art
     removeArt(artId: ID!, commentId: ID!): Art
