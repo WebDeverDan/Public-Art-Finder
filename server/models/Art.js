@@ -12,20 +12,31 @@ const artSchema = new Schema({
   artist: {
     firstName: {
       type: String,
+<<<<<<< HEAD
       required: false,
+=======
+      required: true,
+>>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
       minlength: 1,
       maxlength: 30,
       trim: true,
     },
     lastName: {
       type: String,
+<<<<<<< HEAD
       required: false,
+=======
+      required: true,
+>>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
       minlength: 1,
       maxlength: 30,
       trim: true,
     },
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
   location: {
     type: String,
     minlength: 1,

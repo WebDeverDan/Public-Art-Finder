@@ -8,13 +8,17 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
-import Header from './components/Header';
+import Art from './pages/Art';
+import ArtInArea from './pages/ArtInArea';
+import Artist from './pages/Artist';
+import FavoriteArt from './pages/FavoriteArt';
+import FavoriteArtist from './pages/FavoriteArtist';
 import Footer from './components/Footer';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,30 +48,45 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/profiles/:username">
-              <Profile />
-            </Route>
-            <Route exact path="/thoughts/:thoughtId">
-              <SingleThought />
-            </Route>
-          </div>
-          <Footer />
-        </div>
+        <Header />
+
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+
+        <Route exact path="/art/:id">
+          <Art />
+        </Route>
+
+        <Route exact path="/artInArea/:location">
+          <ArtInArea />
+        </Route>
+
+        <Route exact path="/artist/:id">
+          <Artist />
+        </Route>
+
+        <Route exact path="/favoriteArt/:username">
+          <FavoriteArt />
+        </Route>
+
+        <Route exact path="/favoriteArtist/:username">
+          <FavoriteArtist />
+        </Route>
+
+        <Route exact path="/profile/:username">
+          <Profile />
+        </Route>
+
+        <Footer />
       </Router>
     </ApolloProvider>
   );

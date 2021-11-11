@@ -11,6 +11,7 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
+    isArtist: false,
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -75,6 +76,25 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <div>Are you an artist?</div>
+                <label>
+                  <input
+                    type="radio"
+                    name="isArtist"
+                    value={true}
+                    onChange={handleChange}
+                  />
+                  Yes
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="isArtist"
+                    value={false}
+                    onChange={handleChange}
+                  />
+                  No
+                </label>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}

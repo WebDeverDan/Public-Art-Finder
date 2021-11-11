@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = () => {
-  return;
+  return null;
 };
 
 export default Card;
