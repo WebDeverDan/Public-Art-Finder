@@ -1,39 +1,23 @@
 import React from 'react';
+
 import { useQuery } from '@apollo/client';
+import { QUERY_ART } from '../utils/queries';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
-
-import Map from '../test/components/Map';
-
-import { QUERY_THOUGHTS } from '../utils/queries';
+import ArtForm from '../components/ArtForm';
+import Carousel from '../components/Carousel';
+import Map from '../components/Map';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+  // TODO: Get ~4 random artworks to pass into Carousel component
+  const { loading, data } = useQuery(QUERY_ART);
+  const art = data?.art || [];
 
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
-          )}
-          <Map />
-        </div>
-      </div>
-    </main>
+    <>
+      {loading ? <div>Loading...</div> : <Carousel art={art} />}
+      <ArtForm />
+      <Map />
+    </>
   );
 };
 

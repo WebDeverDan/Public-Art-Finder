@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from '../components/Card';
 
-const ArtInArea = () => {
-  return;
+const FavoriteArt = () => {
+  return null;
 };
 
-export default ArtInArea;
+export default FavoriteArt;
