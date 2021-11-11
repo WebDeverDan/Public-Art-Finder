@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Comment, Art, UserType } = require('../models');
+const { User, Comment, Art } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -94,7 +94,17 @@ const resolvers = {
     // addArt mutation
     addArt: async (
       parent,
-      { title, artist, location, description, image, createdAt, comment },
+      {
+        art: {
+          title,
+          artist,
+          location,
+          description,
+          image,
+          createdAt,
+          comment,
+        },
+      },
       context
     ) => {
       if (context.user) {

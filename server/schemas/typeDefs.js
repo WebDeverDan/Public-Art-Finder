@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String!
     isArtist: Boolean!
     art: Art
-    comments: [Comment]!
+    comments: [Comment]
   }
 
   type Comment {
@@ -65,7 +65,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(_id: ID!): User
-    comments(username: String): [Comment]
+    comments: [Comment]
     comment(commentId: ID!): Comment
     me: User
     art(location: String): Art

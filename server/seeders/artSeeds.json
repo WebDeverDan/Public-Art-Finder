@@ -1,9 +1,8 @@
 {
 "title":"Magnolia 23",
-"artist":[{
+"artist":{
     "firstName":"Nikki",
-    "lastName": "Cherry-Crowfoot"}
-],
+    "lastName": "Cherry-Crowfoot"},
 "location":"Asheboro, NC",
 "description": "Outdoor painting on slat wood canvas for Magnolia 23 restaurant",
 "image": "./magnolia.jpg"
