@@ -3,7 +3,7 @@ import Card from '../components/Card';
 import Comment from '../components/Comment';
 
 const Art = () => {
-  return;
+  return null;
 };
 
 export default Art;

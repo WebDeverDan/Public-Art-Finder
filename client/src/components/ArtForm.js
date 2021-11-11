@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_ART } from '../../utils/mutations';
+import { ADD_ART } from '../utils/mutations';
 
-import { QUERY_ART } from '../../utils/queries';
-import { QUERY_ME } from '../../utils/queries';
+import { QUERY_ART } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
 const ArtForm = () => {
   // Initial form state is empty

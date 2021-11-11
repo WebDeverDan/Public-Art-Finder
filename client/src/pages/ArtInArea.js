@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from '../components/Card';
 
-const Artist = () => {
-  return;
+const ArtInArea = () => {
+  return null;
 };
 
-export default Artist;
+export default ArtInArea;

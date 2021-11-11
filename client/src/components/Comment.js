@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Comment = () => {
-  return;
+  return null;
 };
 
 export default Comment;
