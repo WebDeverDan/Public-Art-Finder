@@ -9,24 +9,23 @@ const artSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  artist: [
-    {
-      firstName: {
-        type: String,
-        required: false,
-        minlength: 1,
-        maxlength: 30,
-        trim: true,
-      },
-      lastName: {
-        type: String,
-        required: false,
-        minlength: 1,
-        maxlength: 30,
-        trim: true,
-      },
+  artist: {
+    firstName: {
+      type: String,
+      required: false,
+      minlength: 1,
+      maxlength: 30,
+      trim: true,
     },
-  ],
+    lastName: {
+      type: String,
+      required: false,
+      minlength: 1,
+      maxlength: 30,
+      trim: true,
+    },
+  },
+
   location: {
     type: String,
     minlength: 1,
@@ -47,7 +46,7 @@ const artSchema = new Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Comment',
     },
   ],
   addedBy: {

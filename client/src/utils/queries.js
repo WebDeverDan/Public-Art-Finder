@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user($_id: ID!) {
+    user(_id: $_id) {
       _id
       username
       email
@@ -10,23 +10,41 @@ export const QUERY_USER = gql`
         _id
         commentText
         createdAt
+        user {
+          username
+        }
       }
     }
   }
 `;
 
 // got up until line 14
+// export const QUERY_USERS = gql`
+//   query users($_id: ID!) {
+//     users(_id: $_id) {
+//       _id
+//       username
+//       email
+//       artist
+//       arts
+//       comments
+//     }
+//   }
+// `;
+
 export const QUERY_USERS = gql`
-  query users($username: String!) {
-    users(username: $username) {
-      _id
-      username
-      email
-      artist
-      arts
-      comments
-    }
+ query users {
+  _id
+  username
+  email
+  password
+  isArtist
+  comments{
+    commentText
+    createdAt
   }
+  }
+}
 `;
 
 export const QUERY_COMMENTS = gql`
@@ -78,6 +96,47 @@ export const QUERY_ART = gql`
       location
       createdAt
       comment {
+        commentText
+        commentAuthor
+      }
+      addedBy
+    }
+  }
+`;
+
+export const QUERY_ART_BY_Location = gql`
+  query getArtByLocation($location: String!) {
+    art(location: $location) {
+      _id
+      title
+      artist
+      image
+      description
+      location
+      createdAt
+      comment {
+        commentText
+        commentAuthor
+      }
+      addedBy
+    }
+  }
+`;
+
+export const QUERY_ARTS = gql`
+  query arts {
+    art {
+      _id
+      title
+      artist {
+        firstName
+        lastName
+      }
+      image
+      description
+      location
+      createdAt
+      comments {
         commentText
         commentAuthor
       }
