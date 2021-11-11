@@ -8,7 +8,7 @@ import Carousel from '../components/Carousel';
 import Map from '../components/Map';
 
 const Home = () => {
-  // TODO: Get ~4 random artworks to pass into Carousel component
+  // TODO: Get ~4 random artworks to pass into Carousel component, probably need a query to get *all* artwork
   const { loading, data } = useQuery(QUERY_ART);
   const art = data?.art || [];
 
