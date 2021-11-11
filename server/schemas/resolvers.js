@@ -86,7 +86,7 @@ const resolvers = {
     // addArt mutation
     addArt: async (
       parent,
-      { title, artist, location, description, image, createdAt, comment },
+      { art: {title, artist, location, description, image, createdAt, comment} },
       context
     ) => {
       if (context.user) {
@@ -129,13 +129,16 @@ const resolvers = {
     },
 
     // for users to comment on the art
-    addComment: async (parent, { artId, commentText }, context) => {
+    addComment: async (parent, { artId, comment }, context) => {
+      console.log(comment)
       if (context.user) {
-        return Art.findOneAndUpdate(
+        const commentDoc = await Comment.create({...comment, user:context.user._id})
+        
+        await Art.findOneAndUpdate(
           { _id: artId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              comments: commentDoc._id,
             },
           },
           {
@@ -143,6 +146,7 @@ const resolvers = {
             runValidators: true,
           }
         );
+        return commentDoc;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
