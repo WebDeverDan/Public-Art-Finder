@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     isArtist: Boolean!
-    addedArt: [ArtData]
+    addedArt: [Art]
     comments: [Comment]
   }
 
