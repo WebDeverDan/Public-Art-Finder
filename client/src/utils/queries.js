@@ -14,6 +14,9 @@ export const QUERY_USER = gql`
           username
         }
       }
+      addedArt {
+        ArtData
+      }
     }
   }
 `;
@@ -33,18 +36,17 @@ export const QUERY_USER = gql`
 // `;
 
 export const QUERY_USERS = gql`
- query users {
-  _id
-  username
-  email
-  password
-  isArtist
-  comments{
-    commentText
-    createdAt
+  query users {
+    _id
+    username
+    email
+    password
+    isArtist
+    comments {
+      commentText
+      createdAt
+    }
   }
-  }
-}
 `;
 
 export const QUERY_COMMENTS = gql`
