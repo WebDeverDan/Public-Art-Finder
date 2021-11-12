@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     isArtist: Boolean!
-    art: [Art]
+    addedArt: [ArtData]
     comments: [Comment]
   }
 
@@ -68,6 +68,7 @@ const typeDefs = gql`
     comments: [Comment]
     comment(commentId: ID!): Comment
     me: User
+    addedArt(userId: ID, artId: ID): [Art]
     art(location: String): Art
     arts: [Art]
   }
@@ -80,7 +81,7 @@ const typeDefs = gql`
       isArtist: Boolean!
     ): Auth
     login(email: String!, password: String!): Auth
-    addComment(artID: ID, comment: CommentData): Comment
+    addComment(artId: ID, comment: CommentData): Comment
     removeComment(artId: ID!, commentId: ID!): Comment
     addArt(art: ArtData): Art
     removeArt(artId: ID!, commentId: ID!): Art
