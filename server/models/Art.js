@@ -25,7 +25,6 @@ const artSchema = new Schema({
       trim: true,
     },
   },
-  
   location: {
     type: String,
     minlength: 1,
