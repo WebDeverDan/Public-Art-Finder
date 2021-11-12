@@ -7,13 +7,8 @@ const typeDefs = gql`
     email: String!
     password: String!
     isArtist: Boolean!
-<<<<<<< HEAD
     art: [Art]
     comments: [Comment]
-=======
-    art: Art
-    comments: [Comment]!
->>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
   }
 
   type Comment {
@@ -74,13 +69,9 @@ const typeDefs = gql`
     comment(commentId: ID!): Comment
     me: User
     art(location: String): Art
-<<<<<<< HEAD
     arts: [Art]
-=======
-    arts(artId: ID!): Art
->>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
   }
-  
+
   type Mutation {
     addUser(
       username: String!

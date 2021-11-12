@@ -94,7 +94,6 @@ const resolvers = {
     // addArt mutation
     addArt: async (
       parent,
-<<<<<<< HEAD
       {
         art: {
           title,
@@ -106,9 +105,6 @@ const resolvers = {
           comment,
         },
       },
-=======
-      { art: {title, artist, location, description, image, createdAt, comment} },
->>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
       context
     ) => {
       if (context.user) {
@@ -152,19 +148,13 @@ const resolvers = {
 
     // for users to comment on the art
     addComment: async (parent, { artId, comment }, context) => {
-<<<<<<< HEAD
       console.log(comment);
       if (context.user) {
         const commentDoc = await Comment.create({
           ...comment,
           user: context.user._id,
         });
-=======
-      console.log(comment)
-      if (context.user) {
-        const commentDoc = await Comment.create({...comment, user:context.user._id})
-        
->>>>>>> f0ce87cf5b15bc206965667328ff971d79f0a58f
+
         await Art.findOneAndUpdate(
           { _id: artId },
           {
