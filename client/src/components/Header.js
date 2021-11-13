@@ -55,20 +55,12 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material/';
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from '@material-ui/core/styles';
-import { Shadows } from '@material-ui/core/styles/shadows';
-import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
-// import SingleThought from './pages/SingleThought';
-// import Profile from './pages/Profile';
 import Auth from '../utils/auth';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Switch from '@mui/material/Switch';
@@ -108,8 +100,14 @@ const loggedInData = [
 ];
 
 const useStyles = makeStyles(() => ({
-  root: {
-    backgroundColor: 'black',
+  header: {
+    backgroundColor: "#94774f !important",
+  },
+  menuButton: {
+    color: "white",
+    "&:hover": {
+      color: "#7f552b",
+    },
   },
   mobileNav: {
     justifyContent: 'space-between',
