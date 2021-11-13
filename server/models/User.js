@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
     unique: true,
     trim: true,
   },
@@ -29,7 +29,7 @@ const userSchema = new Schema({
       ref: 'Comment',
     },
   ],
-  art: [
+  addArt: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Art',
