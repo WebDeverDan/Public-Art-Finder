@@ -19,6 +19,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import { makeStyles } from "@material-ui/core";
+import Grid from '@mui/material/Grid';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,11 +46,29 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const contentStyles = makeStyles((theme) => ({
+  content: {
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "150px",
+    minHeight: "calc(100vh - 288px)",
+    width: "100%",
+    [theme.breakpoints.down('sm')]: {
+      minHeight: "calc(100vh - 250px)",
+    },
+  },
+}));
+
 function App() {
+  const { content } = contentStyles();
+  
   return (
     <ApolloProvider client={client}>
       <Router>
         <Header />
+
+        <Grid container className={content}>
+        <Grid>
 
         <Route exact path="/">
           <Home />
@@ -85,6 +105,9 @@ function App() {
         <Route exact path="/profile/:username">
           <Profile />
         </Route>
+
+        </Grid>
+      </Grid>
 
         <Footer />
       </Router>

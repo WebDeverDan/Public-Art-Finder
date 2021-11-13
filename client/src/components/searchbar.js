@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import { Container, makeStyles } from "@material-ui/core";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -43,7 +44,7 @@ const Search = styled('div')(({ theme }) => ({
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+        // width: '12ch',
         '&:focus': {
           width: '20ch',
         },
@@ -51,11 +52,20 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
+  const useStyles = makeStyles((theme) => ({
+    searchStyle: {
+      backgroundColor: "#94774f",
+      // fontSize: "large",
+      color: "white",
+    },
+  }));
+
 export default function SearchAppBar() {
+  const { searchStyle } = useStyles();
     return (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar elevation={0} position="static">
-          <Toolbar>
+          <Toolbar className={searchStyle}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
