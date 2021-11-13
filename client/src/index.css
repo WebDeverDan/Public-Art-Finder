@@ -12,6 +12,23 @@ html {
   /* 2 */
 }
 
+.carousel_image_box{
+  height: 80%;
+}
+
+.carousel_image{
+  position:relative;
+  object-fit: cover;
+  object-position: 10% 10%;
+  width: 100%;
+  height: 200px;
+  border-top: solid;
+  border-bottom: solid;
+  color: white;
+  display: block;
+}
+
+
 /* Sections
    ========================================================================== */
 /**

@@ -64,9 +64,9 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(_id: ID!): User
-    comments: [Comment]
-    comment(commentId: ID!): Comment
+    user(userId: ID!): User
+    comments: [User]
+    comment(artId: String): Art
     me: User
     addedArt(userId: ID, artId: ID): [Art]
     art(location: String): Art
@@ -81,7 +81,7 @@ const typeDefs = gql`
       isArtist: Boolean!
     ): Auth
     login(email: String!, password: String!): Auth
-    addComment(artId: ID, comment: CommentData): Comment
+    addComment(artId: ID, comment: CommentData): Art
     removeComment(artId: ID!, commentId: ID!): Comment
     addArt(art: ArtData): Art
     removeArt(artId: ID!, commentId: ID!): Art

@@ -1,24 +1,24 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user($_id: ID!) {
-    user(_id: $_id) {
+query user($userId: ID!) {
+  user(userId: $userId) {
+    _id
+    username
+    email
+    comments {
       _id
-      username
-      email
-      comments {
-        _id
-        commentText
-        createdAt
-        user {
-          username
-        }
-      }
-      addedArt {
-        ArtData
-      }
+      commentText
+      createdAt
+    }
+    addedArt{
+      title
+      description
+      location
+      image
     }
   }
+}
 `;
 
 // got up until line 14
@@ -36,39 +36,48 @@ export const QUERY_USER = gql`
 // `;
 
 export const QUERY_USERS = gql`
-  query users {
+{users {
+  _id
+  username
+  email
+  password
+  isArtist
+addedArt{
+  title
+}
+  comments{
     _id
-    username
-    email
-    password
-    isArtist
-    comments {
-      commentText
-      createdAt
+    commentText
+    commentAuthor
     }
   }
+}
 `;
 
 export const QUERY_COMMENTS = gql`
-  query getComments {
-    comments {
-      _id
-      commentText
-      commentAuthor
-      createdAt
+query getComments {
+  comments {
+    username
+    _id
+    comments{
+    commentText
+    commentAuthor
+    createdAt
     }
   }
+}
 `;
 
 export const QUERY_COMMENT = gql`
-  query getSingleComment($commentId: ID!) {
-    comment(commentId: $commentId) {
-      _id
-      commentText
-      commentAuthor
-      createdAt
+query getSingleComment($artId: String!){
+  comment(artId: $artId) {
+    comments{
+    _id
+    commentText
+    commentAuthor
     }
   }
+}
 `;
 
 export const QUERY_ME = gql`
@@ -126,25 +135,25 @@ export const QUERY_ART_BY_Location = gql`
 `;
 
 export const QUERY_ARTS = gql`
-  query arts {
-    art {
-      _id
-      title
-      artist {
-        firstName
-        lastName
-      }
-      image
-      description
-      location
-      createdAt
-      comments {
-        commentText
-        commentAuthor
-      }
-      addedBy
+query arts{
+  arts{
+    _id
+    title
+    artist{
+      firstName
+      lastName
     }
+    image
+    description
+    location
+    createdAt
+    comments{
+      commentText
+      commentAuthor
+    }
+    addedBy
   }
+}
 `;
 
 // export const QUERY_ARTS = gql`

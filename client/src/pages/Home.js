@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ART } from '../utils/queries';
 
 import ArtForm from '../components/ArtForm';
-import Carousel from '../components/Carousel';
+import ArtCarousel from '../components/ArtCarousel';
 import Map from '../components/Map';
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <>
-      {loading ? <div>Loading...</div> : <Carousel art={art} />}
+      {loading ? <div>Loading...</div> : <ArtCarousel art={art} />}
       <ArtForm />
       <Map />
     </>
