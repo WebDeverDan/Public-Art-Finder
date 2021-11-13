@@ -5,7 +5,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: "#94774f",
+    backgroundColor: "black",
     color: "white",
     padding: "20px 0px",
     position: "absolute",

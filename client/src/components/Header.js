@@ -79,6 +79,10 @@ const logout = (event, label) => {
 
 const loggedOutData = [
   {
+    label: 'Home',
+    href: '/',
+  },
+  {
     label: 'Login',
     href: '/login',
   },
@@ -89,6 +93,10 @@ const loggedOutData = [
 ];
 
 const loggedInData = [
+  {
+    label: 'Home',
+    href: '/',
+  },
   {
     label: 'Profile',
     href: '/me',
@@ -101,12 +109,12 @@ const loggedInData = [
 
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: "#94774f !important",
+    backgroundColor: "black !important",
   },
   menuButton: {
     color: "white",
     "&:hover": {
-      color: "#7f552b",
+      color: "#b6b6b6",
     },
   },
   mobileNav: {

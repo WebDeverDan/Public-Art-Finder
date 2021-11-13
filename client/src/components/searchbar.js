@@ -54,7 +54,7 @@ const Search = styled('div')(({ theme }) => ({
 
   const useStyles = makeStyles((theme) => ({
     searchStyle: {
-      backgroundColor: "#94774f",
+      backgroundColor: "black",
       // fontSize: "large",
       color: "white",
     },

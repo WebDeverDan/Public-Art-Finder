@@ -1,0 +1,13 @@
+body {
+    background-color: #101033 !important;
+    font-family: "Playfair Display", serif !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px;
+    background-color: #c2c2c2;
+  }
+
+.css-j7b04b {
+    border-radius: 10px;
+  }

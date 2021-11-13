@@ -22,6 +22,8 @@ import Signup from './pages/Signup';
 import { makeStyles } from "@material-ui/core";
 import Grid from '@mui/material/Grid';
 
+import './global.css';
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
