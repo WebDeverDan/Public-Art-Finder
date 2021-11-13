@@ -76,6 +76,7 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                {/* TODO: Figure out why isArtist is not passing through properly to backend */}
                 <div>Are you an artist?</div>
                 <label>
                   <input

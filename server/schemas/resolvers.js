@@ -9,8 +9,8 @@ const resolvers = {
       return User.find().populate('comments');
     },
     // this is for the individual's thoughts
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate({
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate({
         path: 'comments',
         populate: [{ path: 'user', select: 'username' }],
         // path: 'addedArt',
@@ -18,9 +18,9 @@ const resolvers = {
       });
     },
     // this is for the individual's thoughts if they are an artist
-    user: async (parent, { artist }) => {
-      return User.findOne({ artist }).populate('comments');
-    },
+    // user: async (parent, { artist }) => {
+    //   return User.findOne({ artist }).populate('comments');
+    // },
 
     // add art query based on username's uploaded art
     art: async (parent, { username }) => {
