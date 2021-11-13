@@ -2,10 +2,40 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import '../global.css';
 
 import Auth from '../utils/auth';
 
+const useStyles = makeStyles(() => ({
+  loginGrid: {
+    backgroundColor: "white",
+    boxShadow: "0px 0px 30px rgba(255, 255, 255, 0.7)",
+    borderRadius: "10px",
+  },
+  loginBox: {
+    color: "black",
+    alignContent: "center",
+  },
+  loginCard: {
+    padding: "10px",
+    border: "8px solid #9b752a",
+  },
+  loginHeader: {
+    backgroundColor: "black",
+    color: "white",
+    textAlign: "center",
+    padding: "10px 0px",
+    width: "100%",
+  }
+}));
+
 const Login = (props) => {
+  const { loginGrid, loginBox, loginCard, loginHeader } = useStyles();
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -41,10 +71,10 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+    <Grid className={loginGrid}>
+    <Box className={loginBox}>
+      <Card className={loginCard}>
+      <h4 className={loginHeader}>Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -85,9 +115,9 @@ const Login = (props) => {
               </div>
             )}
           </div>
-        </div>
-      </div>
-    </main>
+          </Card>
+      </Box>
+      </Grid>
   );
 };
 

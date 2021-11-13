@@ -6,7 +6,6 @@ import { ADD_USER } from '../utils/mutations';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
 
 import Auth from '../utils/auth';
