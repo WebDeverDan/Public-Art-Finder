@@ -13,6 +13,8 @@ const resolvers = {
       return User.findOne({ username }).populate({
         path: 'comments',
         populate: [{ path: 'user', select: 'username' }],
+        // path: 'addedArt',
+        // populate: [{ path: 'user', select: 'username' }],
       });
     },
     // this is for the individual's thoughts if they are an artist
@@ -26,20 +28,20 @@ const resolvers = {
     },
     // add art query for multiple arts
     arts: async (parent, { location, title, artist }) => {
-      return Art.find({}).populate('arts');
+      return Art.find({}).populate('comments');
     },
 
     comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Comment.find(params)
+      // const params = username ? { username } : {};
+      return User.find()
         .sort({ createdAt: -1 })
-        .populate('user')
+        .populate('comments')
         .select('username');
     },
-    comment: async (parent, { commentId }) => {
-      return Comment.findOne({ _id: commentId })
-        .populate('user')
-        .select('username');
+    comment: async (parent, { artId }, context) => {
+      return Art.findOne({ _id: artId })
+        .populate('comments')
+        // .select('username');
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -95,20 +97,21 @@ const resolvers = {
     addArt: async (
       parent,
       {
-        art: {
-          title,
+        
+          art
+        
+      },
+      context
+    ) => {
+      if (context.user) {
+        const {title,
           artist,
           location,
           description,
           image,
           createdAt,
-          comment,
-        },
-      },
-      context
-    ) => {
-      if (context.user) {
-        const art = Art.create({
+          comment}=art
+        const artData = await Art.create({
           title,
           artist,
           location,
@@ -118,12 +121,12 @@ const resolvers = {
           comment,
           addedBy: context.user.username,
         });
-
-        await User.findOneAndUpdate(
+         
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { addedArt: art._id } }
+          { $addToSet: { addArt: artData._id } }
         );
-        return art;
+        return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -153,9 +156,10 @@ const resolvers = {
         const commentDoc = await Comment.create({
           ...comment,
           user: context.user._id,
+          commentAuthor: context.user.username,
         });
 
-        await Art.findOneAndUpdate(
+        const art = await Art.findOneAndUpdate(
           { _id: artId },
           {
             $addToSet: {
@@ -167,7 +171,7 @@ const resolvers = {
             runValidators: true,
           }
         );
-        return commentDoc;
+        return art;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
