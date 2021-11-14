@@ -22,6 +22,8 @@ import Signup from './pages/Signup';
 import { makeStyles } from '@material-ui/core';
 import Grid from '@mui/material/Grid';
 
+import './global.css';
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -51,10 +53,10 @@ const contentStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     paddingTop: '150px',
-    minHeight: 'calc(100vh - 288px)',
+    minHeight: 'calc(100vh - 130px)',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-      minHeight: 'calc(100vh - 250px)',
+      minHeight: 'calc(100vh - 170px)',
     },
   },
 }));

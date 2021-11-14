@@ -1,0 +1,32 @@
+body {
+    background-color: #101033 !important;
+    font-family: "Playfair Display", serif !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px;
+    background-color: #c2c2c2;
+  }
+
+.css-j7b04b {
+    border-radius: 10px;
+  }
+
+.MuiMenuItem-root {
+    font-size: 20px !important;
+    color: white !important;
+}
+
+.MuiMenuItem-root:hover {
+    color: #c2c2c2 !important;
+    text-decoration: none;
+}
+
+.MuiDrawer-paper {
+    background-color: black !important;
+}
+
+.MuiPaper-rounded {
+  background-color: black !important;
+  font-size: 4px !important;
+}
