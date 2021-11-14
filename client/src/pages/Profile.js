@@ -10,7 +10,6 @@ import Auth from '../utils/auth';
 import Card from '../components/Card';
 import Map from '../components/Map';
 
-// TODO: Query all art for specific user, render to page
 const Profile = () => {
   const { userId: userParam } = useParams();
 
@@ -29,7 +28,7 @@ const Profile = () => {
     <>
       <div>{userData.username}</div>
       <div>{userData.email}</div>
-      <div>{userData.addedArt}</div>
+      {/* TODO: Add art cards for user's addedArt... */}
     </>
   );
 };

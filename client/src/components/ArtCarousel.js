@@ -2,8 +2,16 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@mui/material';
 
-function ArtCarousel(props) {
-  // we will put 20 items here
+function ArtCarousel({ art }) {
+  const styles = {
+    paper: {
+      width: '100%',
+      height: '20%',
+      backgroundColor: 'gray',
+    },
+  };
+
+  // Hardcoded art for testing in dev
   var items = [
     {
       name: 'Dog (artwork title goes here)',
@@ -21,29 +29,23 @@ function ArtCarousel(props) {
 
   return (
     <Carousel>
-      {items.map((item, i) => (
-        <Item key={i} item={item} />
+      {art.map((art, i) => (
+        <Paper
+          key={i}
+          style={styles.paper}
+          sx={{ pt: 0.5, flexDirection: 'column' }}
+        >
+          <h2>{art.title}</h2>
+          <div className="carousel_image_box">
+            <img
+              className="carousel_image"
+              src={art.image}
+              alt={art.description}
+            />
+          </div>
+        </Paper>
       ))}
     </Carousel>
-  );
-}
-
-const styles = {
-  paper: {
-    width: '100%',
-    height: '20%',
-    backgroundColor: 'gray',
-  },
-};
-
-function Item(props) {
-  return (
-    <Paper style={styles.paper} sx={{ pt: 0.5, flexDirection: 'column' }}>
-      <h2>{props.item.name}</h2>
-      <div class="carousel_image_box">
-        <img class="carousel_image" src={props.item.image}></img>
-      </div>
-    </Paper>
   );
 }
 

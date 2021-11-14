@@ -109,7 +109,6 @@ const ArtForm = () => {
       const { data } = await addArt({
         variables: {
           art: { ...formData },
-          // addedBy: Auth.getProfile().data.username,
         },
       });
 
