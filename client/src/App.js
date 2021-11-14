@@ -19,8 +19,10 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 import Grid from '@mui/material/Grid';
+
+import './global.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,66 +50,68 @@ const client = new ApolloClient({
 
 const contentStyles = makeStyles((theme) => ({
   content: {
-    display: "flex",
-    justifyContent: "center",
-    paddingTop: "150px",
-    minHeight: "calc(100vh - 288px)",
-    width: "100%",
+    display: 'flex',
+    justifyContent: 'center',
+    paddingTop: '150px',
+    minHeight: 'calc(100vh - 130px)',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
-      minHeight: "calc(100vh - 250px)",
+      minHeight: 'calc(100vh - 170px)',
     },
   },
 }));
 
 function App() {
   const { content } = contentStyles();
-  
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <Header />
 
         <Grid container className={content}>
-        <Grid>
+          <Grid>
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-        <Route exact path="/">
-          <Home />
-        </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
 
-        <Route exact path="/login">
-          <Login />
-        </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
 
-        <Route exact path="/signup">
-          <Signup />
-        </Route>
+            <Route exact path="/art/:id">
+              <Art />
+            </Route>
 
-        <Route exact path="/art/:id">
-          <Art />
-        </Route>
+            <Route exact path="/artInArea/:location">
+              <ArtInArea />
+            </Route>
 
-        <Route exact path="/artInArea/:location">
-          <ArtInArea />
-        </Route>
+            <Route exact path="/artist/:id">
+              <Artist />
+            </Route>
 
-        <Route exact path="/artist/:id">
-          <Artist />
-        </Route>
+            <Route exact path="/favoriteArt/:username">
+              <FavoriteArt />
+            </Route>
 
-        <Route exact path="/favoriteArt/:username">
-          <FavoriteArt />
-        </Route>
+            <Route exact path="/favoriteArtist/:username">
+              <FavoriteArtist />
+            </Route>
 
-        <Route exact path="/favoriteArtist/:username">
-          <FavoriteArtist />
-        </Route>
+            <Route exact path="/profile/:userId">
+              <Profile />
+            </Route>
 
-        <Route exact path="/profile/:username">
-          <Profile />
-        </Route>
-
+            <Route exact path="/me">
+              <Profile />
+            </Route>
+          </Grid>
         </Grid>
-      </Grid>
 
         <Footer />
       </Router>
