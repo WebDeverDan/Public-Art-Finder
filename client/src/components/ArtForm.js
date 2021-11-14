@@ -151,7 +151,7 @@ const ArtForm = () => {
 
   return (
     <>
-      {Auth.loggedIn ? (
+      {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
           <input
             name="title"

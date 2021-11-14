@@ -104,16 +104,19 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_ART = gql`
-  query art($title: String!) {
-    art(title: $title) {
+  query art($artId: ID!) {
+    art(artId: $artId) {
       _id
       title
-      artist
+      artist{
+        firstName
+        lastName
+      }
       image
       description
       location
       createdAt
-      comment {
+      comments {
         commentText
         commentAuthor
       }
@@ -127,12 +130,15 @@ export const QUERY_ART_BY_Location = gql`
     art(location: $location) {
       _id
       title
-      artist
+      artist {
+        firstName
+        lastName
+      }
       image
       description
       location
       createdAt
-      comment {
+      comments {
         commentText
         commentAuthor
       }

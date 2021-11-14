@@ -62,6 +62,7 @@ const typeDefs = gql`
     lastName: String
   }
 
+  # TODO: Fix get art by location query...
   type Query {
     users: [User]
     user(userId: ID!): User
@@ -69,7 +70,8 @@ const typeDefs = gql`
     comment(artId: String): Art
     me: User
     addedArt(userId: ID, artId: ID): [Art]
-    art(location: String): Art
+    art(artId: ID): Art
+    # art(location: String): [Art]
     arts: [Art]
   }
 

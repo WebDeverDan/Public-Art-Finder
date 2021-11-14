@@ -18,8 +18,6 @@ const Profile = () => {
   });
   const userData = data?.me || data?.user || {};
 
-  console.log(userData);
-
   if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
     return <Redirect to='/me' />
   }

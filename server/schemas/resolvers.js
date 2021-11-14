@@ -23,8 +23,8 @@ const resolvers = {
     // },
 
     // add art query based on username's uploaded art
-    art: async (parent, { username }) => {
-      return Art.findOne({ username }).populate('comments');
+    art: async (parent, { artId }) => {
+      return Art.findOne({ _id: artId }).populate('comments');
     },
     // add art query for multiple arts
     arts: async (parent, { location, title, artist }) => {

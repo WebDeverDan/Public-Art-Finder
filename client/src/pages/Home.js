@@ -16,7 +16,7 @@ const Home = () => {
     <>
       {loading ? <div>Loading...</div> : <ArtCarousel art={artData} />}
       <ArtForm />
-      <Map />
+      {/* <Map /> */}
     </>
   );
 };

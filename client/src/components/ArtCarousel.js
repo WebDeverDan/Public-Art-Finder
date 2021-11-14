@@ -37,11 +37,13 @@ function ArtCarousel({ art }) {
         >
           <h2>{art.title}</h2>
           <div className="carousel_image_box">
+            <a href={`/art/${art._id}`}>
             <img
               className="carousel_image"
               src={art.image}
               alt={art.description}
             />
+            </a>
           </div>
         </Paper>
       ))}
