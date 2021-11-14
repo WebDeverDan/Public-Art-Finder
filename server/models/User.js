@@ -29,7 +29,7 @@ const userSchema = new Schema({
       ref: 'Comment',
     },
   ],
-  addArt: [
+  addedArt: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Art',

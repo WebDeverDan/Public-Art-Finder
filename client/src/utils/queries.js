@@ -1,21 +1,23 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-query user($userId: ID!) {
-  user(_id: $userId) {
-    _id
-    username
-    email
-    comments {
+  query user($userId: ID!) {
+    user(userId: $userId) {
       _id
-      commentText
-      createdAt
-    }
-    addedArt{
-      title
+      username
+      email
+      comments {
+        _id
+        commentText
+        createdAt
+      }
+      addedArt {
+        title
+        image
+        location
+      }
     }
   }
-}
 `;
 
 // got up until line 14
@@ -33,48 +35,51 @@ query user($userId: ID!) {
 // `;
 
 export const QUERY_USERS = gql`
-{users {
-  _id
-  username
-  email
-  password
-  isArtist
-addedArt{
-  title
-}
-  comments{
-    _id
-    commentText
-    commentAuthor
+  {
+    users {
+      _id
+      username
+      email
+      password
+      isArtist
+      addedArt {
+        title
+        image
+        location
+      }
+      comments {
+        _id
+        commentText
+        commentAuthor
+      }
     }
   }
-}
 `;
 
 export const QUERY_COMMENTS = gql`
-query getComments {
-  comments {
-    username
-    _id
-    comments{
-    commentText
-    commentAuthor
-    createdAt
+  query getComments {
+    comments {
+      username
+      _id
+      comments {
+        commentText
+        commentAuthor
+        createdAt
+      }
     }
   }
-}
 `;
 
 export const QUERY_COMMENT = gql`
-query getSingleComment($artId: String!){
-  comment(artId: $artId) {
-    comments{
-    _id
-    commentText
-    commentAuthor
+  query getSingleComment($artId: String!) {
+    comment(artId: $artId) {
+      comments {
+        _id
+        commentText
+        commentAuthor
+      }
     }
   }
-}
 `;
 
 export const QUERY_ME = gql`
@@ -112,7 +117,7 @@ export const QUERY_ART = gql`
   }
 `;
 
-export const QUERY_ART_BY_Location = gql`
+export const QUERY_ART_BY_LOCATION = gql`
   query getArtByLocation($location: String!) {
     art(location: $location) {
       _id
@@ -132,25 +137,25 @@ export const QUERY_ART_BY_Location = gql`
 `;
 
 export const QUERY_ARTS = gql`
-query arts{
-  arts{
-    _id
-    title
-    artist{
-      firstName
-      lastName
+  query arts {
+    arts {
+      _id
+      title
+      artist {
+        firstName
+        lastName
+      }
+      image
+      description
+      location
+      createdAt
+      comments {
+        commentText
+        commentAuthor
+      }
+      addedBy
     }
-    image
-    description
-    location
-    createdAt
-    comments{
-      commentText
-      commentAuthor
-    }
-    addedBy
   }
-}
 `;
 
 // export const QUERY_ARTS = gql`

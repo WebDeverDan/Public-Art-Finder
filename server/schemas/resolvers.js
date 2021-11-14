@@ -9,8 +9,8 @@ const resolvers = {
       return User.find().populate('comments');
     },
     // this is for the individual's thoughts
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate({
+    user: async (parent, { userId }) => {
+      return User.findOne({ userId }).populate({
         path: 'comments',
         populate: [{ path: 'user', select: 'username' }],
         // path: 'addedArt',
@@ -18,9 +18,9 @@ const resolvers = {
       });
     },
     // this is for the individual's thoughts if they are an artist
-    user: async (parent, { artist }) => {
-      return User.findOne({ artist }).populate('comments');
-    },
+    // user: async (parent, { artist }) => {
+    //   return User.findOne({ artist }).populate('comments');
+    // },
 
     // add art query based on username's uploaded art
     art: async (parent, { username }) => {
@@ -39,13 +39,12 @@ const resolvers = {
         .select('username');
     },
     comment: async (parent, { artId }, context) => {
-      return Art.findOne({ _id: artId })
-        .populate('comments')
-        // .select('username');
+      return Art.findOne({ _id: artId }).populate('comments');
+      // .select('username');
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('comments');
+        return User.findOne({ _id: context.user._id }).populate('user');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -94,23 +93,17 @@ const resolvers = {
     // },
 
     // addArt mutation
-    addArt: async (
-      parent,
-      {
-        
-          art
-        
-      },
-      context
-    ) => {
+    addArt: async (parent, { art }, context) => {
       if (context.user) {
-        const {title,
+        const {
+          title,
           artist,
           location,
           description,
           image,
           createdAt,
-          comment}=art
+          comment,
+        } = art;
         const artData = await Art.create({
           title,
           artist,
@@ -121,7 +114,7 @@ const resolvers = {
           comment,
           addedBy: context.user.username,
         });
-         
+
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { addArt: artData._id } }
