@@ -11,3 +11,16 @@ body {
 .css-j7b04b {
     border-radius: 10px;
   }
+
+.MuiMenuItem-root {
+    font-size: 24px !important;
+    color: white !important;
+}
+
+.MuiMenuItem-root:hover {
+    color: #c2c2c2 !important;
+}
+
+.MuiDrawer-paper {
+    background-color: black !important;
+}
