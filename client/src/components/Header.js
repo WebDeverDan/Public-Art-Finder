@@ -74,13 +74,6 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
     fontSize: '36px',
   },
-  menuIcon: {
-    color: "white",
-    background: "black",
-    "&:hover": {
-      color: "#b6b6b6",
-    },
-  },
   toolbar: {
     justifyContent: 'space-between',
     fontSize: '36px',
@@ -174,7 +167,7 @@ export default function Header() {
   };
 
   const getDrawerChoices = () => {
-    return headersData.map(({ label, href, onClick, menuIcon }) => {
+    return headersData.map(({ label, href, onClick }) => {
       return (
         <RouterLink>
           <Link
@@ -184,7 +177,6 @@ export default function Header() {
               color: 'inherit',
               style: { textDecoration: 'none' },
               key: label,
-              className: {menuIcon},
               onClick: (event) => {
                 logout(event, label);
               },
@@ -220,6 +212,7 @@ export default function Header() {
   };
 
   const AccountAppBar = () => {
+
     const handleChange = (event) => {
       setAuth(event.target.checked);
     };

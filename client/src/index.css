@@ -440,13 +440,13 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
-  text-decoration: underline;
+  color: #b6b6b6;
+  text-decoration: none;
 }
 
 /* HEIGHT / WIDTH UTILS */

@@ -13,14 +13,20 @@ body {
   }
 
 .MuiMenuItem-root {
-    font-size: 24px !important;
+    font-size: 20px !important;
     color: white !important;
 }
 
 .MuiMenuItem-root:hover {
     color: #c2c2c2 !important;
+    text-decoration: none;
 }
 
 .MuiDrawer-paper {
     background-color: black !important;
+}
+
+.MuiPaper-rounded {
+  background-color: black !important;
+  font-size: 4px !important;
 }
