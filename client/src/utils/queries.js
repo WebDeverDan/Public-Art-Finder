@@ -11,7 +11,7 @@ query user($userId: ID!) {
       commentText
       createdAt
     }
-    addedArt{
+    addedArt {
       title
       description
       location
@@ -91,6 +91,12 @@ export const QUERY_ME = gql`
         commentText
         commentAuthor
         createdAt
+      }
+      addedArt {
+        title
+        description
+        location
+        image
       }
     }
   }
