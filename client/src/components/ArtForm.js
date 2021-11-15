@@ -62,11 +62,14 @@ const ArtForm = () => {
     'Wisconsin',
     'Wyoming',
   ];
-  
+
   // Initial form state is empty
   const [formData, setFormData] = useState({
     title: '',
-    artist: '',
+    artist: {
+      firstName: '',
+      lastName: '',
+    },
     image: '',
     description: '',
     location: '',
@@ -86,12 +89,11 @@ const ArtForm = () => {
         console.error(e);
       }
 
-      // TODO: Add art to User typedef
       // Update me object's cache
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, art: [...me.art, addArt] } },
+        data: { me: { ...me, addedArt: [...me.addedArt, addArt] } },
       });
     },
   });
@@ -106,15 +108,17 @@ const ArtForm = () => {
       // Call addArt and pass through our formData
       const { data } = await addArt({
         variables: {
-          ...formData,
-          createdBy: Auth.getProfile().data.username,
+          art: { ...formData },
         },
       });
 
       // Reset form state back to empty
       setFormData({
         title: '',
-        artist: '',
+        artist: {
+          firstName: '',
+          lastName: '',
+        },
         image: '',
         description: '',
         location: '',
@@ -128,12 +132,26 @@ const ArtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormData({ ...formData, [name]: value });
+    if (name === 'artistFirstName' || name === 'artistLastName') { // If statements because artist is nested object
+      if (name === 'artistFirstName') {
+        setFormData({
+          ...formData,
+          artist: { ...formData.artist, firstName: value },
+        });
+      } else {
+        setFormData({
+          ...formData,
+          artist: { ...formData.artist, lastName: value },
+        });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   return (
     <>
-      {Auth.loggedIn ? (
+      {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
           <input
             name="title"
@@ -141,8 +159,13 @@ const ArtForm = () => {
             onChange={handleChange}
           ></input>
           <input
-            name="artist"
-            value={formData.artist}
+            name="artistFirstName"
+            value={formData.artist.firstName}
+            onChange={handleChange}
+          ></input>
+          <input
+            name="artistLastName"
+            value={formData.artist.lastName}
             onChange={handleChange}
           ></input>
           <input

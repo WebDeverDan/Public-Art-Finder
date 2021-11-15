@@ -83,7 +83,7 @@ function App() {
               <Signup />
             </Route>
 
-            <Route exact path="/art/:id">
+            <Route exact path="/art/:artId">
               <Art />
             </Route>
 

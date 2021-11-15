@@ -23,8 +23,8 @@ const resolvers = {
     // },
 
     // add art query based on username's uploaded art
-    art: async (parent, { username }) => {
-      return Art.findOne({ username }).populate('comments');
+    art: async (parent, { artId }) => {
+      return Art.findOne({ _id: artId }).populate('comments');
     },
     // add art query for multiple arts
     arts: async (parent, { location, title, artist }) => {
@@ -39,9 +39,8 @@ const resolvers = {
         .select('username');
     },
     comment: async (parent, { artId }, context) => {
-      return Art.findOne({ _id: artId })
-        .populate('comments')
-        // .select('username');
+      return Art.findOne({ _id: artId }).populate('comments');
+      // .select('username');
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -94,23 +93,17 @@ const resolvers = {
     // },
 
     // addArt mutation
-    addArt: async (
-      parent,
-      {
-        
-          art
-        
-      },
-      context
-    ) => {
+    addArt: async (parent, { art }, context) => {
       if (context.user) {
-        const {title,
+        const {
+          title,
           artist,
           location,
           description,
           image,
           createdAt,
-          comment}=art
+          comment,
+        } = art;
         const artData = await Art.create({
           title,
           artist,
@@ -121,10 +114,10 @@ const resolvers = {
           comment,
           addedBy: context.user.username,
         });
-         
+
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { addArt: artData._id } }
+          { $addToSet: { addedArt: artData._id } }
         );
         return user;
       }

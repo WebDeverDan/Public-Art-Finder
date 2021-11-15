@@ -11,12 +11,22 @@ db.once('open', async () => {
   await Art.deleteMany({});
 
   await User.create(userSeeds);
-  console.log('user Seed created');
-  await Art.create(artSeeds);
-  console.log('art seed created');
+  console.log('User seed created');
+  for (let i = 0; i < artSeeds.length; i++) {
+    const { _id, addedBy } = await Art.create(artSeeds[i]);
+    console.log('Art seed created');
+    const user = await User.findOneAndUpdate(
+      { username: addedBy },
+      {
+        $addToSet: {
+          addedArt: _id,
+        },
+      },
+    );
+  }
   for (let i = 0; i < commentSeeds.length; i++) {
     const { _id, commentAuthor } = await Comment.create(commentSeeds[i]);
-    console.log('comment seed created');
+    console.log('Comment seed created');
     const user = await User.findOneAndUpdate(
       { username: commentAuthor },
       {
