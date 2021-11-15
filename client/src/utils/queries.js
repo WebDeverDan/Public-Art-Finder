@@ -108,7 +108,7 @@ export const QUERY_ART = gql`
     art(artId: $artId) {
       _id
       title
-      artist{
+      artist {
         firstName
         lastName
       }
@@ -125,9 +125,9 @@ export const QUERY_ART = gql`
   }
 `;
 
-export const QUERY_ART_BY_Location = gql`
-  query getArtByLocation($location: String!) {
-    art(location: $location) {
+export const QUERY_ART_BY_LOCATION = gql`
+  query artsByLocation($location: String!) {
+    arts(location: $location) {
       _id
       title
       artist {

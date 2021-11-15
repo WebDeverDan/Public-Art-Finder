@@ -12,25 +12,25 @@ import Auth from '../utils/auth';
 
 const useStyles = makeStyles(() => ({
   loginGrid: {
-    backgroundColor: "white",
-    boxShadow: "0px 0px 30px rgba(255, 255, 255, 0.7)",
-    borderRadius: "10px",
+    backgroundColor: 'white',
+    boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
+    borderRadius: '10px',
   },
   loginBox: {
-    color: "black",
-    alignContent: "center",
+    color: 'black',
+    alignContent: 'center',
   },
   loginCard: {
-    padding: "10px",
-    border: "8px solid #9b752a",
+    padding: '10px',
+    border: '8px solid #9b752a',
   },
   loginHeader: {
-    backgroundColor: "black",
-    color: "white",
-    textAlign: "center",
-    padding: "10px 0px",
-    width: "100%",
-  }
+    backgroundColor: 'black',
+    color: 'white',
+    textAlign: 'center',
+    padding: '10px 0px',
+    width: '100%',
+  },
 }));
 
 const Login = (props) => {
@@ -72,9 +72,9 @@ const Login = (props) => {
 
   return (
     <Grid className={loginGrid}>
-    <Box className={loginBox}>
-      <Card className={loginCard}>
-      <h4 className={loginHeader}>Login</h4>
+      <Box className={loginBox}>
+        <Card className={loginCard}>
+          <h4 className={loginHeader}>Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -115,9 +115,9 @@ const Login = (props) => {
               </div>
             )}
           </div>
-          </Card>
+        </Card>
       </Box>
-      </Grid>
+    </Grid>
   );
 };
 

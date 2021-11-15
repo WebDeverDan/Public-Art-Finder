@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../components/Card';
+import ArtCard from '../components/ArtCard';
 
 const FavoriteArt = () => {
   return null;
