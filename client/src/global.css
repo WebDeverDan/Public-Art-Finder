@@ -26,7 +26,7 @@ body {
     background-color: black !important;
 }
 
-.MuiPaper-rounded {
+.MuiMenu-paper {
   background-color: black !important;
-  font-size: 4px !important;
+  color: white !important;
 }
