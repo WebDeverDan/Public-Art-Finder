@@ -27,6 +27,7 @@ const Profile = () => {
       <div>{userData.username}</div>
       <div>{userData.email}</div>
       {/* TODO: Add art cards for user's addedArt... */}
+      <ArtCard />
     </>
   );
 };
