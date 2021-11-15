@@ -12,7 +12,7 @@ import {
 import imageArt from '../magnolia.jpg';
 import useStyles from './styles';
 
-const ArtCard = () => {
+const ArtCard = ({ art }) => {
   const classes = useStyles();
 
   //the item key will need to be set to whatever you are mapping over example:

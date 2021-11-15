@@ -1140,7 +1140,8 @@ form .form-group {
 
 form .form-input,
 form .form-textarea {
-  display: block;
+ font-family: 'JetBrains Mono', monospace;
+display: block;
 }
 
 form select {

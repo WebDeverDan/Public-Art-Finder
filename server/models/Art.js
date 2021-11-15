@@ -34,7 +34,7 @@ const artSchema = new Schema({
   description: {
     type: String,
   },
-  image: {
+  url: {
     type: String,
   },
   createdAt: {

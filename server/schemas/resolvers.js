@@ -27,7 +27,7 @@ const resolvers = {
       return Art.findOne({ _id: artId }).populate('comments');
     },
     // add art query for multiple arts
-    arts: async (parent, { location, title, artist }) => {
+    arts: async (parent) => {
       return Art.find({}).populate('comments');
     },
 
@@ -104,7 +104,7 @@ const resolvers = {
           artist,
           location,
           description,
-          image,
+          url,
           createdAt,
           comment,
         } = art;
@@ -113,7 +113,7 @@ const resolvers = {
           artist,
           location,
           description,
-          image,
+          url,
           createdAt,
           comment,
           addedBy: context.user.username,

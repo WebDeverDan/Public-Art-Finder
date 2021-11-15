@@ -38,7 +38,7 @@ const typeDefs = gql`
     _id: ID
     title: String
     artist: Artist
-    image: String
+    url: String
     description: String
     location: String
     createdAt: String
@@ -49,7 +49,7 @@ const typeDefs = gql`
   input ArtData {
     title: String
     artist: ArtistData
-    image: String
+    url: String
     description: String
     location: String
     createdAt: String
@@ -62,7 +62,6 @@ const typeDefs = gql`
     lastName: String
   }
 
-  # TODO: Fix get art by location query...
   type Query {
     users: [User]
     user(userId: ID!): User
