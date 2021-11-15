@@ -100,7 +100,7 @@ const resolvers = {
           artist,
           location,
           description,
-          image,
+          url,
           createdAt,
           comment,
         } = art;
@@ -109,7 +109,7 @@ const resolvers = {
           artist,
           location,
           description,
-          image,
+          url,
           createdAt,
           comment,
           addedBy: context.user.username,
