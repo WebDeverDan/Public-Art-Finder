@@ -62,7 +62,6 @@ const typeDefs = gql`
     lastName: String
   }
 
-  # TODO: Fix get art by location query...
   type Query {
     users: [User]
     user(userId: ID!): User

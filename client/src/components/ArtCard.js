@@ -14,11 +14,11 @@ import {
 } from '@material-ui/core';
 import { PhotoCamera } from '@material-ui/icons';
 
-import imageArt from '../../../server/seeders/magnolia.jpg';
+// import imageArt from '../../../server/seeders/magnolia.jpg';
 import useStyles from './styles';
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const ArtCard = () => {
+const ArtCard = ({ art }) => {
   const classes = useStyles();
 
   return (
@@ -26,7 +26,7 @@ const ArtCard = () => {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <PhotoCamera className="classes.icon" />
+          <PhotoCamera className={classes.icon} />
           <Typography variant="h6">Your Added Art</Typography>
         </Toolbar>
       </AppBar>
@@ -72,7 +72,7 @@ const ArtCard = () => {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    src={imageArt}
+                    src="https://cdn.cnn.com/cnnnext/dam/assets/201030094143-stock-rhodesian-ridgeback-super-tease.jpg"
                     title="Image Title"
                   />
                   <CardContent className={classes.CardContent}>

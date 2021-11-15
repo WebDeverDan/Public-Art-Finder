@@ -22,7 +22,7 @@ const Art = () => {
         <div>Loading...</div>
       ) : (
         <>
-          <img src={artData.image} alt={artData.description} />
+          <img src={artData.url} alt={artData.description} />
           <div>{artData.title}</div>
         </>
       )}

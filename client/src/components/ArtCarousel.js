@@ -12,20 +12,20 @@ function ArtCarousel({ art }) {
   };
 
   // Hardcoded art for testing in dev
-  var items = [
-    {
-      name: 'Dog (artwork title goes here)',
-      description: 'small description of the art',
-      image:
-        'https://cdn.cnn.com/cnnnext/dam/assets/201030094143-stock-rhodesian-ridgeback-super-tease.jpg',
-    },
-    {
-      name: 'Baby Yoda (artwork title goes here)',
-      description: 'small description of the art',
-      image:
-        'https://starwarsblog.starwars.com/wp-content/uploads/2019/12/update-the-child-merch-tall-v1a.jpg',
-    },
-  ];
+  // var items = [
+  //   {
+  //     name: 'Dog (artwork title goes here)',
+  //     description: 'small description of the art',
+  //     image:
+  //       'https://cdn.cnn.com/cnnnext/dam/assets/201030094143-stock-rhodesian-ridgeback-super-tease.jpg',
+  //   },
+  //   {
+  //     name: 'Baby Yoda (artwork title goes here)',
+  //     description: 'small description of the art',
+  //     image:
+  //       'https://starwarsblog.starwars.com/wp-content/uploads/2019/12/update-the-child-merch-tall-v1a.jpg',
+  //   },
+  // ];
 
   return (
     <Carousel>
@@ -40,7 +40,7 @@ function ArtCarousel({ art }) {
             <a href={`/art/${art._id}`}>
             <img
               className="carousel_image"
-              src={art.image}
+              src={art.url}
               alt={art.description}
             />
             </a>
