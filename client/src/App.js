@@ -49,9 +49,7 @@ const client = new ApolloClient({
 });
 
 const contentStyles = makeStyles((theme) => ({
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
+  allContent: {
     paddingTop: '150px',
     minHeight: 'calc(100vh - 130px)',
     width: '100%',
@@ -59,22 +57,29 @@ const contentStyles = makeStyles((theme) => ({
       minHeight: 'calc(100vh - 170px)',
     },
   },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      minHeight: 'calc(100vh - 170px)',
+    },
+  },
 }));
 
 function App() {
-  const { content } = contentStyles();
+  const { allContent, content } = contentStyles();
 
   return (
     <ApolloProvider client={client}>
       <Router>
         <Header />
 
-        <Grid container className={content}>
-          <Grid>
+        <Grid className={allContent}>
             <Route exact path="/">
               <Home />
             </Route>
 
+            <Grid container className={content}>
             <Route exact path="/login">
               <Login />
             </Route>

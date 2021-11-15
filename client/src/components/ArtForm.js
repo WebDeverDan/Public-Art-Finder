@@ -198,7 +198,7 @@ const ArtForm = () => {
       width: '100%',
     },
     addText: {
-      color: 'white',
+      color: 'black',
       fontFamily: "'JetBrains Mono', monospace",
     },
     stateSelection: {
