@@ -15,7 +15,7 @@ export const QUERY_USER = gql`
         title
         description
         location
-        image
+        url
       }
     }
   }
@@ -97,7 +97,7 @@ export const QUERY_ME = gql`
         title
         description
         location
-        image
+        url
       }
     }
   }
@@ -112,7 +112,7 @@ export const QUERY_ART = gql`
         firstName
         lastName
       }
-      image
+      url
       description
       location
       createdAt
@@ -127,14 +127,14 @@ export const QUERY_ART = gql`
 
 export const QUERY_ART_BY_LOCATION = gql`
   query artsByLocation($location: String!) {
-    arts(location: $location) {
+    artsByLocation(location: $location) {
       _id
       title
       artist {
         firstName
         lastName
       }
-      image
+      url
       description
       location
       createdAt
@@ -156,7 +156,7 @@ export const QUERY_ARTS = gql`
         firstName
         lastName
       }
-      image
+      url
       description
       location
       createdAt
