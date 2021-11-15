@@ -59,7 +59,7 @@ mutation addArt($art: ArtData!) {
       firstName
       lastName
     }
-    image
+    url
     description
     location
     createdAt
