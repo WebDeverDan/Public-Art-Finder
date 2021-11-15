@@ -11,28 +11,27 @@ import Card from '@mui/material/Card';
 import Auth from '../utils/auth';
 import '../global.css';
 
-
 const useStyles = makeStyles(() => ({
   signupGrid: {
-    backgroundColor: "white",
-    boxShadow: "0px 0px 30px rgba(255, 255, 255, 0.7)",
-    borderRadius: "10px",
+    backgroundColor: 'white',
+    boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
+    borderRadius: '10px',
   },
   signupBox: {
-    color: "black",
-    alignContent: "center",
+    color: 'black',
+    alignContent: 'center',
   },
   signupCard: {
-    padding: "10px",
-    border: "8px solid #9b752a",
+    padding: '10px',
+    border: '8px solid #9b752a',
   },
   signupHeader: {
-    backgroundColor: "black",
-    color: "white",
-    textAlign: "center",
-    padding: "10px 0px",
-    width: "100%",
-  }
+    backgroundColor: 'black',
+    color: 'white',
+    textAlign: 'center',
+    padding: '10px 0px',
+    width: '100%',
+  },
 }));
 
 const Signup = () => {
@@ -69,8 +68,6 @@ const Signup = () => {
       console.error(e);
     }
   };
-
-  
 
   return (
     <Grid className={signupGrid}>
@@ -150,7 +147,7 @@ const Signup = () => {
           </div>
         </Card>
       </Box>
-      </Grid>
+    </Grid>
   );
 };
 

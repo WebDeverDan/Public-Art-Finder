@@ -31,6 +31,10 @@ const resolvers = {
       return Art.find({}).populate('comments');
     },
 
+    artsByLocation: async (parent, { location }) => {
+      return Art.find({ location }).populate('comments');
+    },
+
     comments: async (parent, { username }) => {
       // const params = username ? { username } : {};
       return User.find()

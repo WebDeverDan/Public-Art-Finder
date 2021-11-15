@@ -71,7 +71,7 @@ const typeDefs = gql`
     me: User
     addedArt(userId: ID, artId: ID): [Art]
     art(artId: ID): Art
-    # art(location: String): [Art]
+    artsByLocation(location: String): [Art]
     arts: [Art]
   }
 

@@ -7,7 +7,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-import Card from '../components/Card';
+import ArtCard from '../components/ArtCard';
 import Map from '../components/Map';
 
 const Profile = () => {
@@ -19,7 +19,7 @@ const Profile = () => {
   const userData = data?.me || data?.user || {};
 
   if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
-    return <Redirect to='/me' />
+    return <Redirect to="/me" />;
   }
 
   return (

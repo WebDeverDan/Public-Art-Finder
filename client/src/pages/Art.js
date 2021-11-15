@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import { useQuery } from '@apollo/client';
 import { QUERY_ART } from '../utils/queries';
 
-import Card from '../components/Card';
+import ArtCard from '../components/ArtCard';
 import Comment from '../components/Comment';
 
 const Art = () => {
