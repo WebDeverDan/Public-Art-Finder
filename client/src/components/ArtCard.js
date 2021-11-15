@@ -16,6 +16,7 @@ import { PhotoCamera } from '@material-ui/icons';
 
 import imageArt from '../../../server/seeders/magnolia.jpg';
 import useStyles from './styles';
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const ArtCard = () => {
   const classes = useStyles();
