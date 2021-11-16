@@ -50,7 +50,7 @@ const Signup = () => {
 
     setFormState({
       ...formState,
-      [name]: value,
+      [name]: name === 'isArtist' ? Boolean(value) : value,
     });
   };
 
