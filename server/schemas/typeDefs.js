@@ -67,6 +67,7 @@ const typeDefs = gql`
     user(userId: ID!): User
     comments: [User]
     comment(artId: String): Art
+    getSingleComment(commentId: ID): Comment
     me: User
     addedArt(userId: ID, artId: ID): [Art]
     art(artId: ID): Art
