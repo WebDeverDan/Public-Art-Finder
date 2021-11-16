@@ -33,9 +33,7 @@ const ArtCard = ({ art }) => {
             <Typography gutterBottom variant="h5">
               {art.title}
             </Typography>
-            <Typography>
-              <Link style={{color: 'black'}} to={`/artInArea/${art.location}`}>{art.location}</Link>
-            </Typography>
+            <Typography>{art.location}</Typography>
             <Typography>
               {`${art.artist.firstName} ${art.artist.lastName}`}
             </Typography>

@@ -5,7 +5,9 @@ import { QUERY_ARTS } from '../utils/queries';
 
 import ArtForm from '../components/ArtForm';
 import ArtCarousel from '../components/ArtCarousel';
+import ArtSearch from '../components/ArtSearch';
 // import Map from '../components/Map';
+
 import { makeStyles } from '@material-ui/core';
 import Grid from '@mui/material/Grid';
 
@@ -33,6 +35,7 @@ const Home = () => {
       {loading ? <div>Loading...</div> : <ArtCarousel art={artData} />}
       <Grid container className={artFormContainer}>
         <Grid className={artFormStyle}>
+          <ArtSearch />
           <ArtForm />
           {/* <Map /> */}
         </Grid>
