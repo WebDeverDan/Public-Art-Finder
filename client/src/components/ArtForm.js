@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_ART } from '../utils/mutations';
 
-import { QUERY_ART } from '../utils/queries';
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_ARTS } from '../utils/queries';
+// import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import { fontFamily } from '@mui/system';
+// import { fontFamily } from '@mui/system';
 
 const ArtForm = () => {
   const stateArray = [
@@ -76,39 +76,41 @@ const ArtForm = () => {
       firstName: '',
       lastName: '',
     },
-    // image: '',
     description: '',
     location: '',
   });
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
+  
+  const imageInputRef = useRef();
 
   // Get addArt function using ADD_ART mutation, update cache(?)
   const [addArt, { error }] = useMutation(ADD_ART, {
     update(cache, { data: { addArt } }) {
       try {
-        const { art } = cache.readQuery({ query: QUERY_ART });
+        const { arts } = cache.readQuery({ query: QUERY_ARTS });
 
         cache.writeQuery({
-          query: QUERY_ART,
-          data: { art: [addArt, ...art] },
+          query: QUERY_ARTS,
+          data: { arts: [addArt, ...arts] },
         });
       } catch (e) {
         console.error(e);
       }
 
       // Update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, addedArt: [...me.addedArt, addArt] } },
-      });
+      // const { me } = cache.readQuery({ query: QUERY_ME });
+      // cache.writeQuery({
+      //   query: QUERY_ME,
+      //   data: { me: { ...me, addedArt: [...me.addedArt, addArt] } },
+      // });
     },
   });
 
   // On form submission, call addArt mutation
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // request to the cloudinary api to give us back a url of the uploaded image
+
+    // Request to the cloudinary api to give us back a url of the uploaded image
     const handleImageUpload = async () => {
       const data = new FormData();
       data.append('file', image);
@@ -142,11 +144,11 @@ const ArtForm = () => {
           firstName: '',
           lastName: '',
         },
-        // image: '',
         description: '',
         location: '',
       });
-      setImage('');
+      setImage(null);
+      imageInputRef.current.value = '';
     } catch (err) {
       console.error(err);
     }
@@ -211,81 +213,98 @@ const ArtForm = () => {
     useStyles();
 
   return (
-    <Grid className={addGrid}>
-      <Box className={addBox}>
-        <Card className={addCard}>
-          <h4 className={addHeader}>Add New Art</h4>
-          {Auth.loggedIn() ? (
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-              ></input>
-              <p className={addText}>Title</p>
-              <input
-                className="form-input"
-                name="artistFirstName"
-                value={formData.artist.firstName}
-                onChange={handleChange}
-              ></input>
-              <p className={addText}>Artist First Name</p>
-              <input
-                className="form-input"
-                name="artistLastName"
-                value={formData.artist.lastName}
-                onChange={handleChange}
-              ></input>
-              <p className={addText}>Artist Last Name</p>
-              <input
-                className="form-input"
-                accept="image/*"
-                type="file"
-                name="image"
-                value={formData.image}
-                onChange={(e) => setImage(e.target.files[0])}
-              ></input>
-              <p className={addText}>Upload a Photo</p>
-              <input
-                className="form-input"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-              ></input>
-              <p className={addText}>Description</p>
-              {/* <label>Location</label> */}
-              <select
-                className="form-input"
-                name="location"
-                onChange={handleChange}
-              >
-                {stateArray.map((state) => {
-                  return (
-                    <option className={addText} key={state} value={state}>
-                      {state}
-                    </option>
-                  );
-                })}
-              </select>
-              <p className={addText}>State Location</p>
-              <button
-                className="btn btn-block btn-primary"
-                style={{
-                  cursor: 'pointer',
-                  fontFamily: "'JetBrains Mono', monospace",
-                }}
-                type="submit"
-              >
-                Submit Artwork
-              </button>
-            </form>
-          ) : (
-            <div>You must be logged in to add artwork.</div>
-          )}
-        </Card>
-      </Box>
-    </Grid>
+    <>
+      {Auth.loggedIn() ? (
+        <>
+          <Grid className={addGrid}>
+            <Box className={addBox}>
+              <Card className={addCard}>
+                <h4 className={addHeader}>Add New Art</h4>
+                <form onSubmit={handleFormSubmit}>
+                  {/* Title */}
+                  <input
+                    className="form-input"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                  ></input>
+                  <p className={addText}>Title</p>
+
+                  {/* Artist First Name */}
+                  <input
+                    className="form-input"
+                    name="artistFirstName"
+                    value={formData.artist.firstName}
+                    onChange={handleChange}
+                  ></input>
+                  <p className={addText}>Artist First Name</p>
+
+                  {/* Artist Last Name */}
+                  <input
+                    className="form-input"
+                    name="artistLastName"
+                    value={formData.artist.lastName}
+                    onChange={handleChange}
+                  ></input>
+                  <p className={addText}>Artist Last Name</p>
+
+                  {/* Image */}
+                  <input
+                    key=""
+                    className="form-input"
+                    accept="image/*"
+                    type="file"
+                    name="image"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    ref={imageInputRef}
+                  />
+                  <p className={addText}>Upload a Photo</p>
+
+                  {/* Description */}
+                  <input
+                    className="form-input"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                  ></input>
+                  <p className={addText}>Description</p>
+
+                  {/* Location */}
+                  <select
+                    className="form-input"
+                    name="location"
+                    onChange={handleChange}
+                  >
+                    {stateArray.map((state) => {
+                      return (
+                        <option className={addText} key={state} value={state}>
+                          {state}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <p className={addText}>State Location</p>
+
+                  {/* Submit */}
+                  <button
+                    className="btn btn-block btn-primary"
+                    style={{
+                      cursor: 'pointer',
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                    type="submit"
+                  >
+                    Submit Artwork
+                  </button>
+                </form>
+              </Card>
+            </Box>
+          </Grid>
+        </>
+      ) : (
+        <div>You must be logged in to add artwork.</div>
+      )}
+    </>
   );
 };
 
