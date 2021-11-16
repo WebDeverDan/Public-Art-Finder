@@ -1,14 +1,23 @@
 import React from 'react';
-import ArtCard from '../components/ArtCard';
+
+import { useParams } from 'react-router';
+
 import { Typography, Grid, Container } from '@material-ui/core';
 import useStyles from './styles';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ART_BY_LOCATION } from '../utils/queries';
 
+import ArtCard from '../components/ArtCard';
+
 const ArtInArea = () => {
-  const { loading, data } = useQuery(QUERY_ART_BY_LOCATION);
-  const artData = data?.arts || [];
+  const { location: userParam } = useParams();
+
+  const { loading, data } = useQuery(QUERY_ART_BY_LOCATION, {
+    variables: { location: userParam },
+  });
+  const artData = data?.artsByLocation || [];
+
   const classes = useStyles();
 
   return (
@@ -35,7 +44,9 @@ const ArtInArea = () => {
       </div>
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-          <ArtCard />
+          {artData.map((art) => {
+            return <ArtCard art={art} />;
+          })}
         </Grid>
       </Container>
     </>
