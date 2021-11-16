@@ -100,7 +100,7 @@ function App() {
               <FavoriteArtist />
             </Route> */}
 
-            <Route exact path="/profile/:userId">
+            <Route exact path="/profile/:username">
               <Profile />
             </Route>
 

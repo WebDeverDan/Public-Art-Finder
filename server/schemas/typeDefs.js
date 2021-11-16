@@ -64,12 +64,12 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(userId: ID!): User
+    user(username: String): User
     comments: [User]
     comment(artId: String): Art
     getSingleComment(commentId: ID): Comment
     me: User
-    addedArt(userId: ID, artId: ID): [Art]
+    addedArt(username: String, artId: ID): [Art]
     art(artId: ID): Art
     artsByLocation(location: String): [Art]
     arts: [Art]

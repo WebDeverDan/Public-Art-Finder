@@ -38,6 +38,7 @@ const ArtCard = ({ art }) => {
               {`${art.artist.firstName} ${art.artist.lastName}`}
             </Typography>
             <Typography>{art.description}</Typography>
+            <Typography>Added by: <Link to={`/profile/${art.addedBy}`}>{art.addedBy}</Link></Typography>
             {art.comments.map((comment) => {
               return <Typography>{comment.commentText}</Typography>;
             })}
