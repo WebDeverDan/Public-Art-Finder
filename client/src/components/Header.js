@@ -6,7 +6,6 @@ import {
   Drawer,
   Link,
   MenuItem,
-  Typography,
 } from '@mui/material/';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
@@ -20,7 +19,6 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Menu from '@mui/material/Menu';
-import SearchAppBar from './searchbar';
 import { InfoOutlined } from '@mui/icons-material';
 
 const logout = (event, label) => {
@@ -31,10 +29,10 @@ const logout = (event, label) => {
 };
 
 const loggedOutData = [
-  {
-    label: 'Home',
-    href: '/',
-  },
+  // {
+  //   label: 'Home',
+  //   href: '/',
+  // },
   {
     label: 'Login',
     href: '/login',
@@ -50,14 +48,14 @@ const loggedInData = [
     label: 'Home',
     href: '/',
   },
-  {
-    label: 'Profile',
-    href: '/me',
-  },
-  {
-    label: 'Logout',
-    href: '/',
-  },
+  // {
+  //   label: 'Favorite Artwork',
+  //   href: '/favoriteArtwork',
+  // },
+  // {
+  //   label: 'Favorite Artists',
+  //   href: '/favoriteArtists',
+  // },
 ];
 
 const useStyles = makeStyles(() => ({
@@ -78,7 +76,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
     fontSize: '36px',
     marginLeft: '35%',
-    marginRight: '25%',
+    marginRight: '35%',
     flexDirection: 'row',
   },
 }));
@@ -124,7 +122,6 @@ export default function Header() {
     return (
       <Toolbar className={toolbar}>
         <div>{getMenuButtons()}</div>
-        <div>{mobileView ? null : <SearchAppBar />}</div>
         <div>{AccountAppBar()}</div>
       </Toolbar>
     );
@@ -161,7 +158,6 @@ export default function Header() {
           </Drawer>
           {AccountAppBar()}
         </Toolbar>
-        <div marginTop="56px">{mobileView ? <SearchAppBar /> : null}</div>
       </div>
     );
   };

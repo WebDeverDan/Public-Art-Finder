@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-      {loading ? <div>Loading...</div> : <ArtCarousel art={artData} />}
+      {loading ? <div>Loading...</div> : <ArtCarousel height="fit-content" art={artData} />}
       <Grid container className={artFormContainer}>
         <Grid className={artFormStyle}>
       <ArtForm />
