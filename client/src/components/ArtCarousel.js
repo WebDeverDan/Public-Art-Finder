@@ -7,7 +7,7 @@ function ArtCarousel({ art }) {
   const styles = {
     paper: {
       width: '100%',
-      height: '100%',
+      height: '20%',
       backgroundColor: 'gray',
     },
   };
@@ -40,7 +40,6 @@ function ArtCarousel({ art }) {
           <div className="carousel_image_box">
             <a href={`/art/${art._id}`}>
             <img
-            height="100%"
               className="carousel_image"
               src={art.url}
               alt={art.description}
