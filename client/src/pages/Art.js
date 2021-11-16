@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ART } from '../utils/queries';
 
 import ArtCard from '../components/ArtCard';
-import Comment from '../components/Comment';
 
 const Art = () => {
   const { artId: userParam } = useParams();
@@ -16,18 +15,7 @@ const Art = () => {
   });
   const artData = data?.art || {};
 
-  return (
-    <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <img src={artData.url} alt={artData.description} />
-          <div>{artData.title}</div>
-        </>
-      )}
-    </>
-  );
+  return <>{loading ? <div>Loading...</div> : <ArtCard art={artData} />}</>;
 };
 
 export default Art;
