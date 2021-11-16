@@ -3,6 +3,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ARTS } from '../utils/queries';
 
+import Auth from '../utils/auth';
+
 import ArtForm from '../components/ArtForm';
 import ArtCarousel from '../components/ArtCarousel';
 import ArtSearch from '../components/ArtSearch';
@@ -26,13 +28,38 @@ const contentStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const { artFormContainer, artFormStyle } = contentStyles();
-  // TODO: Get ~4 random artworks to pass into Carousel component
   const { loading, data } = useQuery(QUERY_ARTS);
   const artData = data?.arts || [];
 
+  let carouselArt;
+
+  // Filter art so only those added by other users are visible on carousel
+  const username = Auth.getProfile().data.username;
+  carouselArt = artData.filter((art) => {
+    return art.addedBy !== username;
+  });
+
+  // Shuffle order of characters within array
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
+
+  // If over max # of carousel images, shuffle and return correct # of random images
+  const maxCarouselImgs = 5
+  if (carouselArt.length > maxCarouselImgs) {
+    carouselArt = shuffleArray(carouselArt);
+    carouselArt.length = maxCarouselImgs;
+  }
+
   return (
     <>
-      {loading ? <div>Loading...</div> : <ArtCarousel art={artData} />}
+      {loading ? <div>Loading...</div> : <ArtCarousel art={carouselArt} />}
       <Grid container className={artFormContainer}>
         <Grid className={artFormStyle}>
           <ArtSearch />
