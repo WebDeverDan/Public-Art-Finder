@@ -9,7 +9,7 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import imageArt from '../magnolia.jpg';
+// import imageArt from '../magnolia.jpg';
 import useStyles from './styles';
 
 const ArtCard = ({ art }) => {
@@ -25,25 +25,30 @@ const ArtCard = ({ art }) => {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            src={imageArt}
-            title="Image Title"
+            image={art.url}
+            title={art.title}
           />
           <CardContent className={classes.CardContent}>
             <Typography gutterBottom variant="h5">
-              Heading
+              {art.title}
             </Typography>
+            <Typography>{art.location}</Typography>
             <Typography>
-              This is a media card used to describe the content.
+              {`${art.artist.firstName} ${art.artist.lastName}`}
             </Typography>
+            <Typography>{art.description}</Typography>
+            {art.comments.map((comment) => {
+              return <Typography>{comment.commentText}</Typography>;
+            })}
           </CardContent>
-          <CardActions>
+          {/* <CardActions>
             <Button size="small" color="primary">
               View
             </Button>
             <Button size="small" color="primary">
               View Artist
             </Button>
-          </CardActions>
+          </CardActions> */}
         </Card>
       </Grid>
     </>
