@@ -76,10 +76,7 @@ const Signup = () => {
           <h4 className={signupHeader}>Sign Up</h4>
           <div className="card-body">
             {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
+              <p>Success! You are now signed up.</p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 Username
@@ -109,7 +106,6 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                {/* TODO: Figure out why isArtist is not passing through properly to backend */}
                 <div>Are you an artist?</div>
                 <label>
                   <input
