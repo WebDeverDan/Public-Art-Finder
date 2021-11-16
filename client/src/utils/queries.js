@@ -13,27 +13,21 @@ export const QUERY_USER = gql`
       }
       addedArt {
         title
+        artist {
+          firstName
+          lastName
+        }
         description
         location
         url
+        comments {
+          commentText
+          commentAuthor
+        }
       }
     }
   }
 `;
-
-// got up until line 14
-// export const QUERY_USERS = gql`
-//   query users($_id: ID!) {
-//     users(_id: $_id) {
-//       _id
-//       username
-//       email
-//       artist
-//       arts
-//       comments
-//     }
-//   }
-// `;
 
 export const QUERY_USERS = gql`
   {
@@ -96,9 +90,17 @@ export const QUERY_ME = gql`
       addedArt {
         _id
         title
+        artist {
+          firstName
+          lastName
+        }
         description
         location
         url
+        comments {
+          commentText
+          commentAuthor
+        }
       }
     }
   }
@@ -169,7 +171,3 @@ export const QUERY_ARTS = gql`
     }
   }
 `;
-
-// export const QUERY_ARTS = gql`
-// query arts(Art: $art)
-// `;

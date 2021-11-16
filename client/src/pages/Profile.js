@@ -24,10 +24,17 @@ const Profile = () => {
 
   return (
     <>
-      <div>{userData.username}</div>
-      <div>{userData.email}</div>
-      {/* TODO: Add art cards for user's addedArt... */}
-      <ArtCard />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div>{userData.username}</div>
+          <div>{userData.email}</div>
+          {userData.addedArt.map((art) => {
+            return <ArtCard art={art} />;
+          })}
+        </>
+      )}
     </>
   );
 };
