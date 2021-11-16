@@ -25,7 +25,8 @@ const ArtCard = ({ art }) => {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            src={imageArt}
+            component="img"
+            image={imageArt}
             title="Image Title"
           />
           <CardContent className={classes.CardContent}>
@@ -36,7 +37,7 @@ const ArtCard = ({ art }) => {
               This is a media card used to describe the content.
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions justifyContent="center">
             <Button size="small" color="primary">
               View
             </Button>

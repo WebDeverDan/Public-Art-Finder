@@ -5,9 +5,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  icon: {
-    marginRight: '20px',
-  },
   buttons: {
     marginTop: '40px',
   },
@@ -18,14 +15,16 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
   },
   card: {
+    backgroundColor: 'black',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
     color: 'black',
     alignContent: 'center',
+    border: '8px solid #9b752a',
   },
   cardMedia: {
-    paddingTop: '56.25%',
+    marginTop: '30',
   },
   cardContent: {
     flexGrow: 1,
