@@ -15,6 +15,39 @@ import Card from '@mui/material/Card';
 // import { fontFamily } from '@mui/system';
 
 const ArtForm = () => {
+  const useStyles = makeStyles(() => ({
+    addGrid: {
+      backgroundColor: 'white',
+      boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
+      borderRadius: '10px',
+      width: '100%',
+      marginBottom: '4em',
+    },
+    addBox: {
+      color: 'black',
+      alignContent: 'center',
+    },
+    addCard: {
+      padding: '10px',
+      border: '8px solid #9b752a',
+    },
+    addHeader: {
+      backgroundColor: 'black',
+      color: 'white',
+      textAlign: 'center',
+      padding: '10px 0px',
+      width: '100%',
+    },
+    addText: {
+      color: 'black',
+      fontFamily: "'JetBrains Mono', monospace",
+    },
+    stateSelection: {
+      width: '50%',
+      height: '50%',
+    },
+  }));
+
   const stateArray = [
     '',
     'Alabama',
@@ -79,12 +112,13 @@ const ArtForm = () => {
     description: '',
     location: '',
   });
+
   const [image, setImage] = useState(null);
-  
+
   const imageInputRef = useRef();
 
   // Get addArt function using ADD_ART mutation, update cache(?)
-  const [addArt, { error }] = useMutation(ADD_ART, {
+  const [addArt, { error, data }] = useMutation(ADD_ART, {
     update(cache, { data: { addArt } }) {
       try {
         const { arts } = cache.readQuery({ query: QUERY_ARTS });
@@ -113,20 +147,20 @@ const ArtForm = () => {
     // Request to the cloudinary api to give us back a url of the uploaded image
     const handleImageUpload = async () => {
       const data = new FormData();
+
       data.append('file', image);
       data.append('upload_preset', 'klourmy8');
       data.append('cloud_name', 'art-finder');
+
       const res = await axios.post(
         'https://api.cloudinary.com/v1_1/art-finder/image/upload',
         data
       );
+
       return res.data.url;
     };
 
     const url = await handleImageUpload();
-
-    console.log(url);
-    console.log(formData);
 
     try {
       // Call addArt and pass through our formData
@@ -135,7 +169,6 @@ const ArtForm = () => {
           art: { ...formData, url },
         },
       });
-      console.log(data);
 
       // Reset form state back to empty
       setFormData({
@@ -147,7 +180,9 @@ const ArtForm = () => {
         description: '',
         location: '',
       });
+
       setImage(null);
+
       imageInputRef.current.value = '';
     } catch (err) {
       console.error(err);
@@ -158,56 +193,15 @@ const ArtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'artistFirstName' || name === 'artistLastName') {
-      // If statements because artist is nested object
-      if (name === 'artistFirstName') {
-        setFormData({
-          ...formData,
-          artist: { ...formData.artist, firstName: value },
-        });
-      } else {
-        setFormData({
-          ...formData,
-          artist: { ...formData.artist, lastName: value },
-        });
-      }
+    if (name === 'firstName' || name === 'lastName') {
+      setFormData({
+        ...formData,
+        artist: { ...formData.artist, [name]: value },
+      });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
-
-  const useStyles = makeStyles(() => ({
-    addGrid: {
-      backgroundColor: 'white',
-      boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
-      borderRadius: '10px',
-      width: '100%',
-      marginBottom: '4em',
-    },
-    addBox: {
-      color: 'black',
-      alignContent: 'center',
-    },
-    addCard: {
-      padding: '10px',
-      border: '8px solid #9b752a',
-    },
-    addHeader: {
-      backgroundColor: 'black',
-      color: 'white',
-      textAlign: 'center',
-      padding: '10px 0px',
-      width: '100%',
-    },
-    addText: {
-      color: 'black',
-      fontFamily: "'JetBrains Mono', monospace",
-    },
-    stateSelection: {
-      width: '50%',
-      height: '50%',
-    },
-  }));
 
   const { addGrid, addBox, addCard, addHeader, addText, stateSelection } =
     useStyles();
@@ -228,12 +222,14 @@ const ArtForm = () => {
                     value={formData.title}
                     onChange={handleChange}
                   ></input>
-                  <p className={addText}>Title</p>
+                  <p className={addText}>
+                    Title<span style={{ color: 'red' }}>*</span>
+                  </p>
 
                   {/* Artist First Name */}
                   <input
                     className="form-input"
-                    name="artistFirstName"
+                    name="firstName"
                     value={formData.artist.firstName}
                     onChange={handleChange}
                   ></input>
@@ -242,7 +238,7 @@ const ArtForm = () => {
                   {/* Artist Last Name */}
                   <input
                     className="form-input"
-                    name="artistLastName"
+                    name="lastName"
                     value={formData.artist.lastName}
                     onChange={handleChange}
                   ></input>
@@ -258,7 +254,9 @@ const ArtForm = () => {
                     onChange={(e) => setImage(e.target.files[0])}
                     ref={imageInputRef}
                   />
-                  <p className={addText}>Upload a Photo</p>
+                  <p className={addText}>
+                    Upload a Photo<span style={{ color: 'red' }}>*</span>
+                  </p>
 
                   {/* Description */}
                   <input
@@ -273,6 +271,7 @@ const ArtForm = () => {
                   <select
                     className="form-input"
                     name="location"
+                    value={formData.location}
                     onChange={handleChange}
                   >
                     {stateArray.map((state) => {
@@ -283,7 +282,9 @@ const ArtForm = () => {
                       );
                     })}
                   </select>
-                  <p className={addText}>State Location</p>
+                  <p className={addText}>
+                    State Location<span style={{ color: 'red' }}>*</span>
+                  </p>
 
                   {/* Submit */}
                   <button
@@ -297,12 +298,26 @@ const ArtForm = () => {
                     Submit Artwork
                   </button>
                 </form>
+
+                {data ? (
+                  <div className={`mt-3 p-3 text-black ${addText}`} style={{backgroundColor: '#28a745', textAlign: 'center'}}>
+                    Your art has been successfully added!
+                  </div>
+                ) : null}
+
+                {error && (
+                  <div className={`mt-3 p-3 text-black bg-danger ${addText}`} style={{textAlign: 'center', width: '418px'}}>
+                  {error.message}
+                </div>
+                )}
               </Card>
             </Box>
           </Grid>
         </>
       ) : (
-        <div>You must be logged in to add artwork.</div>
+        <div style={{ color: 'white' }}>
+          You must be logged in to add artwork.
+        </div>
       )}
     </>
   );

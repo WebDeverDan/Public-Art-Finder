@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {
   Typography,
   Card,
@@ -31,7 +33,9 @@ const ArtCard = ({ art }) => {
             <Typography gutterBottom variant="h5">
               {art.title}
             </Typography>
-            <Typography>{art.location}</Typography>
+            <Typography>
+              <Link style={{color: 'black'}} to={`/artInArea/${art.location}`}>{art.location}</Link>
+            </Typography>
             <Typography>
               {`${art.artist.firstName} ${art.artist.lastName}`}
             </Typography>

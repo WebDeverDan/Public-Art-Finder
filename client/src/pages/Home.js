@@ -5,7 +5,7 @@ import { QUERY_ARTS } from '../utils/queries';
 
 import ArtForm from '../components/ArtForm';
 import ArtCarousel from '../components/ArtCarousel';
-import Map from '../components/Map';
+// import Map from '../components/Map';
 import { makeStyles } from '@material-ui/core';
 import Grid from '@mui/material/Grid';
 
@@ -19,7 +19,7 @@ const contentStyles = makeStyles((theme) => ({
   },
   artFormStyle: {
     color: 'black !important',
-  }
+  },
 }));
 
 const Home = () => {
@@ -33,9 +33,9 @@ const Home = () => {
       {loading ? <div>Loading...</div> : <ArtCarousel art={artData} />}
       <Grid container className={artFormContainer}>
         <Grid className={artFormStyle}>
-      <ArtForm />
-      {/* <Map /> */}
-      </Grid>
+          <ArtForm />
+          {/* <Map /> */}
+        </Grid>
       </Grid>
     </>
   );

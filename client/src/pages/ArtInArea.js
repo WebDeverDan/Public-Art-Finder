@@ -30,7 +30,7 @@ const ArtInArea = () => {
             color="textPrimary"
             gutterBottom
           >
-            All Public Art In your Area
+            All Public Art In {userParam}
           </Typography>
           <Typography
             variant="h5"
