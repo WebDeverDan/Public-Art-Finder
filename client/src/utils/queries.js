@@ -64,8 +64,8 @@ export const QUERY_COMMENTS = gql`
 `;
 
 export const QUERY_COMMENT = gql`
-  query getSingleComment($artId: String!) {
-    comment(artId: $artId) {
+  query getSingleComment($commentId: String!) {
+    comment(commentId: $artId) {
       comments {
         _id
         commentText
@@ -88,6 +88,7 @@ export const QUERY_ME = gql`
         createdAt
       }
       addedArt {
+        _id
         title
         artist {
           firstName

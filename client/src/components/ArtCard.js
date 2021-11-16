@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   Typography,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Grid,
@@ -25,6 +23,7 @@ const ArtCard = ({ art }) => {
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
+            component="img"
             image={art.url}
             title={art.title}
           />

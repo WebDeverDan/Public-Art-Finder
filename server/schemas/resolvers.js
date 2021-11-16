@@ -46,6 +46,10 @@ const resolvers = {
       return Art.findOne({ _id: artId }).populate('comments');
       // .select('username');
     },
+    getSingleComment: async (parent, { commentId }, context) => {
+      return Art.findOne({ _id: commentId }).populate('comments');
+      // .select('username');
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('addedArt');
