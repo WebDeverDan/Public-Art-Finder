@@ -31,13 +31,24 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_ARTS);
   const artData = data?.arts || [];
 
-  let carouselArt;
-
   // Filter art so only those added by other users are visible on carousel
-  const username = Auth.getProfile().data.username;
-  carouselArt = artData.filter((art) => {
-    return art.addedBy !== username;
-  });
+  let username;
+  if (Auth.loggedIn()) {
+    username = Auth.getProfile().data.username;
+  }
+
+  let carouselArt;
+  if (username) {
+    carouselArt = artData.filter((art) => {
+      return art.addedBy !== username;
+    });
+    // If the filtered artData brings back < 5 artworks, show that user's artwork too
+    if (carouselArt.length < 5) {
+      carouselArt = artData;
+    }
+  } else {
+    carouselArt = artData;
+  }
 
   // Shuffle order of characters within array
   function shuffleArray(array) {
@@ -51,7 +62,7 @@ const Home = () => {
   }
 
   // If over max # of carousel images, shuffle and return correct # of random images
-  const maxCarouselImgs = 5
+  const maxCarouselImgs = 5;
   if (carouselArt.length > maxCarouselImgs) {
     carouselArt = shuffleArray(carouselArt);
     carouselArt.length = maxCarouselImgs;
