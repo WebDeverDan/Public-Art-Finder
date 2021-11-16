@@ -60,9 +60,6 @@ const contentStyles = makeStyles((theme) => ({
   content: {
     display: 'flex',
     justifyContent: 'center',
-    [theme.breakpoints.down('sm')]: {
-      minHeight: 'calc(100vh - 170px)',
-    },
   },
 }));
 

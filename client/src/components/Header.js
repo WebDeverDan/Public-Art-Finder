@@ -48,6 +48,14 @@ const loggedInData = [
     label: 'Home',
     href: '/',
   },
+  {
+    label: 'Profile',
+    href: '/me',
+  },
+  {
+    label: 'Logout',
+    href: '/',
+  },
   // {
   //   label: 'Favorite Artwork',
   //   href: '/favoriteArtwork',
