@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   Typography,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Grid,
