@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -76,7 +75,15 @@ const Signup = () => {
           <h4 className={signupHeader}>Sign Up</h4>
           <div className="card-body">
             {data ? (
-              <p>Success! You are now signed up.</p>
+              <div
+                className="mt-3 p-3 text-white text-center"
+                style={{
+                  fontFamily: '"JetBrains Mono", monospace',
+                  backgroundColor: '#28a745',
+                }}
+              >
+                Success! You are now signed up.
+              </div>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 Username
@@ -136,7 +143,13 @@ const Signup = () => {
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div
+                className="mt-3 p-3 bg-danger text-white text-center"
+                style={{
+                  fontFamily: '"JetBrains Mono", monospace',
+                  width: '274px',
+                }}
+              >
                 {error.message}
               </div>
             )}

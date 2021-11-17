@@ -8,17 +8,17 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import ArtCard from '../components/ArtCard';
-import Map from '../components/Map';
+// import Map from '../components/Map';
 
 const Profile = () => {
-  const { userId: userParam } = useParams();
+  const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { userId: userParam },
+    variables: { username: userParam },
   });
   const userData = data?.me || data?.user || {};
 
-  if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/me" />;
   }
 
