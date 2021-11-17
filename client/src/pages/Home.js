@@ -33,14 +33,14 @@ const contentStyles = makeStyles((theme) => ({
 
 const Home = () => {
 
-  const { hero } = contentStyles();
+  const { hero, share } = contentStyles();
 
   return (
     <>
       <Box>
         <Grid>
           <Typography
-            className={title}
+            // className={title}
             variant="h1"
             align="center"
             gutterBottom
