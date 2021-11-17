@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { Container, Typography } from '@mui/material';
+import { Select, FormControl, MenuItem, InputLabel } from '@mui/material';
+
 import { useQuery } from '@apollo/client';
 import { QUERY_ART_BY_LOCATION } from '../utils/queries';
 
@@ -78,22 +81,46 @@ const ArtSearch = () => {
 
   return (
     <>
-      <select
-        className="form-input"
-        name="location"
-        value={location}
-        onChange={handleChange}
-        style={{width: '100%'}}
-      >
-        {stateArray.map((state) => {
-          return (
-            <option key={state} value={state}>
-              {state}
-            </option>
-          );
-        })}
-      </select>
-      <ArtInArea art={artData} location={location} />
+      <Container maxWidth="lg">
+        <Typography
+          variant="h2"
+          align="center"
+          color="textPrimary"
+          gutterBottom
+        >
+          <span style={{ color: 'red' }}>E</span>
+          <span style={{ color: 'orange' }}>X</span>
+          <span style={{ color: 'yellow' }}>P</span>
+          <span style={{ color: 'green' }}>L</span>
+          <span style={{ color: 'blue' }}>O</span>
+          <span style={{ color: 'indigo' }}>R</span>
+          <span style={{ color: 'violet' }}>E</span> STREET ART AROUND THE U.S.
+        </Typography>
+      </Container>
+      <FormControl fullWidth>
+        <InputLabel id="state">State</InputLabel>
+        <Select
+          labelId="state"
+          id="state-select"
+          label="State"
+          value={location}
+          onChange={handleChange}
+        >
+          {stateArray.map((state) => {
+            return (
+              <MenuItem key={state} value={state}>
+                {state}
+              </MenuItem>
+            );
+          })}
+        </Select>
+        <br />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ArtInArea art={artData} location={location} />
+        )}
+      </FormControl>
     </>
   );
 };

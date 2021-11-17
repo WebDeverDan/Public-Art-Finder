@@ -13,23 +13,23 @@ const ArtInArea = ({ art, location }) => {
       {art.length > 0 ? (
         <>
           {/* <div className={classes.container}> */}
-            <Container maxWidth="md">
+            <Container maxWidth="lg">
               <Typography
-                variant="h2"
+                variant="h4"
                 align="center"
                 color="textPrimary"
                 gutterBottom
               >
-                All Public Art In {location}
+                <span style={{color: 'green'}}>{art.length}</span> PUBLIC ARTWORKS IN {location.toUpperCase()}
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 align="center"
                 color="textSecondary"
                 paragraph
               >
-                {art.length} results for public art in your searched area.
-              </Typography>
+                <span style={{color: 'green'}}>{art.length}</span> results for public art in your searched area.
+              </Typography> */}
             </Container>
           {/* </div> */}
           <Container className={classes.cardGrid} maxWidth="lg">
@@ -43,14 +43,27 @@ const ArtInArea = ({ art, location }) => {
       ) : (
         <Container maxWidth="lg">
           <Typography
-            variant="h2"
+            variant="h4"
             align="center"
             color="textPrimary"
             gutterBottom
           >
             {!location
-              ? `Search for art in a state`
-              : `No art added in ${location} yet.`}
+              ? (
+                null
+              )
+              : (
+                <Container maxWidth="lg">
+              <Typography
+                variant="h4"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                <span style={{color: 'red'}}>0</span> PUBLIC ARTWORKS IN {location.toUpperCase()}
+              </Typography>
+            </Container>
+              )}
           </Typography>
         </Container>
       )}

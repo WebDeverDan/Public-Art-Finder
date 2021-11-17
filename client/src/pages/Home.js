@@ -8,21 +8,8 @@ import Grid from '@mui/material/Grid';
 import Auth from '../utils/auth';
 
 import HeroImage from '../image/colorfulSky.jpg';
-//import HeroImage from '../image/HeroImage2.png';
-import background from '../image/creamBrick.jpg';
 
 const contentStyles = makeStyles((theme) => ({
-  artFormContainer: {
-    backgroundImage: `url(${background})`,
-    display: 'flex',
-    justifyContent: 'center',
-    [theme.breakpoints.down('sm')]: {
-      minHeight: 'calc(100vh - 170px)',
-    },
-  },
-  artFormStyle: {
-    color: 'black !important',
-  },
   hero: {
     height: '600px',
     backgroundImage: `url(${HeroImage})`,
