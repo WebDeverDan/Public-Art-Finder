@@ -15,7 +15,6 @@ import background from '../image/creamBrick.jpg';
 
 const contentStyles = makeStyles((theme) => ({
   artSearchContainer: {
-    backgroundImage: `url(${background})`,
     display: 'flex',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
@@ -72,7 +71,13 @@ const Explore = () => {
 
   return (
     <>
-      {loading ? <div>Loading...</div> : <div style={{width: '100%'}}><ArtCarousel art={carouselArt} /></div>}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div style={{ width: '100%' }}>
+          <ArtCarousel art={carouselArt} />
+        </div>
+      )}
       <Grid container className={artSearchContainer}>
         <Grid className={artSearchStyle}>
           <br />
