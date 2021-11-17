@@ -114,6 +114,7 @@ const ArtForm = () => {
   });
 
   const [image, setImage] = useState(null);
+  const [imageErr, setImageErr] = useState(false);
 
   const imageInputRef = useRef();
 
@@ -144,23 +145,28 @@ const ArtForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    let url;
     // Request to the cloudinary api to give us back a url of the uploaded image
-    const handleImageUpload = async () => {
-      const data = new FormData();
+    if (image) {
+      const handleImageUpload = async () => {
+        const data = new FormData();
 
-      data.append('file', image);
-      data.append('upload_preset', 'klourmy8');
-      data.append('cloud_name', 'art-finder');
+        data.append('file', image);
+        data.append('upload_preset', 'klourmy8');
+        data.append('cloud_name', 'art-finder');
 
-      const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/art-finder/image/upload',
-        data
-      );
+        const res = await axios.post(
+          'https://api.cloudinary.com/v1_1/art-finder/image/upload',
+          data
+        );
 
-      return res.data.url;
-    };
-
-    const url = await handleImageUpload();
+        return res.data.url;
+      };
+      url = await handleImageUpload();
+      setImageErr(false);
+    } else {
+      return setImageErr(true);
+    }
 
     try {
       // Call addArt and pass through our formData
@@ -203,8 +209,15 @@ const ArtForm = () => {
     }
   };
 
-  const { addGrid, addBox, addCard, addHeader, addText, stateSelection } =
-    useStyles();
+  const handleImgChange = (event) => {
+    setImage(event.target.files[0]);
+
+    if (event.target.files[0]) {
+      setImageErr(false);
+    }
+  };
+
+  const { addGrid, addBox, addCard, addHeader, addText } = useStyles();
 
   return (
     <>
@@ -251,7 +264,7 @@ const ArtForm = () => {
                     accept="image/*"
                     type="file"
                     name="image"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={handleImgChange}
                     ref={imageInputRef}
                   />
                   <p className={addText}>
@@ -300,16 +313,47 @@ const ArtForm = () => {
                 </form>
 
                 {data ? (
-                  <div className={`mt-3 p-3 text-black ${addText}`} style={{backgroundColor: '#28a745', textAlign: 'center'}}>
+                  <div
+                    className={`mt-3 p-3 text-black ${addText}`}
+                    style={{ backgroundColor: '#28a745', textAlign: 'center' }}
+                  >
                     Your art has been successfully added!
                   </div>
                 ) : null}
 
-                {error && (
-                  <div className={`mt-3 p-3 text-black bg-danger ${addText}`} style={{textAlign: 'center', width: '418px'}}>
-                  {error.message}
-                </div>
-                )}
+                {/* {imageErr && (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '660.97px' }}
+                  >
+                    Please input an image.
+                  </div>
+                )} */}
+
+                {imageErr ? (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '624.97px' }}
+                  >
+                    Please input an image.
+                  </div>
+                ) : error ? (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '624.97px' }}
+                  >
+                    {error.message}
+                  </div>
+                ) : null}
+
+                {/* {error && (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '660.97px' }}
+                  >
+                    {error.message}
+                  </div>
+                )} */}
               </Card>
             </Box>
           </Grid>
