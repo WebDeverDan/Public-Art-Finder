@@ -50,43 +50,14 @@ const Home = () => {
     username = Auth.getProfile().data.username;
   }
 
-  let carouselArt;
-  if (username) {
-    carouselArt = artData.filter((art) => {
-      return art.addedBy !== username;
-    });
-    // If the filtered artData brings back < 5 artworks, show that user's artwork too
-    if (carouselArt.length < 5) {
-      carouselArt = artData;
-    }
-  } else {
-    carouselArt = artData;
-  }
-
-  // Shuffle order of characters within array
-  function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  }
-
-  // If over max # of carousel images, shuffle and return correct # of random images
-  const maxCarouselImgs = 10;
-  if (carouselArt.length > maxCarouselImgs) {
-    carouselArt = shuffleArray(carouselArt);
-    carouselArt.length = maxCarouselImgs;
-  }
+  const { hero, share } = contentStyles();
 
   return (
     <>
       <Box>
         <Grid>
           <Typography
-            className={title}
+            // className={title}
             variant="h1"
             align="center"
             gutterBottom
