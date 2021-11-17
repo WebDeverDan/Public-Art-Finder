@@ -80,7 +80,7 @@ const Home = () => {
   }
 
   // If over max # of carousel images, shuffle and return correct # of random images
-  const maxCarouselImgs = 5;
+  const maxCarouselImgs = 10;
   if (carouselArt.length > maxCarouselImgs) {
     carouselArt = shuffleArray(carouselArt);
     carouselArt.length = maxCarouselImgs;
@@ -100,14 +100,17 @@ const Home = () => {
           </Typography>
         </Grid>
       </Box>
-      <br></br>
-      <br></br>
 
       {loading ? <div>Loading...</div> : <ArtCarousel art={carouselArt} />}
       <Grid container className={artFormContainer}>
         <Grid className={artFormStyle}>
-        {Auth.loggedIn() ? (
-            <Link to='/addArt'><button type='button' style={{backgroundColor: 'green'}}>Add Art +</button></Link>
+          <br />
+          {Auth.loggedIn() ? (
+            <Link to="/addArt">
+              <button type="button" style={{ backgroundColor: 'green' }}>
+                Add Art +
+              </button>
+            </Link>
           ) : null}
           <ArtSearch />
           {/* <ArtForm /> */}
