@@ -12,7 +12,7 @@ const ArtInArea = ({ art, location }) => {
     <>
       {art.length > 0 ? (
         <>
-          <div className={classes.container}>
+          {/* <div className={classes.container}> */}
             <Container maxWidth="md">
               <Typography
                 variant="h2"
@@ -31,7 +31,7 @@ const ArtInArea = ({ art, location }) => {
                 {art.length} results for public art in your searched area.
               </Typography>
             </Container>
-          </div>
+          {/* </div> */}
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
               {art.map((art) => {
@@ -49,7 +49,7 @@ const ArtInArea = ({ art, location }) => {
             gutterBottom
           >
             {!location
-              ? `Search for art in a state!`
+              ? `Search for art in a state`
               : `No art added in ${location} yet.`}
           </Typography>
         </Container>

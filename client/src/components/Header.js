@@ -30,7 +30,7 @@ const logout = (event, label) => {
 
 const loggedOutData = [
   {
-    label: 'Artin Around',
+    label: "Artin' Around",
     href: '/',
   },
   {
@@ -45,7 +45,7 @@ const loggedOutData = [
 
 const loggedInData = [
   {
-    label: 'Artin Around',
+    label: "Artin' Around",
     href: '/',
   },
   // {

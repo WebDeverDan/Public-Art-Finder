@@ -6,8 +6,6 @@ import { ADD_ART } from '../utils/mutations';
 import { QUERY_ARTS } from '../utils/queries';
 // import { QUERY_ME } from '../utils/queries';
 
-import Auth from '../utils/auth';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -20,7 +18,7 @@ const ArtForm = () => {
       backgroundColor: 'white',
       boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
       borderRadius: '10px',
-      width: '100%',
+      width: '75%',
       marginBottom: '4em',
     },
     addBox: {
@@ -221,7 +219,6 @@ const ArtForm = () => {
 
   return (
     <>
-      {Auth.loggedIn() ? (
         <>
           <Grid className={addGrid}>
             <Box className={addBox}>
@@ -312,6 +309,7 @@ const ArtForm = () => {
                   </button>
                 </form>
 
+                {/* Success Message */}
                 {data ? (
                   <div
                     className={`mt-3 p-3 text-black ${addText}`}
@@ -321,48 +319,26 @@ const ArtForm = () => {
                   </div>
                 ) : null}
 
-                {/* {imageErr && (
-                  <div
-                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
-                    style={{ textAlign: 'center', width: '660.97px' }}
-                  >
-                    Please input an image.
-                  </div>
-                )} */}
-
+                {/* Error Messages */}
                 {imageErr ? (
                   <div
                     className={`mt-3 p-3 text-black bg-danger ${addText}`}
-                    style={{ textAlign: 'center', width: '624.97px' }}
+                    style={{ textAlign: 'center', width: '100%' }}
                   >
                     Please input an image.
                   </div>
                 ) : error ? (
                   <div
                     className={`mt-3 p-3 text-black bg-danger ${addText}`}
-                    style={{ textAlign: 'center', width: '624.97px' }}
+                    style={{ textAlign: 'center', width: '100%' }}
                   >
                     {error.message}
                   </div>
                 ) : null}
-
-                {/* {error && (
-                  <div
-                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
-                    style={{ textAlign: 'center', width: '660.97px' }}
-                  >
-                    {error.message}
-                  </div>
-                )} */}
               </Card>
             </Box>
           </Grid>
         </>
-      ) : (
-        <div style={{ color: 'white' }}>
-          You must be logged in to add artwork.
-        </div>
-      )}
     </>
   );
 };
