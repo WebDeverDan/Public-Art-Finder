@@ -15,8 +15,8 @@ import { makeStyles } from '@material-ui/core';
 
 const profileStyles = makeStyles((theme) => ({
   profileContainer: {
-  alignItems: "center",
-  fontSize: '40px',
+    alignItems: 'center',
+    fontSize: '40px',
   },
   textStyle: {
     color: 'white',
@@ -56,15 +56,17 @@ const Profile = () => {
         <div>Loading...</div>
       ) : (
         <>
-        <Grid container className={profileContainer}>
-
-          <div className={textStyle}><h1>{userData.username}</h1>{userData.email}</div>
-          {/* <div className={textStyle}>{userData.email}</div> */}
-          <Box className={artStyle}>
-          {userData.addedArt.map((art) => {
-            return <ArtCard art={art} />
-          })}
-          </Box>
+          <Grid container className={profileContainer}>
+            <div className={textStyle}>
+              <h1>{userData.username}</h1>
+              {/* {userData.email} */}
+            </div>
+            {/* <div className={textStyle}>{userData.email}</div> */}
+            <Box className={artStyle}>
+              {userData.addedArt.map((art) => {
+                return <ArtCard art={art} />;
+              })}
+            </Box>
           </Grid>
         </>
       )}
