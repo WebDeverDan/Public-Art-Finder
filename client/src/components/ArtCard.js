@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../global.css';
 
 import {
   Typography,
@@ -16,7 +17,7 @@ const ArtCard = ({ art }) => {
 
   return (
     <>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={3}>
         <Card className={classes.card}>
           <Link to={`/art/${art._id}`}>
             <CardMedia
