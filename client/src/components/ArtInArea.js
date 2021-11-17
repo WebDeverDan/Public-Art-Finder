@@ -32,7 +32,7 @@ const ArtInArea = ({ art, location }) => {
               </Typography>
             </Container>
           {/* </div> */}
-          <Container className={classes.cardGrid} maxWidth="md">
+          <Container className={classes.cardGrid} maxWidth="lg">
             <Grid container spacing={4}>
               {art.map((art) => {
                 return <ArtCard art={art} />;
@@ -41,7 +41,7 @@ const ArtInArea = ({ art, location }) => {
           </Container>
         </>
       ) : (
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Typography
             variant="h2"
             align="center"

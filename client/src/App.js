@@ -12,6 +12,7 @@ import Art from './pages/Art';
 // import Artist from './pages/Artist';
 // import FavoriteArt from './pages/FavoriteArt';
 // import FavoriteArtist from './pages/FavoriteArtist';
+import Explore from './pages/Explore';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -49,7 +50,7 @@ const client = new ApolloClient({
 
 const contentStyles = makeStyles((theme) => ({
   allContent: {
-    paddingTop: '150px',
+    paddingTop: '64px',
     minHeight: 'calc(100vh - 130px)',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
@@ -90,6 +91,10 @@ function App() {
 
             <Route exact path="/addArt">
               <AddArt />
+            </Route>
+
+            <Route exact path="/explore">
+              <Explore />
             </Route>
 
             {/* <Route exact path="/artist/:id">
