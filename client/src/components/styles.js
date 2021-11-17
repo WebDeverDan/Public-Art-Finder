@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   container: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
   },
   buttons: {
     marginTop: '40px',

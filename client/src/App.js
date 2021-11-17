@@ -7,7 +7,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import Art from './pages/Art';
 import ArtInArea from './pages/ArtInArea';
 import Artist from './pages/Artist';
@@ -72,11 +71,11 @@ function App() {
         <Header />
 
         <Grid className={allContent}>
-            <Route exact path="/">
-              <Home />
-            </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
 
-            <Grid container className={content}>
+          <Grid container className={content}>
             <Route exact path="/login">
               <Login />
             </Route>

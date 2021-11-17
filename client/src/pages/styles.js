@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     padding: theme.spacing(8, 0, 6),
   },
   buttons: {

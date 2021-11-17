@@ -68,12 +68,12 @@ const loggedInData = [
 
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: "black !important",
+    backgroundColor: 'black !important',
   },
   menuButton: {
-    color: "white",
-    "&:hover": {
-      color: "#b6b6b6",
+    color: 'white',
+    '&:hover': {
+      color: '#b6b6b6',
     },
   },
   mobileNav: {
@@ -216,7 +216,6 @@ export default function Header() {
   };
 
   const AccountAppBar = () => {
-
     const handleChange = (event) => {
       setAuth(event.target.checked);
     };
