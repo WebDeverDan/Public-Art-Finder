@@ -83,6 +83,7 @@ const ArtSearch = () => {
         name="location"
         value={location}
         onChange={handleChange}
+        style={{width: '100%'}}
       >
         {stateArray.map((state) => {
           return (
