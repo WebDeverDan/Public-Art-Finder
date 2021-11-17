@@ -8,7 +8,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Art from './pages/Art';
-import ArtInArea from './pages/ArtInArea';
 import Artist from './pages/Artist';
 import FavoriteArt from './pages/FavoriteArt';
 import FavoriteArtist from './pages/FavoriteArtist';
@@ -88,23 +87,19 @@ function App() {
               <Art />
             </Route>
 
-            <Route exact path="/artInArea/:location">
-              <ArtInArea />
-            </Route>
-
-            <Route exact path="/artist/:id">
+            {/* <Route exact path="/artist/:id">
               <Artist />
-            </Route>
+            </Route> */}
 
-            <Route exact path="/favoriteArt/:username">
+            {/* <Route exact path="/favoriteArt/:username">
               <FavoriteArt />
-            </Route>
+            </Route> */}
 
-            <Route exact path="/favoriteArtist/:username">
+            {/* <Route exact path="/favoriteArtist/:username">
               <FavoriteArtist />
-            </Route>
+            </Route> */}
 
-            <Route exact path="/profile/:userId">
+            <Route exact path="/profile/:username">
               <Profile />
             </Route>
 
