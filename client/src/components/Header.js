@@ -11,15 +11,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import Signup from '../pages/Signup';
-import Login from '../pages/Login';
+// import Signup from '../pages/Signup';
+// import Login from '../pages/Login';
 import Auth from '../utils/auth';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
+// import Switch from '@mui/material/Switch';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormGroup from '@mui/material/FormGroup';
 import Menu from '@mui/material/Menu';
-import { InfoOutlined } from '@mui/icons-material';
+// import { InfoOutlined } from '@mui/icons-material';
 
 const logout = (event, label) => {
   // event.preventDefault();
@@ -29,10 +29,10 @@ const logout = (event, label) => {
 };
 
 const loggedOutData = [
-  // {
-  //   label: 'Home',
-  //   href: '/',
-  // },
+  {
+    label: "Artin' Around",
+    href: '/',
+  },
   {
     label: 'Login',
     href: '/login',
@@ -45,17 +45,17 @@ const loggedOutData = [
 
 const loggedInData = [
   {
-    label: 'Home',
+    label: "Artin' Around",
     href: '/',
   },
-  {
-    label: 'Profile',
-    href: '/me',
-  },
-  {
-    label: 'Logout',
-    href: '/',
-  },
+  // {
+  //   label: 'Profile',
+  //   href: '/me',
+  // },
+  // {
+  //   label: 'Logout',
+  //   href: '/',
+  // },
   // {
   //   label: 'Favorite Artwork',
   //   href: '/favoriteArtwork',
