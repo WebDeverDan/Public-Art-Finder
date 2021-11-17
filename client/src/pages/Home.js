@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Box from '@mui/material/Box';
-import { makeStyles, Typography } from '@material-ui/core';
-import Grid from '@mui/material/Grid';
-
 import Auth from '../utils/auth';
 
+import Box from '@mui/material/Box';
+
+// import Map from '../components/Map';
+import { makeStyles, Typography } from '@material-ui/core';
+import Grid from '@mui/material/Grid';
 import HeroImage from '../image/colorfulSky.jpg';
 
 const contentStyles = makeStyles((theme) => ({
@@ -32,15 +33,14 @@ const contentStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
-
-  const { hero, share } = contentStyles();
+  const { hero, share, title } = contentStyles();
 
   return (
     <>
       <Box>
         <Grid>
           <Typography
-            // className={title}
+            className={title}
             variant="h1"
             align="center"
             gutterBottom
@@ -57,10 +57,8 @@ const Home = () => {
         </Grid>
       </Box>
 
-      <Link to='/explore'>EXPLORE</Link>
-      {Auth.loggedIn() ? (
-        <Link to='/addArt'>ADD ART +</Link>
-      ) : null}
+      <Link to="/explore">EXPLORE</Link>
+      {Auth.loggedIn() ? <Link to="/addArt">ADD ART +</Link> : null}
     </>
   );
 };
