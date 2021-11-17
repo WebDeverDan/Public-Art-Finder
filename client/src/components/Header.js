@@ -83,8 +83,6 @@ const useStyles = makeStyles(() => ({
   toolbar: {
     justifyContent: 'space-between',
     fontSize: '36px',
-    marginLeft: '35%',
-    marginRight: '35%',
     flexDirection: 'row',
   },
 }));
@@ -256,16 +254,29 @@ export default function Header() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem
-            {...{
-              onClick: (event) => {
-                logout(event, 'Logout');
-              },
-            }}
-          >
-            Logout
-          </MenuItem>
+          <RouterLink>
+            <MenuItem
+              {...{
+                value: 'Profile',
+                to: '/me',
+                component: RouterLink,
+              }
+              }
+              onClick={handleClose}>Profile</MenuItem>
+          </RouterLink>
+          <RouterLink>
+            <MenuItem
+              {...{
+                to: '/',
+                component: RouterLink,
+                onClick: (event) => {
+                  logout(event, 'Logout');
+                },
+              }}
+            >
+              Logout
+            </MenuItem>
+          </RouterLink>
         </Menu>
       </div>
     );
