@@ -19,7 +19,7 @@ const ArtForm = () => {
       boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
       borderRadius: '10px',
       width: '75%',
-      marginBottom: '4em',
+      margin: '4em 0em',
     },
     addBox: {
       color: 'black',

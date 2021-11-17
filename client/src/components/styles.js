@@ -19,8 +19,8 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px',
-    border: '8px solid #9b752a',
+    // padding: '10px',
+    // border: '8px solid #9b752a',
   },
   cardMedia: {
     marginTop: '30',
