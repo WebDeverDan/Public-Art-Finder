@@ -9,12 +9,12 @@ const resolvers = {
       return User.find().populate('comments');
     },
     // this is for the individual's thoughts
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId }).populate({
+    user: async (parent, { username }) => {
+      return User.findOne({ username: username }).populate({
         path: 'comments',
         populate: [{ path: 'user', select: 'username' }],
-        // path: 'addedArt',
-        // populate: [{ path: 'user', select: 'username' }],
+        path: 'addedArt',
+        populate: [{ path: 'user', select: 'username' }],
       });
     },
     // this is for the individual's thoughts if they are an artist
@@ -68,7 +68,7 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);

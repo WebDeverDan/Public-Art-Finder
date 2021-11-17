@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { makeStyles } from '@material-ui/core/styles';
@@ -77,10 +76,15 @@ const Login = (props) => {
           <h4 className={loginHeader}>Login</h4>
           <div className="card-body">
             {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
+              <div
+                className="mt-3 p-3 text-white text-center"
+                style={{
+                  fontFamily: '"JetBrains Mono", monospace',
+                  backgroundColor: '#28a745',
+                }}
+              >
+                Success! You are now logged in.
+              </div>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
@@ -110,7 +114,10 @@ const Login = (props) => {
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div
+                className="mt-3 p-3 bg-danger text-white text-center"
+                style={{ fontFamily: '"JetBrains Mono", monospace' }}
+              >
                 {error.message}
               </div>
             )}
