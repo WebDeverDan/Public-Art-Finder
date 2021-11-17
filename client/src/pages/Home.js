@@ -12,6 +12,7 @@ import ArtSearch from '../components/ArtSearch';
 import { makeStyles, Typography } from '@material-ui/core';
 import Grid from '@mui/material/Grid';
 import HeroImage from '../image/colorfulSky.jpg';
+//import HeroImage from '../image/HeroImage2.png';
 import background from '../image/creamBrick.jpg';
 
 const contentStyles = makeStyles((theme) => ({
@@ -33,17 +34,23 @@ const contentStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     position: 'relative',
     display: 'flex',
-    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     fontSize: '4rem',
     paddingBottom: '30px',
     backgroundSize: 'cover',
-    textAlign: 'justify',
-    textAlignLast: 'right',
+    color: 'white',
+    fontWeight: 'bolder',
+    textAlign: 'center',
+  },
+  share: {
+    textShadow: '4px 4px  #000000',
+    textAlign: 'right',
   },
 }));
 
 const Home = () => {
-  const { artFormContainer, artFormStyle, hero } = contentStyles();
+  const { artFormContainer, artFormStyle, hero, share, title } =
+    contentStyles();
   // TODO: Get ~4 random artworks to pass into Carousel component
   const { loading, data } = useQuery(QUERY_ARTS);
   const artData = data?.arts || [];
@@ -87,15 +94,22 @@ const Home = () => {
 
   return (
     <>
-      <Typography variant="h1" align="center" color="primary" gutterBottom>
-        SHARE THE ART IN YOUR WORLD
-      </Typography>
-      <Box className={hero}>
-        <Grid container maxWidth="md" padding="30px">
-          <Typography variant="h3" color="textPrimary">
-            “The purpose of art is washing the dust of daily life off our
-            souls.” <br />
-            ―Pablo Picasso
+      <Box>
+        <Grid>
+          <Typography
+            className={title}
+            variant="h1"
+            align="center"
+            gutterBottom
+          >
+            Artin' Around
+          </Typography>
+        </Grid>
+      </Box>
+      <Box className={hero} textAlign="center">
+        <Grid container maxWidth="md" className={share}>
+          <Typography className={share} variant="h3" color="white">
+            SHARE THE ART IN YOUR WORLD
           </Typography>
         </Grid>
       </Box>
