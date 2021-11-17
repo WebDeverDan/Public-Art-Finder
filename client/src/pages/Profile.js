@@ -6,11 +6,13 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-
-import ArtCard from '../components/ArtCard';
+import MasonryImageList from '../components/ArtMasonry';
+import ImageList from '@mui/material/ImageList';
+//import ArtCard from '../components/ArtCard';
 // import Map from '../components/Map';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core';
 
 const profileStyles = makeStyles((theme) => ({
@@ -59,13 +61,18 @@ const Profile = () => {
           <Grid container className={profileContainer}>
             <div className={textStyle}>
               <h1>{userData.username}</h1>
-              {/* {userData.email} */}
+              {userData.email}
             </div>
             {/* <div className={textStyle}>{userData.email}</div> */}
-            <Box className={artStyle}>
-              {userData.addedArt.map((art) => {
-                return <ArtCard art={art} />;
-              })}
+            <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
+              <Typography variant="h3" align="center">
+                Your Added Art
+              </Typography>
+              <ImageList variant="masonry" cols={3} gap={8}>
+                {userData.addedArt.map((art) => {
+                  return <MasonryImageList art={art} />;
+                })}
+              </ImageList>
             </Box>
           </Grid>
         </>
