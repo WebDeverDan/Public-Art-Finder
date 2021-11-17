@@ -1,4 +1,5 @@
 body {
+    background-image: url('./image/creamBrick.jpg');
     background-color: #101033 !important;
     font-family: "Playfair Display", serif !important;
     display: flex;

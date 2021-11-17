@@ -7,7 +7,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import Art from './pages/Art';
 import Artist from './pages/Artist';
 import FavoriteArt from './pages/FavoriteArt';
