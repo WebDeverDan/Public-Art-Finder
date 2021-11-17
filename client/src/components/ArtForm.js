@@ -6,8 +6,6 @@ import { ADD_ART } from '../utils/mutations';
 import { QUERY_ARTS } from '../utils/queries';
 // import { QUERY_ME } from '../utils/queries';
 
-import Auth from '../utils/auth';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -20,7 +18,7 @@ const ArtForm = () => {
       backgroundColor: 'white',
       boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
       borderRadius: '10px',
-      width: '100%',
+      width: '75%',
       marginBottom: '4em',
     },
     addBox: {
@@ -114,6 +112,7 @@ const ArtForm = () => {
   });
 
   const [image, setImage] = useState(null);
+  const [imageErr, setImageErr] = useState(false);
 
   const imageInputRef = useRef();
 
@@ -144,23 +143,28 @@ const ArtForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    let url;
     // Request to the cloudinary api to give us back a url of the uploaded image
-    const handleImageUpload = async () => {
-      const data = new FormData();
+    if (image) {
+      const handleImageUpload = async () => {
+        const data = new FormData();
 
-      data.append('file', image);
-      data.append('upload_preset', 'klourmy8');
-      data.append('cloud_name', 'art-finder');
+        data.append('file', image);
+        data.append('upload_preset', 'klourmy8');
+        data.append('cloud_name', 'art-finder');
 
-      const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/art-finder/image/upload',
-        data
-      );
+        const res = await axios.post(
+          'https://api.cloudinary.com/v1_1/art-finder/image/upload',
+          data
+        );
 
-      return res.data.url;
-    };
-
-    const url = await handleImageUpload();
+        return res.data.url;
+      };
+      url = await handleImageUpload();
+      setImageErr(false);
+    } else {
+      return setImageErr(true);
+    }
 
     try {
       // Call addArt and pass through our formData
@@ -203,12 +207,18 @@ const ArtForm = () => {
     }
   };
 
-  const { addGrid, addBox, addCard, addHeader, addText, stateSelection } =
-    useStyles();
+  const handleImgChange = (event) => {
+    setImage(event.target.files[0]);
+
+    if (event.target.files[0]) {
+      setImageErr(false);
+    }
+  };
+
+  const { addGrid, addBox, addCard, addHeader, addText } = useStyles();
 
   return (
     <>
-      {Auth.loggedIn() ? (
         <>
           <Grid className={addGrid}>
             <Box className={addBox}>
@@ -251,7 +261,7 @@ const ArtForm = () => {
                     accept="image/*"
                     type="file"
                     name="image"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={handleImgChange}
                     ref={imageInputRef}
                   />
                   <p className={addText}>
@@ -299,26 +309,36 @@ const ArtForm = () => {
                   </button>
                 </form>
 
+                {/* Success Message */}
                 {data ? (
-                  <div className={`mt-3 p-3 text-black ${addText}`} style={{backgroundColor: '#28a745', textAlign: 'center'}}>
+                  <div
+                    className={`mt-3 p-3 text-black ${addText}`}
+                    style={{ backgroundColor: '#28a745', textAlign: 'center' }}
+                  >
                     Your art has been successfully added!
                   </div>
                 ) : null}
 
-                {error && (
-                  <div className={`mt-3 p-3 text-black bg-danger ${addText}`} style={{textAlign: 'center', width: '418px'}}>
-                  {error.message}
-                </div>
-                )}
+                {/* Error Messages */}
+                {imageErr ? (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '100%' }}
+                  >
+                    Please input an image.
+                  </div>
+                ) : error ? (
+                  <div
+                    className={`mt-3 p-3 text-black bg-danger ${addText}`}
+                    style={{ textAlign: 'center', width: '100%' }}
+                  >
+                    {error.message}
+                  </div>
+                ) : null}
               </Card>
             </Box>
           </Grid>
         </>
-      ) : (
-        <div style={{ color: 'white' }}>
-          You must be logged in to add artwork.
-        </div>
-      )}
     </>
   );
 };

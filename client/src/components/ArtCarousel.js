@@ -7,54 +7,43 @@ function ArtCarousel({ art }) {
   const styles = {
     paper: {
       width: '100%',
-      height: '310px',
+      height: '300px',
       backgroundColor: 'white',
     },
   };
 
-  // Hardcoded art for testing in dev
-  // var items = [
-  //   {
-  //     name: 'Dog (artwork title goes here)',
-  //     description: 'small description of the art',
-  //     image:
-  //       'https://cdn.cnn.com/cnnnext/dam/assets/201030094143-stock-rhodesian-ridgeback-super-tease.jpg',
-  //   },
-  //   {
-  //     name: 'Baby Yoda (artwork title goes here)',
-  //     description: 'small description of the art',
-  //     image:
-  //       'https://starwarsblog.starwars.com/wp-content/uploads/2019/12/update-the-child-merch-tall-v1a.jpg',
-  //   },
-  // ];
-
   return (
     <Carousel
-      indicatorIconButtonProps={{
-        style: {
-          color: '#9B752A',
-        },
-      }}
-      activeIndicatorIconButtonProps={{
-        style: {
-          color: 'white',
-        },
-      }}
+      // indicatorIconButtonProps={{
+      //   style: {
+      //     color: '#9B752A',
+      //   },
+      // }}
+      // activeIndicatorIconButtonProps={{
+      //   style: {
+      //     color: 'white',
+      //   },
+      // }}
       navButtonsProps={{
         style: {
           backgroundColor: 'white',
           borderRadius: 0,
         },
       }}
+      animation={'slide'}
+      duration={1000}
+      interval={5000}
+      indicators={false}
     >
       {art.map((art, i) => (
-        <Paper
+        <>
+          {/* <Paper
           key={i}
           style={styles.paper}
-          sx={{ pt: 0.5, flexDirection: 'column' }}
-        >
+          sx={{ padding: '0', flexDirection: 'column' }}
+        > */}
           {/* <h2>{art.title}</h2> */}
-          <div className="carousel_image_box">
+          <div className="carousel_image_box" key={i}>
             <a href={`/art/${art._id}`}>
               <img
                 className="carousel_image"
@@ -63,7 +52,8 @@ function ArtCarousel({ art }) {
               />
             </a>
           </div>
-        </Paper>
+          {/* </Paper> */}
+        </>
       ))}
     </Carousel>
   );

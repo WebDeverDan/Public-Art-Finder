@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
   cardGrid: {
     padding: '20px 0',
-    backgroundColor: 'transparent',
-    boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
+    // backgroundColor: 'transparent',
+    // boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
     borderRadius: '10px',
   },
   card: {

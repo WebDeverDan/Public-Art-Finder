@@ -7,10 +7,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import AddArt from './pages/AddArt';
 import Art from './pages/Art';
-import Artist from './pages/Artist';
-import FavoriteArt from './pages/FavoriteArt';
-import FavoriteArtist from './pages/FavoriteArtist';
+// import Artist from './pages/Artist';
+// import FavoriteArt from './pages/FavoriteArt';
+// import FavoriteArtist from './pages/FavoriteArtist';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -85,6 +86,10 @@ function App() {
 
             <Route exact path="/art/:artId">
               <Art />
+            </Route>
+
+            <Route exact path="/addArt">
+              <AddArt />
             </Route>
 
             {/* <Route exact path="/artist/:id">
