@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema({
   username: {
     type: String,
-    required: false,
+    required: true,
     unique: true,
     trim: true,
   },
@@ -21,7 +21,7 @@ const userSchema = new Schema({
   },
   isArtist: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   comments: [
     {

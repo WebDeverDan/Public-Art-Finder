@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'white',
     boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
     borderRadius: '10px',
-    marginTop: '30px',
+    marginTop: '5em',
   },
   signupBox: {
     color: 'black',
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
   signupCard: {
     padding: '10px',
-    border: '8px solid #9b752a',
+    // border: '8px solid #9b752a',
   },
   signupHeader: {
     backgroundColor: 'black',
@@ -87,35 +87,41 @@ const Signup = () => {
               </div>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                Username
                 <input
                   className="form-input"
-                  placeholder="Your username"
                   name="username"
-                  type="text"
+                  placeholder="Your username"
                   value={formState.name}
                   onChange={handleChange}
-                />
-                Email
+                ></input>
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Username<span style={{ color: 'red' }}>*</span>
+                </p>
+
                 <input
                   className="form-input"
-                  placeholder="Your email"
                   name="email"
-                  type="email"
+                  placeholder="Your email"
                   value={formState.email}
                   onChange={handleChange}
-                />
-                Password
+                ></input>
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Email<span style={{ color: 'red' }}>*</span>
+                </p>
+
                 <input
                   className="form-input"
-                  placeholder="******"
                   name="password"
                   type="password"
+                  placeholder="*****"
                   value={formState.password}
                   onChange={handleChange}
-                />
-                <div>Are you an artist?</div>
-                <label>
+                ></input>
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Password<span style={{ color: 'red' }}>*</span>
+                </p>
+
+                <label style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   <input
                     type="radio"
                     name="isArtist"
@@ -124,7 +130,7 @@ const Signup = () => {
                   />
                   Yes
                 </label>
-                <label>
+                <label style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   <input
                     type="radio"
                     name="isArtist"
@@ -133,12 +139,19 @@ const Signup = () => {
                   />
                   No
                 </label>
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Are you an artist?
+                </p>
+
                 <button
                   className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
+                  style={{
+                    cursor: 'pointer',
+                    fontFamily: '"JetBrains Mono", monospace',
+                  }}
                   type="submit"
                 >
-                  Submit
+                  SUBMIT
                 </button>
               </form>
             )}
