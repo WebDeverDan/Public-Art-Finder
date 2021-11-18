@@ -12,14 +12,14 @@ const artSchema = new Schema({
   artist: {
     firstName: {
       type: String,
-      // required: true,
+      required: false,
       minlength: 1,
       maxlength: 30,
       trim: true,
     },
     lastName: {
       type: String,
-      // required: true,
+      required: false,
       minlength: 1,
       maxlength: 30,
       trim: true,
