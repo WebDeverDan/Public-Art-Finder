@@ -7,6 +7,7 @@ import {
   Link,
   MenuItem,
 } from '@mui/material/';
+import smallLogo from '../image/logo192.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
@@ -19,6 +20,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import FormGroup from '@mui/material/FormGroup';
 import Menu from '@mui/material/Menu';
+import { Avatar } from '@material-ui/core';
 // import { InfoOutlined } from '@mui/icons-material';
 
 const logout = (event, label) => {
@@ -85,10 +87,13 @@ const useStyles = makeStyles(() => ({
     fontSize: '36px',
     flexDirection: 'row',
   },
+  logo: {
+    maxWidth: 160,
+  },
 }));
 
 export default function Header() {
-  const { header, mobileNav, menuButton, toolbar, drawerContainer } =
+  const { header, mobileNav, menuButton, toolbar, drawerContainer, logo } =
     useStyles();
 
   let headersData;
@@ -127,6 +132,7 @@ export default function Header() {
     console.log();
     return (
       <Toolbar className={toolbar}>
+        <Avatar src={smallLogo} alt="logo" className={logo} />
         <div>{getMenuButtons()}</div>
         <div>{AccountAppBar()}</div>
       </Toolbar>
@@ -228,16 +234,18 @@ export default function Header() {
 
     return (
       <div>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleMenu}
-          color="inherit"
-        >
-          {Auth.loggedIn() ? <AccountCircle fontSize="36px" /> : null}
-        </IconButton>
+        <Avatar>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            {Auth.loggedIn() ? <AccountCircle fontSize="36px" /> : null}
+          </IconButton>
+        </Avatar>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
@@ -259,9 +267,11 @@ export default function Header() {
                 value: 'Profile',
                 to: '/me',
                 component: RouterLink,
-              }
-              }
-              onClick={handleClose}>Profile</MenuItem>
+              }}
+              onClick={handleClose}
+            >
+              Profile
+            </MenuItem>
           </RouterLink>
           <RouterLink>
             <MenuItem
