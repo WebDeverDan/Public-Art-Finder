@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 // import Login from '../pages/Login';
 import Auth from '../utils/auth';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import PersonSharp from '@mui/icons-material/PersonSharp';
 // import Switch from '@mui/material/Switch';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import FormGroup from '@mui/material/FormGroup';
@@ -234,18 +235,16 @@ export default function Header() {
 
     return (
       <div>
-        <Avatar>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            {Auth.loggedIn() ? <AccountCircle fontSize="36px" /> : null}
-          </IconButton>
-        </Avatar>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          {Auth.loggedIn() ? <PersonSharp fontSize="36px" /> : null}
+        </IconButton>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
