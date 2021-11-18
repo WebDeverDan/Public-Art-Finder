@@ -19,27 +19,24 @@ const profileStyles = makeStyles((theme) => ({
   profileContainer: {
     alignItems: 'center',
     fontSize: '40px',
+    justifyContent: 'center',
+  },
+  profileColumn: {
+    direction: 'column',
+    display: 'block !important',
   },
   textStyle: {
-    color: 'white',
+    color: '#1a1a1a',
+    paddingTop: '20px',
     paddingBottom: '20px',
     paddingLeft: '20px',
     display: 'block',
-  },
-  artStyle: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '10px',
-    padding: '8px',
-    [theme.breakpoints.down('sm')]: {
-      display: 'block',
-      justifyContent: 'center',
-    },
+    width: '100%',
   },
 }));
 
 const Profile = () => {
-  const { profileContainer, textStyle } = profileStyles();
+  const { profileContainer, profileColumn, textStyle } = profileStyles();
 
   const { username: userParam } = useParams();
 
@@ -59,12 +56,13 @@ const Profile = () => {
       ) : (
         <>
           <Grid container className={profileContainer}>
+            <div className={profileColumn}>
             <div className={textStyle}>
-              <h1>{userData.username}</h1>
-              {userData.email}
+              <h1>Welcome {userData.username}!</h1>
+              {/* {userData.email} */}
             </div>
             {/* <div className={textStyle}>{userData.email}</div> */}
-            <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
+            <Box sx={{ width: 500, height: 450 /* , overflowY: 'scroll' */ }}>
               <Typography variant="h3" align="center">
                 Your Added Art
               </Typography>
@@ -74,6 +72,7 @@ const Profile = () => {
                 })}
               </ImageList>
             </Box>
+            </div>
           </Grid>
         </>
       )}

@@ -18,7 +18,7 @@ const Art = () => {
   console.log(artData);
 
   return (
-    <>
+    <div style={{margin: '5em 5em 2em 5em'}}>
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -26,21 +26,21 @@ const Art = () => {
           <img
             src={artData.url}
             alt={artData.description}
-            style={{ width: '100%' }}
+            style={{ width: '100%', margin: '0em 0em 1em 0em' }}
           />
           <div style={{ display: 'block' }}>
-            <Typography gutterBottom variant="h3">
+            <Typography gutterBottom variant="h2">
               {artData.title}
             </Typography>
-            <Typography>{artData.location}</Typography>
+            <Typography>LOCATION: {artData.location}</Typography>
             {artData.artist.firstName || artData.artist.lastName ? (
               <Typography>
-                Artist: {artData.artist.firstName} {artData.artist.lastName}
+                ARTIST: {artData.artist.firstName} {artData.artist.lastName}
               </Typography>
             ) : null}
-            <Typography>{artData.description}</Typography>
+            <Typography>DESCRIPTION: {artData.description}</Typography>
             <Typography>
-              Added by:{' '}
+              ADDED BY:{' '}
               <Link
                 to={`/profile/${artData.addedBy}`}
                 style={{ color: 'black' }}
@@ -54,7 +54,7 @@ const Art = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
