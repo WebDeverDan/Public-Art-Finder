@@ -50,7 +50,7 @@ const client = new ApolloClient({
 
 const contentStyles = makeStyles((theme) => ({
   allContent: {
-    paddingTop: '64px',
+    marginTop: '64px',
     minHeight: 'calc(100vh - 130px)',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
