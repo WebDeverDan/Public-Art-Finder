@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_ART } from '../utils/mutations';
 
-import { QUERY_ARTS } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 // import { QUERY_ME } from '../utils/queries';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -118,17 +118,18 @@ const ArtForm = () => {
 
   // Get addArt function using ADD_ART mutation, update cache(?)
   const [addArt, { error, data }] = useMutation(ADD_ART, {
-    update(cache, { data: { addArt } }) {
-      try {
-        const { arts } = cache.readQuery({ query: QUERY_ARTS });
+    refetchQueries: [QUERY_ME]
+    // update(cache, { data: { addArt } }) {
+    //   try {
+    //     const { arts } = cache.readQuery({ query: QUERY_ARTS });
 
-        cache.writeQuery({
-          query: QUERY_ARTS,
-          data: { arts: [addArt, ...arts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
+    //     cache.writeQuery({
+    //       query: QUERY_ARTS,
+    //       data: { arts: [addArt, ...arts] },
+    //     });
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
 
       // Update me object's cache
       // const { me } = cache.readQuery({ query: QUERY_ME });
@@ -136,7 +137,7 @@ const ArtForm = () => {
       //   query: QUERY_ME,
       //   data: { me: { ...me, addedArt: [...me.addedArt, addArt] } },
       // });
-    },
+    // },
   });
 
   // On form submission, call addArt mutation
