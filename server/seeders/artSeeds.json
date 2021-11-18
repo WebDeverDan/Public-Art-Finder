@@ -3,8 +3,8 @@
     "title": "Colorful Facade",
     "location": "South Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A colorful facade to a business or office. Great use of pastel colors and the contrast of the character's outfit.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183566/seeded%20art/iyfbzmwgwbbsohvlpwno.jpg",
@@ -14,8 +14,8 @@
     "title": "Insane Building",
     "location": "Texas",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "Square building wrapped in an amazing mural, giving the depiction of having a 3d bricked surcace.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183566/seeded%20art/is0ggf17sqcwunap3bkh.jpg",
@@ -36,8 +36,8 @@
     "title": "Alley Graffiti",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "3-tiered graffiti on a black cinderblock surface in an alley.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183550/seeded%20art/km83oqx2mmeia0ryry9i.jpg",
@@ -69,8 +69,8 @@
     "title": "Parking Lot Guardian",
     "location": "New York",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A huge robo overlooking the parking lot. The robot's gears can be seen, as well as vines surrounding it.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183540/seeded%20art/ee1pdiq16s4max0ownwr.jpg",
@@ -80,8 +80,8 @@
     "title": "Graffiti Magician",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A magician comes up from the graffiti like a magic act. This one is really cool!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183537/seeded%20art/n9bt1osnkbjcuebttlih.jpg",
@@ -91,8 +91,8 @@
     "title": "Beachside Plant",
     "location": "Hawaii",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A really pretty sculutpre of a potted plant, located in a beachside art park.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183516/seeded%20art/l2ctxmazukyokcahwnah.jpg",
@@ -102,8 +102,8 @@
     "title": "Ceramic Tower",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A ceramic sculpture found in a fountain in downtown Greensboro.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183514/seeded%20art/guygdujgezxcedqlhcro.jpg",
@@ -113,8 +113,8 @@
     "title": "Modern and Colorful Mural",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A geometric and multi-colored mural that spance the side of a large building. Features a bust of a woman with blue and purple hair.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183511/seeded%20art/uacgfkwta4tjpzho6kcn.jpg",
@@ -124,8 +124,8 @@
     "title": "Geometric Archway",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A silver archway made of square pipes of varying length. Fun photo spot!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183510/seeded%20art/wmsaeamhkpjs6am0fvdg.jpg",
@@ -146,8 +146,8 @@
     "title": "Classic Coca-Cola",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A classic mural of Coca-Cola.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183502/seeded%20art/nmvip10g3avbwsiafvqa.jpg",
@@ -157,8 +157,8 @@
     "title": "Rocky Statue",
     "location": "South Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "An intersting statue placed on a rock. Spotted in Charleston.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183476/seeded%20art/kzygfsbuhgwawn8gaaoa.jpg",
@@ -169,7 +169,7 @@
     "location": "New York",
     "artist":{
       "firstName": "TIF",
-      "lastName": "unknown"
+      "lastName": ""
     },
     "description": "A mural that has an egg-shaped creature screaming with a question mark coming out of it's moutn. It also has blue fire behind it, which is always fun.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183476/seeded%20art/q7mno2gckuithnvrbhvu.jpg",
@@ -179,8 +179,8 @@
     "title": "Star-Pyramid",
     "location": "South Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A really cool pyramid, composed of iron and chipped away cement on the sides.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183475/seeded%20art/fohl2ngprluopeqlavyh.jpg",
@@ -190,8 +190,8 @@
     "title": "Here Comes the Train",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "3D painted tunnel with the illusion of a train coming out. It's a great photo spot!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183474/seeded%20art/nkwhfe5tgl8vvxzdrpkz.jpg",
@@ -201,8 +201,8 @@
     "title": "Colorful Distress",
     "location": "New York",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A colorful and dark mural of a femal character who looks distressed.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183465/seeded%20art/bablusvrpd3rfes6oaqy.jpg",
@@ -212,8 +212,8 @@
     "title": "Dystopian Palms",
     "location": "South Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "Freaky looking mural that looks like Squidward's house. Pink background with palmtrees and frogs!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183450/seeded%20art/a5kwrkxb1w29jrrnydnl.jpg",
@@ -224,7 +224,7 @@
     "location": "New York",
     "artist":{
       "firstName": "Didi",
-      "lastName": "unknown"
+      "lastName": ""
     },
     "description": "A lady with purple flowing hair and diamonds surrounding her. Quite lovely.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183449/seeded%20art/peehonwzvale0yu4foks.jpg",
@@ -234,8 +234,8 @@
     "title": "General Store",
     "location": "North Carolina",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A small-town mural of a general store, on the side of the actual P.H. Morris General Store.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183436/seeded%20art/mhj72mtctvnsgvnqbn4e.jpg",
@@ -256,8 +256,8 @@
     "title": "Woman on the Bricks",
     "location": "New York",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "A beautiful mural of a woman draped in fabric, painted on a brick surface.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183420/seeded%20art/wsxvjlhf4g1ktc8dpcrp.jpg",
@@ -267,8 +267,8 @@
     "title": "A Scrolling Sea",
     "location": "Texas",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "Large mural of a ship in rough waters, on a rolled up scroll. Pretty neat!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183417/seeded%20art/g3y8hjcya5bkkjje12ho.jpg",
@@ -289,8 +289,8 @@
     "title": "Clifford the the Gang",
     "location": "Texas",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "Clifford the Big Red Dog hangs out with other cartoon characters on a bookshelf! Very nostalgic!",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183368/seeded%20art/vobccxas4d6env7my26x.jpg",
@@ -300,8 +300,8 @@
     "title": "Alien Landscape",
     "location": "Texas",
     "artist":{
-      "firstName": "unknown",
-      "lastName": "unknown"
+      "firstName": "",
+      "lastName": ""
     },
     "description": "This amazing mural shows an desert landscape with 2 vehicles flying through the air.",
     "url": "https://res.cloudinary.com/art-finder/image/upload/v1637183363/seeded%20art/rrmkpsjqqcpmk0zt5rbk.jpg",

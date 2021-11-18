@@ -39,7 +39,7 @@ const profileStyles = makeStyles((theme) => ({
 }));
 
 const Profile = () => {
-  const { profileContainer, textStyle, artStyle } = profileStyles();
+  const { profileContainer, textStyle } = profileStyles();
 
   const { username: userParam } = useParams();
 
