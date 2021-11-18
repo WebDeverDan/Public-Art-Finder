@@ -12,6 +12,7 @@ export const QUERY_USER = gql`
         createdAt
       }
       addedArt {
+        _id
         title
         artist {
           firstName

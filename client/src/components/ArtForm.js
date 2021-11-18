@@ -27,7 +27,7 @@ const ArtForm = () => {
     },
     addCard: {
       padding: '10px',
-      border: '8px solid #9b752a',
+      // border: '8px solid #9b752a',
     },
     addHeader: {
       backgroundColor: 'black',
@@ -223,7 +223,7 @@ const ArtForm = () => {
           <Grid className={addGrid}>
             <Box className={addBox}>
               <Card className={addCard}>
-                <h4 className={addHeader}>Add New Art</h4>
+                <h4 className={addHeader}>ADD NEW ART</h4>
                 <form onSubmit={handleFormSubmit}>
                   {/* Title */}
                   <input
@@ -305,7 +305,7 @@ const ArtForm = () => {
                     }}
                     type="submit"
                   >
-                    Submit Artwork
+                    ADD ARTWORK
                   </button>
                 </form>
 

@@ -5,14 +5,16 @@ import useStyles from '../pages/styles';
 
 import ArtCard from './ArtCard';
 
+import MasonryImageList from '../components/ArtMasonry';
+import ImageList from '@mui/material/ImageList';
+
 const ArtInArea = ({ art, location }) => {
   const classes = useStyles();
 
   return (
-    <>
+    <div style={{margin: '1em 0em 0em 0em'}}>
       {art.length > 0 ? (
         <>
-          {/* <div className={classes.container}> */}
             <Container maxWidth="lg">
               <Typography
                 variant="h4"
@@ -20,25 +22,15 @@ const ArtInArea = ({ art, location }) => {
                 color="textPrimary"
                 gutterBottom
               >
-                <span style={{color: 'green'}}>{art.length}</span> PUBLIC ARTWORKS IN {location.toUpperCase()}
+                <span style={{color: 'green'}}>{art.length}</span> PUBLIC ARTWORK(S) IN {location.toUpperCase()}
               </Typography>
-              {/* <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                <span style={{color: 'green'}}>{art.length}</span> results for public art in your searched area.
-              </Typography> */}
             </Container>
-          {/* </div> */}
-          <Container className={classes.cardGrid} maxWidth="lg">
-            <Grid container spacing={4}>
-              {art.map((art) => {
-                return <ArtCard art={art} />;
-              })}
-            </Grid>
-          </Container>
+
+          <ImageList variant='masonry' cols={4} gap={8} >
+            {art.map((art) => {
+              return <MasonryImageList art={art} />
+            })}
+          </ImageList>
         </>
       ) : (
         <Container maxWidth="lg">
@@ -66,8 +58,9 @@ const ArtInArea = ({ art, location }) => {
               )}
           </Typography>
         </Container>
-      )}
-    </>
+      )
+      }
+    </div>
   );
 };
 
