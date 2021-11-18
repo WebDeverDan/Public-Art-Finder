@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'white',
     boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.7)',
     borderRadius: '10px',
-    marginTop: '30px',
+    marginTop: '5em',
   },
   loginBox: {
     color: 'black',
@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   },
   loginCard: {
     padding: '10px',
-    border: '8px solid #9b752a',
+    // border: '8px solid #9b752a',
   },
   loginHeader: {
     backgroundColor: 'black',
@@ -96,6 +96,10 @@ const Login = (props) => {
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Email
+                </p>
+
                 <input
                   className="form-input"
                   placeholder="******"
@@ -104,12 +108,19 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <p style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                  Password
+                </p>
+
                 <button
                   className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
+                  style={{
+                    cursor: 'pointer',
+                    fontFamily: '"JetBrains Mono", monospace',
+                  }}
                   type="submit"
                 >
-                  Submit
+                  SUBMIT
                 </button>
               </form>
             )}

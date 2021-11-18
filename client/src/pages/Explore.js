@@ -39,12 +39,13 @@ const Explore = () => {
   }
 
   let carouselArt;
+  const maxCarouselImgs = 10;
   if (username) {
     carouselArt = artData.filter((art) => {
       return art.addedBy !== username;
     });
-    // If the filtered artData brings back < 5 artworks, show that user's artwork too
-    if (carouselArt.length < 5) {
+    // If the filtered artData brings back less than the max # of artworks, show that user's artwork too
+    if (carouselArt.length < maxCarouselImgs) {
       carouselArt = artData;
     }
   } else {
@@ -53,17 +54,18 @@ const Explore = () => {
 
   // Shuffle order of characters within array
   function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
+    let shuffledArray = [...array];
+
+    for (var i = shuffledArray.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+      var temp = shuffledArray[i];
+      shuffledArray[i] = shuffledArray[j];
+      shuffledArray[j] = temp;
     }
-    return array;
+    return shuffledArray;
   }
 
   // If over max # of carousel images, shuffle and return correct # of random images
-  const maxCarouselImgs = 10;
   if (carouselArt.length > maxCarouselImgs) {
     carouselArt = shuffleArray(carouselArt);
     carouselArt.length = maxCarouselImgs;
