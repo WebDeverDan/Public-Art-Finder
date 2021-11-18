@@ -97,30 +97,31 @@ const ArtSearch = () => {
           <span style={{ color: 'violet' }}>E</span> STREET ART AROUND THE U.S.
         </Typography>
       </Container>
-      <FormControl fullWidth>
-        <InputLabel id="state">State</InputLabel>
-        <Select
-          labelId="state"
-          id="state-select"
-          label="State"
-          value={location}
-          onChange={handleChange}
-        >
-          {stateArray.map((state) => {
-            return (
-              <MenuItem key={state} value={state}>
-                {state}
-              </MenuItem>
-            );
-          })}
-        </Select>
-        <br />
+      <div style={{margin: '1em'}}>
+        <FormControl fullWidth>
+          <InputLabel id="state">State</InputLabel>
+          <Select
+            labelId="state"
+            id="state-select"
+            label="State"
+            value={location}
+            onChange={handleChange}
+          >
+            {stateArray.map((state) => {
+              return (
+                <MenuItem key={state} value={state}>
+                  {state}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
         {loading ? (
           <div>Loading...</div>
         ) : (
           <ArtInArea art={artData} location={location} />
         )}
-      </FormControl>
+      </div>
     </>
   );
 };

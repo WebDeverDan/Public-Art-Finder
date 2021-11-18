@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const artSchema = new Schema({
   title: {
     type: String,
-    required: false,
+    required: true,
     minlength: 1,
     maxlength: 280,
     trim: true,
@@ -12,21 +12,20 @@ const artSchema = new Schema({
   artist: {
     firstName: {
       type: String,
-      // required: true,
-      minlength: 1,
-      maxlength: 30,
+      required: false,
+      maxlength: 50,
       trim: true,
     },
     lastName: {
       type: String,
-      // required: true,
-      minlength: 1,
-      maxlength: 30,
+      required: false,
+      maxlength: 50,
       trim: true,
     },
   },
   location: {
     type: String,
+    required: true,
     minlength: 1,
     maxlength: 280,
     trim: true,
@@ -36,6 +35,7 @@ const artSchema = new Schema({
   },
   url: {
     type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
