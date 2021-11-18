@@ -1,7 +1,8 @@
 # Artin' Around
-
+---
 [Repository Link](https://github.com/WebDeverDan/Public-Art-Finder)  
 [Deployed Link](https://artin-around.herokuapp.com/)
+___
 
 ## Table of Contents
 
@@ -11,7 +12,7 @@
 - [License](#License)
 - [Future Development](#Future)
 - [Questions](#Questions)
-
+___
 ## Description
 
 ```md
@@ -20,7 +21,7 @@
 - When logged in, users can search for art based on state
 - If not logged in, users will be able to click on art seen in a carousel and view information about that piece
 ```
-
+___
 ## Technology
 
   - HTML/JSX
@@ -31,21 +32,21 @@
   - GraphQL
   - Cloudinary
   - Material UI
-
+___
 ## Usage
 
 ![Video of Usage](./public/img/***.gif)
-
+___
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+___
 ## Future Development
 
   - Allow users to pin the location of an art pice on a map
   - Enable users to view the location of art on a map
   - Let users rate art pieces
-
+___
 ## Questions
 
 [Aubri](https://github.com/aubrihenley)  
