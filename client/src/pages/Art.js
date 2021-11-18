@@ -15,6 +15,7 @@ const Art = () => {
     variables: { artId: userParam },
   });
   const artData = data?.art || {};
+  console.log(artData);
 
   return (
     <>
@@ -27,18 +28,25 @@ const Art = () => {
             alt={artData.description}
             style={{ width: '100%' }}
           />
-          <div style={{display: 'block'}}>
+          <div style={{ display: 'block' }}>
             <Typography gutterBottom variant="h3">
               {artData.title}
             </Typography>
             <Typography>{artData.location}</Typography>
-            <Typography>
-              Artist: {artData.artist.firstName} {artData.artist.lastName}
-            </Typography>
+            {artData.artist.firstName || artData.artist.lastName ? (
+              <Typography>
+                Artist: {artData.artist.firstName} {artData.artist.lastName}
+              </Typography>
+            ) : null}
             <Typography>{artData.description}</Typography>
             <Typography>
               Added by:{' '}
-              <Link to={`/profile/${artData.addedBy}`} style={{color: 'black'}}>{artData.addedBy}</Link>
+              <Link
+                to={`/profile/${artData.addedBy}`}
+                style={{ color: 'black' }}
+              >
+                {artData.addedBy}
+              </Link>
             </Typography>
             {artData.comments.map((comment) => {
               return <Typography>{comment.commentText}</Typography>;
