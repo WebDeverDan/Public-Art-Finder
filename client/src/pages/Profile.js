@@ -49,6 +49,11 @@ const Profile = () => {
     return <Redirect to="/me" />;
   }
 
+  let myProfile = false;
+  if (window.location.pathname === '/me') {
+    myProfile = true;
+  }
+
   return (
     <>
       {loading ? (
@@ -59,7 +64,9 @@ const Profile = () => {
             <div className={profileColumn}>
               <div className={textStyle}>
                 <Typography variant="h3" align="center">
-                  Welcome {userData.username}!
+                  {myProfile
+                    ? `Welcome ${userData.username}!`
+                    : `${userData.username.toUpperCase()}`}
                 </Typography>
               </div>
               <Container maxWidth="lg">
@@ -69,8 +76,11 @@ const Profile = () => {
                   color="textPrimary"
                   gutterBottom
                 >
-                  YOU'VE CONTRIBUTED {userData.addedArt.length} PIECES OF PUBLIC
-                  ARTWORK TO YOUR ALBUM
+                  {myProfile
+                    ? `YOU'VE CONTRIBUTED ${userData.addedArt.length} PUBLIC ARTWORK(S) TO YOUR ALBUM`
+                    : `${userData.username.toUpperCase()} HAS CONTRIBUTED ${
+                        userData.addedArt.length
+                      } PUBLIC ARTWORK(S) TO THEIR ALBUM`}
                 </Typography>
               </Container>
               <Container maxWidth="md">
