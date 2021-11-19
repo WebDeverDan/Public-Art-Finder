@@ -51,7 +51,6 @@ const resolvers = {
       // .select('username');
     },
     me: async (parent, args, context) => {
-      console.log(context.user);
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('addedArt');
       }
