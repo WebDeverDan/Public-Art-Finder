@@ -76,9 +76,9 @@ const Art = () => {
               style={{ width: '100%', margin: '0em 0em 1em 0em' }}
             />
           </Container>
-          <div className={colorBorder}>
-            <Container maxWidth="sm">
-              <Typography gutterBottom variant="h2">
+          <Container maxWidth="sm">
+            <div className={colorBorder}>
+              <Typography gutterBottom variant="h4">
                 <span className={altText}>{artData.title}</span>
               </Typography>
               <Typography>
@@ -107,8 +107,8 @@ const Art = () => {
               {artData.comments.map((comment) => {
                 return <Typography>{comment.commentText}</Typography>;
               })}
-            </Container>
-          </div>
+            </div>
+          </Container>
         </>
       )}
     </div>
