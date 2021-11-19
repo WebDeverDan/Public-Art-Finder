@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-import blueBackground from '../image/blueBackground.jpg';
+import Gallery from '../image/gallery.jpg';
 
 // import Map from '../components/Map';
 import { makeStyles, Typography, Container } from '@material-ui/core';
@@ -60,8 +59,6 @@ const contentStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     textAlign: 'center',
     alignItems: 'center',
-    backgroundImage: `url(${blueBackground})`,
-    color: 'white',
     textShadow: '4px 2px 5px  #000000',
   },
   Text2: {
@@ -74,19 +71,27 @@ const contentStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
     textAlign: 'center',
     alignItems: 'center',
-    backgroundImage: `url(${blueBackground})`,
-    color: 'white',
+    color: 'navy',
     textShadow: '4px 2px 5px #000000',
     flexDirection: 'column',
+    border: '3px #000000',
   },
   about: {
     margin: '30px 30px 30px 30px',
   },
-  paper: {},
+  gallery: {
+    backgroundImage: `url(${Gallery})`,
+    height: '300px',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    position: 'relative',
+    display: 'flex',
+    backgroundSize: 'cover',
+  },
 }));
 
 const Home = () => {
-  const { hero, share, explore, cellphone, Text, about, Text2 } =
+  const { hero, share, explore, cellphone, Text, about, Text2, gallery } =
     contentStyles();
 
   return (
@@ -121,15 +126,13 @@ const Home = () => {
       </Box>
       <Box className={about}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={6} variant="outlined">
-              <Container className={Text}>
-                <Typography variant="h5">
-                  "The purpose of art is washing the dust of daily life off our
-                  souls" ~Salvador Dali
-                </Typography>
-              </Container>
-            </Paper>
+          <Grid item lg={12}>
+            <Container className={Text}>
+              <Typography variant="h4">
+                "The purpose of art is washing the dust of daily life off our
+                souls" ~Salvador Dali
+              </Typography>
+            </Container>
           </Grid>
           <Grid item xs={12} md={4}>
             <Paper elevation={6} variant="outlined">
@@ -140,19 +143,22 @@ const Home = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
+            <Box className={Text2}>
+              <Typography variant="h4">Why use Artin' Around?</Typography>
+              <Typography variant="h6">
+                1. Cultivate an online gallery
+              </Typography>
+              <Typography variant="h6">
+                2. Share amazing art in your life with others
+              </Typography>
+              <Typography variant="h6">
+                3. Search for art wherever you go
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <Paper elevation={6} variant="outlined">
-              <Container className={Text2}>
-                <Typography variant="h4">Why use Artin' Around?</Typography>
-                <Typography variant="h6">
-                  1. Cultivate an online album
-                </Typography>
-                <Typography variant="h6">
-                  2. Share amazing art in your life with others
-                </Typography>
-                <Typography variant="h6">
-                  3. Search for art wherever you go
-                </Typography>
-              </Container>
+              <Container className={gallery} alt="gallery picture"></Container>
             </Paper>
           </Grid>
         </Grid>
