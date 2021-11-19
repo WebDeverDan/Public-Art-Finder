@@ -48,6 +48,7 @@ const contentStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     backgroundSize: 'cover',
+    border: '3px solid black',
   },
   Text: {
     height: '300px',
@@ -74,7 +75,7 @@ const contentStyles = makeStyles((theme) => ({
     color: 'navy',
     textShadow: '4px 2px 5px #000000',
     flexDirection: 'column',
-    border: '3px #000000',
+    border: '3px solid #000000',
   },
   about: {
     margin: '30px 30px 30px 30px',
@@ -87,6 +88,7 @@ const contentStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     backgroundSize: 'cover',
+    border: '3px solid black',
   },
 }));
 
