@@ -11,7 +11,7 @@ import ImageList from '@mui/material/ImageList';
 //import ArtCard from '../components/ArtCard';
 // import Map from '../components/Map';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core';
 
@@ -57,21 +57,29 @@ const Profile = () => {
         <>
           <Grid container className={profileContainer}>
             <div className={profileColumn}>
-            <div className={textStyle}>
-              <h1>Welcome {userData.username}!</h1>
-              {/* {userData.email} */}
-            </div>
-            {/* <div className={textStyle}>{userData.email}</div> */}
-            <Box sx={{ width: 500, height: 450 /* , overflowY: 'scroll' */ }}>
-              <Typography variant="h3" align="center">
-                Your Added Art
-              </Typography>
-              <ImageList variant="masonry" cols={3} gap={8}>
-                {userData.addedArt.map((art) => {
-                  return <MasonryImageList art={art} />;
-                })}
-              </ImageList>
-            </Box>
+              <div className={textStyle}>
+                <Typography variant="h3" align="center">
+                  Welcome {userData.username}!
+                </Typography>
+              </div>
+              <Container maxWidth="lg">
+                <Typography
+                  variant="h5"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  YOU'VE CONTRIBUTED {userData.addedArt.length} PIECES OF PUBLIC
+                  ARTWORK TO YOUR ALBUM
+                </Typography>
+              </Container>
+              <Container maxWidth="md">
+                <ImageList variant="masonry" cols={4} gap={8}>
+                  {userData.addedArt.map((art) => {
+                    return <MasonryImageList art={art} />;
+                  })}
+                </ImageList>
+              </Container>
             </div>
           </Grid>
         </>
