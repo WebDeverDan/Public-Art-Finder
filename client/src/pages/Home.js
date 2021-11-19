@@ -37,8 +37,9 @@ const contentStyles = makeStyles((theme) => ({
   explore: {
     marginBottom: '30px',
     marginRight: '30px',
+    marginLeft: '30px',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
   },
   cellphone: {
     backgroundImage: `url(${CellPhone})`,
@@ -103,12 +104,13 @@ const Home = () => {
           SHARE THE ART IN YOUR WORLD
         </Typography>
         <Grid className={explore}>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="column" spacing={2}>
             <Button
               size="large"
               variant="contained"
               color="warning"
               href="/explore"
+              style={{ width: '10em', height: '4em', borderRadius: '0' }}
             >
               EXPLORE
             </Button>
@@ -118,6 +120,7 @@ const Home = () => {
                 variant="contained"
                 color="warning"
                 href="/addArt"
+                style={{ width: '10em', height: '4em', borderRadius: '0' }}
               >
                 {' '}
                 ADD ART
