@@ -43,6 +43,10 @@ const loggedOutData = [
     label: 'Sign-up',
     href: '/signup',
   },
+  {
+    label: 'Explore',
+    href: '/explore',
+  },
 ];
 
 const loggedInData = [
