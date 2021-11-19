@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Typography } from '@mui/material';
+import { Typography, Container } from '@mui/material';
 
 import { useParams } from 'react-router';
 
@@ -69,41 +69,45 @@ const Art = () => {
         <div>Loading...</div>
       ) : (
         <>
-          <img
-            src={artData.url}
-            alt={artData.description}
-            style={{ width: '100%', margin: '0em 0em 1em 0em' }}
-          />
+          <Container maxWidth="sm">
+            <img
+              src={artData.url}
+              alt={artData.description}
+              style={{ width: '100%', margin: '0em 0em 1em 0em' }}
+            />
+          </Container>
           <div className={colorBorder}>
-            <Typography gutterBottom variant="h2">
-              <span className={altText}>{artData.title}</span>
-            </Typography>
-            <Typography>
-              <span className={altText}>LOCATION: </span>
-              {artData.location}
-            </Typography>
-            {artData.artist.firstName || artData.artist.lastName ? (
-              <Typography>
-                <span className={altText}>ARTIST: </span>
-                {artData.artist.firstName} {artData.artist.lastName}
+            <Container maxWidth="sm">
+              <Typography gutterBottom variant="h2">
+                <span className={altText}>{artData.title}</span>
               </Typography>
-            ) : null}
-            <Typography>
-              <span className={altText}>DESCRIPTION: </span>
-              {artData.description}
-            </Typography>
-            <Typography>
-              <span className={altText}>ADDED BY: </span>
-              <Link
-                to={`/profile/${artData.addedBy}`}
-                style={{ color: 'black' }}
-              >
-                {artData.addedBy}
-              </Link>
-            </Typography>
-            {artData.comments.map((comment) => {
-              return <Typography>{comment.commentText}</Typography>;
-            })}
+              <Typography>
+                <span className={altText}>LOCATION: </span>
+                {artData.location}
+              </Typography>
+              {artData.artist.firstName || artData.artist.lastName ? (
+                <Typography>
+                  <span className={altText}>ARTIST: </span>
+                  {artData.artist.firstName} {artData.artist.lastName}
+                </Typography>
+              ) : null}
+              <Typography>
+                <span className={altText}>DESCRIPTION: </span>
+                {artData.description}
+              </Typography>
+              <Typography>
+                <span className={altText}>ADDED BY: </span>
+                <Link
+                  to={`/profile/${artData.addedBy}`}
+                  style={{ color: 'black' }}
+                >
+                  {artData.addedBy}
+                </Link>
+              </Typography>
+              {artData.comments.map((comment) => {
+                return <Typography>{comment.commentText}</Typography>;
+              })}
+            </Container>
           </div>
         </>
       )}

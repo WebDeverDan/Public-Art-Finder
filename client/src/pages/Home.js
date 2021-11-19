@@ -73,7 +73,7 @@ const contentStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
     textAlign: 'center',
     alignItems: 'center',
-    color: 'navy',
+    color: '#000000',
     textShadow: '4px 2px 5px #000000',
     flexDirection: 'column',
     border: '3px solid #000000',
@@ -151,13 +151,13 @@ const Home = () => {
             <Box className={Text2}>
               <Typography variant="h4">Why use Artin' Around?</Typography>
               <Typography variant="h6">
-                1. Cultivate an online gallery
+                1. Search for art wherever you go
               </Typography>
               <Typography variant="h6">
-                2. Share amazing art in your life with others
+                2. Cultivate an online gallery
               </Typography>
               <Typography variant="h6">
-                3. Search for art wherever you go
+                3. Share amazing art in your life with others
               </Typography>
             </Box>
           </Grid>
