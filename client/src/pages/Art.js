@@ -11,9 +11,18 @@ import { QUERY_ART } from '../utils/queries';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
-  colorBorder: {
+  orangeBorder: {
     display: 'block',
     borderImageSource: 'linear-gradient(270deg, #fe666b, #ff820c)',
+    border: '5px solid black',
+    borderRadius: '0',
+    borderImageSlice: '1',
+    borderWidth: '5px',
+    padding: '2em',
+  },
+  blueBorder: {
+    display: 'block',
+    borderImageSource: 'linear-gradient(270deg, #01b9ab, #005fc1)',
     border: '5px solid black',
     borderRadius: '0',
     borderImageSlice: '1',
@@ -26,7 +35,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Art = () => {
-  const { colorBorder, altText } = useStyles();
+  const { orangeBorder, blueBorder, altText } = useStyles();
 
   const { artId: userParam } = useParams();
 
@@ -34,7 +43,25 @@ const Art = () => {
     variables: { artId: userParam },
   });
   const artData = data?.art || {};
-  console.log(artData);
+
+  function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  // Randomize border color
+  let colorBorder;
+  const randomNumber = randomIntFromInterval(0, 1);
+
+  switch (randomNumber) {
+    case 0:
+      colorBorder = orangeBorder;
+      break;
+    case 1:
+      colorBorder = blueBorder;
+      break;
+    default:
+      colorBorder = orangeBorder;
+  }
 
   return (
     <div style={{ margin: '2em 10em 2em 10em' }}>
@@ -52,7 +79,8 @@ const Art = () => {
               <span className={altText}>{artData.title}</span>
             </Typography>
             <Typography>
-              <span className={altText}>LOCATION: </span>{artData.location}
+              <span className={altText}>LOCATION: </span>
+              {artData.location}
             </Typography>
             {artData.artist.firstName || artData.artist.lastName ? (
               <Typography>
