@@ -15,7 +15,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 // import Signup from '../pages/Signup';
 // import Login from '../pages/Login';
 import Auth from '../utils/auth';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import PersonSharp from '@mui/icons-material/PersonSharp';
 // import Switch from '@mui/material/Switch';
 // import FormControlLabel from '@mui/material/FormControlLabel';
@@ -283,6 +282,30 @@ export default function Header() {
               }}
             >
               Logout
+            </MenuItem>
+          </RouterLink>
+          <RouterLink>
+            <MenuItem
+              {...{
+                value: 'Add Art',
+                to: '/addArt',
+                component: RouterLink,
+              }}
+              onClick={handleClose}
+            >
+              Add Art
+            </MenuItem>
+          </RouterLink>
+          <RouterLink>
+            <MenuItem
+              {...{
+                value: 'Explore',
+                to: '/explore',
+                component: RouterLink,
+              }}
+              onClick={handleClose}
+            >
+              Explore
             </MenuItem>
           </RouterLink>
         </Menu>
