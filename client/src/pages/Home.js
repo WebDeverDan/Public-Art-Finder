@@ -49,7 +49,7 @@ const contentStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     backgroundSize: 'cover',
-    border: '3px solid black',
+    // border: '3px solid black',
   },
   Text: {
     height: '300px',
@@ -74,9 +74,10 @@ const contentStyles = makeStyles((theme) => ({
     textAlign: 'center',
     alignItems: 'center',
     color: '#000000',
-    textShadow: '4px 2px 5px #000000',
+    // textShadow: '4px 2px 5px #000000',
     flexDirection: 'column',
-    border: '3px solid #000000',
+    border: '5px solid #000000',
+    padding: '3em',
   },
   about: {
     margin: '30px 30px 30px 30px',
@@ -91,10 +92,13 @@ const contentStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     border: '3px solid black',
   },
+  altText: {
+    fontFamily: '"JetBrains Mono", monospace',
+  },
 }));
 
 const Home = () => {
-  const { hero, share, explore, cellphone, Text, about, Text2, gallery } =
+  const { hero, share, explore, cellphone, about, Text2, altText } =
     contentStyles();
 
   return (
@@ -131,16 +135,24 @@ const Home = () => {
       </Box>
       <Box className={about}>
         <Grid container spacing={2}>
-          <Grid item lg={12}>
+          {/* <Grid item lg={12}>
             <Container className={Text}>
               <Typography variant="h4">
                 "The purpose of art is washing the dust of daily life off our
                 souls" ~Salvador Dali
               </Typography>
             </Container>
+          </Grid> */}
+          <Grid item xs={12} md={4}>
+            <Box className={Text2}>
+              <Typography variant="h5" className={altText}>
+              "The purpose of art is washing the dust of daily life off our
+                souls." - Salvador Dali
+              </Typography>
+            </Box>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper elevation={6} variant="outlined">
+            <Paper elevation={6}>
               <Container
                 className={cellphone}
                 alt="cellphone picture"
@@ -149,22 +161,17 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} md={4}>
             <Box className={Text2}>
-              <Typography variant="h4">Why use Artin' Around?</Typography>
-              <Typography variant="h6">
-                1. Search for art wherever you go
+              <Typography variant="h4" className={altText}>Why Use Artin' Around?</Typography>
+              <Typography variant="h6" className={altText}>
+                Search for street art wherever you go
               </Typography>
-              <Typography variant="h6">
-                2. Cultivate an online gallery
+              <Typography variant="h6" className={altText}>
+                Cultivate an online gallery
               </Typography>
-              <Typography variant="h6">
-                3. Share amazing art in your life with others
+              <Typography variant="h6" className={altText}>
+                Share amazing art in your life with others
               </Typography>
             </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={6} variant="outlined">
-              <Container className={gallery} alt="gallery picture"></Container>
-            </Paper>
           </Grid>
         </Grid>
       </Box>
