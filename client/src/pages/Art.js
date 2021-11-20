@@ -92,8 +92,12 @@ const Art = () => {
                 </Typography>
               ) : null}
               <Typography>
-                <span className={altText}>DESCRIPTION: </span>
-                {artData.description}
+                {artData.description ? (
+                  <>
+                    <span className={altText}>DESCRIPTION: </span>{' '}
+                    {artData.description}
+                  </>
+                ) : null}
               </Typography>
               <Typography>
                 <span className={altText}>ADDED BY: </span>

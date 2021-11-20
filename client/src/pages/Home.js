@@ -163,13 +163,13 @@ const Home = () => {
             <Box className={Text2}>
               <Typography variant="h4" className={altText}>Why Use Artin' Around?</Typography>
               <Typography variant="h6" className={altText}>
-                Search for street art wherever you go
+                Search for street art wherever you go.
               </Typography>
               <Typography variant="h6" className={altText}>
-                Cultivate an online gallery
+                Cultivate an online gallery.
               </Typography>
               <Typography variant="h6" className={altText}>
-                Share amazing art in your life with others
+                Share amazing art in your life with others.
               </Typography>
             </Box>
           </Grid>
