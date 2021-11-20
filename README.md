@@ -35,7 +35,11 @@ ___
 ___
 ## Usage
 
-![Video of Usage](./public/img/***.gif)
+Site Usage
+![Video of Usage without Logging In](./client/public/visit-tour.gif)
+
+Logged In Features
+![Additional Options Available when Logged In](./client/public/loggedin.gif)
 ___
 ## License
 
