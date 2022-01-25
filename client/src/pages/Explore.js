@@ -39,7 +39,7 @@ const Explore = () => {
   }
 
   let carouselArt;
-  const maxCarouselImgs = 10;
+  const maxCarouselImgs = 5;
   if (username) {
     carouselArt = artData.filter((art) => {
       return art.addedBy !== username;
